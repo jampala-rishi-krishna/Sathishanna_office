@@ -37,6 +37,16 @@ A modern, responsive website for Hair 2 Hair Studio - Non-Surgical Hair Replacem
 - Nodemailer for email functionality
 - CORS for cross-origin requests
 
+## Deploying to Cloudflare Pages
+
+This Vite app can be deployed as a static site on Cloudflare Pages:
+
+1. Connect the repository in the Cloudflare dashboard under **Workers & Pages**.
+2. Set the build command to `npm run build` and the build output directory to `dist`.
+3. Add your existing domain under the Pages project's **Custom domains** settings and follow the DNS instructions shown there.
+
+The `public/_redirects` file is copied into the build output and sends app routes to `index.html`, so React Router routes work when opened directly.
+
 ## Getting Started
 
 ### Prerequisites
