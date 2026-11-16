@@ -36,6 +36,7 @@ export default function Header() {
   }, [open]);
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         overHero ? 'bg-brand-deep text-white' : 'border-b border-brand-line bg-brand-porcelain/95 text-brand-ink backdrop-blur'
@@ -105,9 +106,11 @@ export default function Header() {
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
+    </header>
 
+      {/* Rendered outside <header>: the header's backdrop-blur would otherwise trap this fixed panel inside its 72px height. */}
       {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[4.5rem] overflow-y-auto bg-brand-porcelain text-brand-ink lg:hidden">
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[4.5rem] z-50 overflow-y-auto bg-brand-porcelain text-brand-ink lg:hidden">
           <nav aria-label="Mobile" className="flex flex-col px-5 pb-10 pt-4">
             <NavLink
               to="/"
@@ -152,6 +155,6 @@ export default function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
