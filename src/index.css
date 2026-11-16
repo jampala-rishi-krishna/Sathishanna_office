@@ -3,29 +3,70 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
-    font-family: 'Poppins', sans-serif;
-    color: #1F1F1F;
-    background: linear-gradient(180deg, #FFFFFF 0%, #F7E7EB 100%);
-    letter-spacing: 0.01em;
+    @apply bg-brand-porcelain font-sans text-brand-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
   }
 
-  /* Ensure body content doesn't overlap with fixed header */
+  /* Leaves room for the fixed header */
   .main-content {
-    padding-top: 6rem; /* 96px - accounts for fixed header height (contact bar + navigation) */
+    padding-top: 4.5rem;
   }
 
-  h1, h2, h3, h4 {
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 0.01em;
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
   }
 
-  a {
-    @apply transition-colors duration-200;
+  p {
+    text-wrap: pretty;
   }
 
-  /* Ensure submit buttons have visible black text across the site */
-  button[type='submit'] {
-    color: #000000 !important;
+  ::selection {
+    @apply bg-brand-primary text-white;
+  }
+
+  :focus-visible {
+    outline: 2px solid #b08a4e;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .field {
+    @apply w-full rounded-lg border border-brand-line bg-white px-4 py-3 text-base text-brand-ink placeholder:text-brand-stone/60 transition-colors;
+  }
+  .field:focus {
+    @apply border-brand-primary outline-none ring-2 ring-brand-primary/15;
+  }
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-brand-ink;
+  }
+  .link-underline {
+    @apply underline decoration-brand-gold/60 decoration-1 underline-offset-[5px] transition-colors hover:decoration-brand-primary;
   }
 }

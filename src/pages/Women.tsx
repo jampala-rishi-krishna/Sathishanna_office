@@ -1,6 +1,7 @@
-import { Filter } from 'lucide-react';
-import Card from '../components/Card';
 import Button from '../components/Button';
+import ProductCard from '../components/ProductCard';
+import { Container, PageHero, Section, SectionHeading } from '../components/ui';
+import { whatsappUrl } from '../lib/site';
 
 export default function Women() {
   const patches = [
@@ -89,176 +90,90 @@ export default function Women() {
     },
   ];
 
+  const sections = [
+    {
+      id: 'patches',
+      title: 'Hair patches & toppers',
+      intro:
+        'For thinning areas, bald spots or a flat crown. Toppers clip or bond in and blend seamlessly with your natural hair.',
+      items: patches.map((p) => ({ ...p, specs: [{ label: 'Base', value: p.base }, { label: 'Hair', value: p.hair }] })),
+      tone: 'plain' as const,
+    },
+    {
+      id: 'wigs',
+      title: 'Full wigs',
+      intro: 'A complete transformation in the style, length and colour you choose. Worldwide delivery available.',
+      items: wigs.map((p) => ({ ...p, specs: [{ label: 'Base', value: p.base }, { label: 'Hair', value: p.hair }] })),
+      tone: 'white' as const,
+    },
+    {
+      id: 'extensions',
+      title: 'Hair extensions',
+      intro: 'Add length, volume and style instantly with premium human-hair extensions.',
+      items: extensions.map((p) => ({ ...p, specs: [{ label: 'Type', value: p.type }, { label: 'Hair', value: p.hair }] })),
+      tone: 'plain' as const,
+    },
+  ];
+
   return (
-    <div className="min-h-screen pb-16">
-      <div
-        className="h-64 bg-cover bg-center relative mb-12"
-        style={{
-          backgroundImage:
-            'url(https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=1920)',
-        }}
+    <div>
+      <PageHero
+        title="Hair solutions for women"
+        intro="Natural, beautiful, confident. Toppers, wigs and extensions in real human hair, chosen with you in a private consultation and matched to your colour and texture."
+        image="https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        imageAlt="Woman with natural-looking hair"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#C19A6B]/80 to-[#D4AF37]/60" />
-        <div className="relative h-full flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-5xl font-serif mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Hair Solutions for Women
-            </h1>
-            <p className="text-xl">Natural, Beautiful, Confident</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4">
-        <section id="patches" className="mb-16">
-          <div className="flex justify-between items-center mb-8">
-            <h2
-              className="text-4xl font-serif text-[#C19A6B]"
-              style={{ fontFamily: 'Playfair Display, serif' }}
+        <nav aria-label="On this page" className="flex flex-wrap gap-2">
+          {sections.map((s) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              className="rounded-pill border border-brand-line bg-white px-4 py-2 text-sm font-medium text-brand-ink transition-colors hover:border-brand-primary hover:text-brand-primary"
             >
-              Hair Patches & Toppers
-            </h2>
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
-              <Filter size={20} />
-              Filter
-            </button>
-          </div>
-          <p className="text-gray-600 mb-8 text-lg">
-            Perfect for covering thinning areas, bald spots, or adding volume to your crown. Our toppers blend seamlessly
-            with your natural hair.
-          </p>
+              {s.title}
+            </a>
+          ))}
+        </nav>
+      </PageHero>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {patches.map((product, index) => (
-              <Card key={index} hover className="overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 text-gray-800">{product.name}</h3>
-                  <div className="mb-3">
-                    <p className="text-sm text-gray-600">
-                      <span className="font-medium">Base:</span> {product.base}
-                    </p>
-                    <p className="text-sm text-gray-700">
-                      <span className="font-medium">Hair:</span> {product.hair}
-                    </p>
-                  </div>
-                  <ul className="space-y-1 mb-4">
-                    {product.features.slice(0, 3).map((feature, idx) => (
-                      <li key={idx} className="text-sm text-gray-700 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#C19A6B] rounded-full" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button href="/contact" variant="outline" size="sm" className="w-full">
-                    Enquire Now
-                  </Button>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
+      {sections.map((section) => (
+        <Section key={section.id} id={section.id} tone={section.tone}>
+          <Container>
+            <SectionHeading title={section.title} intro={section.intro} />
+            <div className="grid grid-cols-2 gap-x-4 gap-y-10 lg:grid-cols-4 lg:gap-x-6">
+              {section.items.map((product) => (
+                <ProductCard
+                  key={product.name}
+                  name={product.name}
+                  image={product.image}
+                  specs={product.specs}
+                  features={product.features}
+                />
+              ))}
+            </div>
+          </Container>
+        </Section>
+      ))}
 
-        <section id="wigs" className="mb-16">
-          <div className="flex justify-between items-center mb-8">
-            <h2
-              className="text-4xl font-serif text-[#C19A6B]"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Full Wigs
-            </h2>
+      <Section tone="blush">
+        <Container className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-2xl">
+            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Not sure which one is right?</h2>
+            <p className="mt-3 text-lg text-brand-stone">
+              Tell us what you'd like to change. Our consultants will suggest two or three options and show them to you
+              in person.
+            </p>
           </div>
-          <p className="text-gray-700 mb-8 text-lg">
-            Complete transformation with our premium wig collection. Choose from various styles, lengths, and colors. <strong>World Wide Delivery Available</strong>
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {wigs.map((product, index) => (
-              <Card key={index} hover className="overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 text-[#C19A6B]">{product.name}</h3>
-                  <div className="mb-3">
-                    <p className="text-sm text-gray-700">
-                      <span className="font-medium">Base:</span> {product.base}
-                    </p>
-                    <p className="text-sm text-gray-700">
-                      <span className="font-medium">Hair:</span> {product.hair}
-                    </p>
-                  </div>
-                  <ul className="space-y-1 mb-4">
-                    {product.features.slice(0, 3).map((feature, idx) => (
-                      <li key={idx} className="text-sm text-gray-600 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#C19A6B] rounded-full" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button href="/contact" variant="outline" size="sm" className="w-full">
-                    Enquire Now
-                  </Button>
-                </div>
-              </Card>
-            ))}
+          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+            <Button href="/booking" size="lg">
+              Book a free consultation
+            </Button>
+            <Button href={whatsappUrl("Hi! I need help choosing a women's hair solution.")} size="lg" variant="outline">
+              Ask on WhatsApp
+            </Button>
           </div>
-        </section>
-
-        <section id="extensions" className="mb-16">
-          <div className="flex justify-between items-center mb-8">
-            <h2
-              className="text-4xl font-serif text-[#C19A6B]"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Hair Extensions
-            </h2>
-          </div>
-          <p className="text-gray-700 mb-8 text-lg">
-            Add instant length, volume, and style with our premium hair extension collections.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {extensions.map((product, index) => (
-              <Card key={index} hover className="overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-56 object-cover" />
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 text-[#C19A6B]">{product.name}</h3>
-                  <div className="mb-3">
-                    <p className="text-sm text-gray-700">
-                      <span className="font-medium">Type:</span> {product.type}
-                    </p>
-                    <p className="text-sm text-gray-700">
-                      <span className="font-medium">Hair:</span> {product.hair}
-                    </p>
-                  </div>
-                  <ul className="space-y-1 mb-4">
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} className="text-sm text-gray-700 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#C19A6B] rounded-full" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button href="/contact" variant="outline" size="sm" className="w-full">
-                    Enquire Now
-                  </Button>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-[#FAF9F6] to-[#E6D5B8] rounded-2xl p-8 text-center">
-          <h3 className="text-3xl font-serif text-[#C19A6B] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Need Help Choosing?
-          </h3>
-          <p className="text-gray-800 mb-6 max-w-2xl mx-auto">
-            Our experts are here to help you find the perfect hair solution. Book a free consultation today!
-          </p>
-          <Button href="/booking" size="lg">
-            Book Free Consultation
-          </Button>
-        </section>
-      </div>
+        </Container>
+      </Section>
     </div>
   );
 }

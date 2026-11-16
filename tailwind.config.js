@@ -5,36 +5,45 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: '#8B1538',
-          secondary: '#F7E7EB',
-          accent: '#A0153E',
-          gold: '#D4AF37',
-          cream: '#F4E4C1',
-          dark: '#1F1F1F',
-          light: '#FAFAFA',
+          // Core palette: oxblood + antique gold on a rose-tinted porcelain.
+          primary: '#5A1426', // oxblood — primary actions, headings accents
+          deep: '#2E0A13', // darkest oxblood — dark sections
+          accent: '#7A1F35', // hover state for primary
+          gold: '#B08A4E', // antique gold — single accent, used sparingly
+          goldsoft: '#E3D2B4',
+          blush: '#F4E9E7', // tinted section background
+          porcelain: '#FCF9F8', // page background
+          ink: '#24171B', // body text
+          stone: '#6B5B5F', // secondary text
+          line: '#E6D9D7', // hairlines and borders
+          // Legacy keys kept so nothing else breaks
+          secondary: '#F4E9E7',
+          cream: '#F4E9E7',
+          dark: '#24171B',
+          light: '#FCF9F8',
         },
-      },
-      gradientColorStops: {
-        brand: {
-          fromSoft: '#FBE9EF',
-          toSoft: '#F3CCD6',
-        },
+        whatsapp: '#1F9D55',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Bodoni Moda"', 'Georgia', 'serif'],
+        serif: ['"Bodoni Moda"', 'Georgia', 'serif'],
+        sans: ['"Hanken Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
-      boxShadow: {
-        glow: '0 8px 24px rgba(160, 21, 62, 0.25)',
+      maxWidth: {
+        prose: '62ch',
       },
       borderRadius: {
-        xl: '0.85rem',
-        '2xl': '1.25rem',
+        arch: '999px 999px 1.25rem 1.25rem',
         pill: '9999px',
       },
-      letterSpacing: {
-        wide: '0.02em',
-        wider: '0.04em',
+      keyframes: {
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(14px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-up': 'fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both',
       },
     },
   },

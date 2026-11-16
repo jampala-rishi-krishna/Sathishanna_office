@@ -1,467 +1,267 @@
-import { TrendingUp, Shield, Truck, Users, FileText, Headphones } from 'lucide-react';
-import { useState } from 'react';
-import Card from '../components/Card';
+import { FormEvent } from 'react';
 import Button from '../components/Button';
+import ProductCard from '../components/ProductCard';
+import { Container, FormError, FormSent, Honeypot, PageHero, Section, SectionHeading } from '../components/ui';
+import { whatsappUrl } from '../lib/site';
+import { useWeb3Form } from '../lib/useWeb3Form';
 
-export default function Wholesale() {
-  const [formData, setFormData] = useState({
-    businessName: '',
-    businessType: '',
-    gst: '',
-    contactPerson: '',
-    email: '',
-    phone: '',
-    address: '',
-    monthlyVolume: '',
-    productInterest: '',
-  });
+const benefits = [
+  { title: 'Bulk pricing & discounts', description: 'Competitive rates for volume orders' },
+  { title: 'Quality assured', description: 'Premium products with guarantees' },
+  { title: 'Consistent supply', description: 'Reliable inventory and delivery' },
+  { title: 'Business support', description: 'Dedicated account management' },
+  { title: 'Custom orders', description: 'Tailored solutions for your business' },
+  { title: 'Training & support', description: 'Expert guidance and resources' },
+];
 
-  const benefits = [
-    { icon: TrendingUp, title: 'Bulk Pricing & Discounts', description: 'Competitive rates for volume orders' },
-    { icon: Shield, title: 'Quality Assured', description: 'Premium products with guarantees' },
-    { icon: Truck, title: 'Consistent Supply', description: 'Reliable inventory and delivery' },
-    { icon: Users, title: 'Business Support', description: 'Dedicated account management' },
-    { icon: FileText, title: 'Custom Orders', description: 'Tailored solutions for your business' },
-    { icon: Headphones, title: 'Training & Support', description: 'Expert guidance and resources' },
-  ];
+const categories = [
+  { title: "Women's wholesale", items: ['Bulk hair toppers & patches', 'Full wig collections', 'Extension bundles', 'Raw hair material'] },
+  { title: "Men's wholesale", items: ['Hair system bundles', 'Toupee collections', 'Bulk base materials', 'Adhesive & maintenance kits'] },
+];
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const couriers = [
+  { name: 'Blue Dart', note: 'Premium express delivery' },
+  { name: 'Delhivery', note: 'Reliable logistics partner' },
+  { name: 'DHL Express', note: 'International shipping' },
+  { name: 'FedEx', note: 'Global delivery network' },
+];
+
+const products = [
+  { src: '/Data/IMG-20251003-WA0073.jpg', name: "Classic Men's Hair System", description: 'Natural hairline, comfortable wear, salon grade' },
+  { src: '/Data/IMG-20251003-WA0074.jpg', name: 'Premium Hair Patch', description: 'High quality, durable, natural look' },
+  { src: '/Data/IMG-20251003-WA0075.jpg', name: 'Professional Hair System', description: 'Salon grade, long lasting, easy maintenance' },
+  { src: '/Data/IMG-20251003-WA0076.jpg', name: 'Natural Hair Patch', description: 'Breathable, comfortable, professional finish' },
+  { src: '/Data/IMG-20251003-WA0077.jpg', name: 'Premium Hair System', description: 'High quality materials, natural appearance' },
+  { src: '/Data/IMG-20251003-WA0078.jpg', name: 'Professional Hair Patch', description: 'Salon quality, durable, natural look' },
+  { src: '/Data/Golden_Silk_hair_patch.jpg', name: 'Golden Silk Hair Patch', description: 'Premium silk base, natural hair, luxurious feel' },
+  { src: '/Data/Golden_hair_patch.jpg', name: 'Golden Hair Patch', description: 'Golden tone, premium quality, natural appearance' },
+  { src: '/Data/Australian_mirage.jpg', name: 'Australian Mirage', description: 'Australian hair, premium quality, natural look' },
+  { src: '/Data/mf_patch.jpg', name: 'MF Hair Patch', description: 'Multi-fibre, durable, professional grade' },
+  { src: '/Data/china_mirage.jpg', name: 'China Mirage', description: 'Chinese hair, high quality, natural appearance' },
+  { src: '/Data/golden_miraz.jpg', name: 'Golden Miraz', description: 'Golden tone, premium quality, natural look' },
+  { src: '/Data/mono_hair_patch.jpg', name: 'Mono Hair Patch', description: 'Monofilament base, natural parting, professional grade' },
+];
+
+const tiers = [
+  { volume: '10–50 units', discount: '10%', terms: 'Net 15', delivery: '7–10 days' },
+  { volume: '50–100 units', discount: '20%', terms: 'Net 30', delivery: '5–7 days' },
+  { volume: '100+ units', discount: '30%', terms: 'Net 30', delivery: '3–5 days' },
+];
+
+function RegistrationForm() {
+  const { status, submit, fromForm, reset } = useWeb3Form('New Website Enquiry - B2B Wholesale');
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    
-    try {
-      // Use Web3Forms service with traditional form submission
-      const form = document.createElement('form');
-      form.action = 'https://api.web3forms.com/submit';
-      form.method = 'POST';
-      form.style.display = 'none';
-      
-      // Add Web3Forms fields
-      const fields = {
-        access_key: '675b3c24-8999-426b-819b-29bc8e789cc7',
-        subject: 'New Website Enquiry - B2B Wholesale',
-        from_name: 'Hair 2 Hair Studio Website',
-        redirect: 'https://web3forms.com/success',
-        businessName: formData.businessName,
-        businessType: formData.businessType,
-        gst: formData.gst,
-        contactPerson: formData.contactPerson,
-        email: formData.email,
-        phone: formData.phone,
-        address: formData.address,
-        monthlyVolume: formData.monthlyVolume,
-        productInterest: formData.productInterest,
-        botcheck: ''
-      };
-      
-      Object.entries(fields).forEach(([key, value]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value;
-        form.appendChild(input);
-      });
-      
-      document.body.appendChild(form);
-      form.submit();
-      
-      // Show success message
-      alert('Application submitted successfully! We will get back to you soon.');
-      setFormData({
-        businessName: '',
-        businessType: '',
-        gst: '',
-        contactPerson: '',
-        email: '',
-        phone: '',
-        address: '',
-        monthlyVolume: '',
-        productInterest: '',
-      });
-      
-    } catch (error) {
-      console.error('Error sending application:', error);
-      alert('Sorry, there was an error sending your application. Please try again.');
-    }
-  };
+    const form = e.currentTarget;
+    if (await submit(fromForm(form))) form.reset();
+  }
+
+  if (status === 'sent') {
+    return (
+      <FormSent
+        title="Application received"
+        body="Thank you. Our wholesale team will review your details and contact you with pricing and next steps."
+        onReset={reset}
+      />
+    );
+  }
 
   return (
-    <div className="min-h-screen pb-16">
-      <div
-        className="h-64 bg-cover bg-center relative mb-12"
-        style={{
-          backgroundImage: 'url(/Data/IMG-20251003-WA0073.jpg)',
-        }}
+    <form onSubmit={onSubmit} className="grid gap-5 rounded-2xl border border-brand-line bg-white p-6 sm:grid-cols-2 sm:p-8">
+      <Honeypot />
+      <div>
+        <label htmlFor="w-business" className="field-label">Business name</label>
+        <input id="w-business" name="businessName" required autoComplete="organization" className="field" />
+      </div>
+      <div>
+        <label htmlFor="w-type" className="field-label">Business type</label>
+        <select id="w-type" name="businessType" required className="field" defaultValue="">
+          <option value="" disabled>Choose one</option>
+          <option value="salon">Salon</option>
+          <option value="retailer">Retailer</option>
+          <option value="distributor">Distributor</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="w-contact" className="field-label">Contact person</label>
+        <input id="w-contact" name="contactPerson" required autoComplete="name" className="field" />
+      </div>
+      <div>
+        <label htmlFor="w-phone" className="field-label">Phone</label>
+        <input id="w-phone" name="phone" type="tel" inputMode="tel" required autoComplete="tel" className="field" />
+      </div>
+      <div>
+        <label htmlFor="w-email" className="field-label">Email</label>
+        <input id="w-email" name="email" type="email" required autoComplete="email" className="field" />
+      </div>
+      <div>
+        <label htmlFor="w-gst" className="field-label">
+          GST number <span className="font-normal text-brand-stone">(optional)</span>
+        </label>
+        <input id="w-gst" name="gst" className="field" />
+      </div>
+      <div className="sm:col-span-2">
+        <label htmlFor="w-address" className="field-label">Business address</label>
+        <textarea id="w-address" name="address" required rows={2} autoComplete="street-address" className="field" />
+      </div>
+      <div>
+        <label htmlFor="w-volume" className="field-label">Expected monthly volume</label>
+        <select id="w-volume" name="monthlyVolume" required className="field" defaultValue="">
+          <option value="" disabled>Choose one</option>
+          <option value="10-50">10–50 units</option>
+          <option value="50-100">50–100 units</option>
+          <option value="100+">100+ units</option>
+        </select>
+      </div>
+      <div className="sm:col-span-2">
+        <label htmlFor="w-interest" className="field-label">Which products are you interested in?</label>
+        <textarea id="w-interest" name="productInterest" required rows={3} className="field" />
+      </div>
+      <div className="sm:col-span-2">
+        <FormError status={status} />
+      </div>
+      <div className="sm:col-span-2">
+        <Button type="submit" size="lg" disabled={status === 'sending'} className="w-full sm:w-auto">
+          {status === 'sending' ? 'Sending…' : 'Submit application'}
+        </Button>
+      </div>
+    </form>
+  );
+}
+
+export default function Wholesale() {
+  return (
+    <div>
+      <PageHero
+        title="Wholesale wigs & hair patches"
+        intro="Salon-grade hair systems, wigs and extensions for studios, retailers and distributors, with volume pricing, reliable supply and delivery worldwide."
+        image="/Data/IMG-20251003-WA0073.jpg"
+        imageAlt="Wholesale hair systems"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#C19A6B]/80 to-[#D4AF37]/60" />
-        <div className="relative h-full flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-5xl font-serif mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Premium Wigs & Patches
-            </h1>
-            <p className="text-xl">Wholesale Solutions for Your Business</p>
-          </div>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="#register" size="lg">
+            Apply for a trade account
+          </Button>
+          <Button href={whatsappUrl('Hi! I have a wholesale enquiry.')} size="lg" variant="outline">
+            Ask on WhatsApp
+          </Button>
         </div>
-      </div>
+      </PageHero>
 
-      <div className="max-w-7xl mx-auto px-4">
-        <section className="mb-16">
-          <h2
-            className="text-4xl font-serif text-center text-[#C19A6B] mb-12"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Why Partner With Us?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} hover className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#C19A6B] to-[#D4AF37] rounded-full mb-4">
-                  <benefit.icon className="text-white" size={28} />
-                </div>
-                <h3 className="font-semibold text-lg mb-2 text-gray-800">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
-              </Card>
+      <Section tone="white">
+        <Container className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Why partner with us</h2>
+          </div>
+          <dl className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
+            {benefits.map((b) => (
+              <div key={b.title} className="border-t border-brand-line py-5">
+                <dt className="font-display text-2xl text-brand-ink">{b.title}</dt>
+                <dd className="mt-1 text-brand-stone">{b.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionHeading title="The collection" intro="Our most-ordered patches and systems. Ask for the full catalogue for every base and hair type." />
+          <div className="grid grid-cols-2 gap-x-4 gap-y-10 lg:grid-cols-4 lg:gap-x-6">
+            {products.map((p) => (
+              <ProductCard key={p.src} name={p.name} image={p.src} description={p.description} aspect="aspect-square" />
             ))}
           </div>
-        </section>
 
-        <section className="mb-16">
-          <h2
-            className="text-4xl font-serif text-center text-[#C19A6B] mb-8"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Product Categories
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-6">
-              <h3 className="text-2xl font-semibold mb-4 text-[#C19A6B]">Women's Wholesale</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#C19A6B] rounded-full" />
-                  Bulk Hair Toppers & Patches
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#C19A6B] rounded-full" />
-                  Full Wig Collections
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#C19A6B] rounded-full" />
-                  Extension Bundles
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#C19A6B] rounded-full" />
-                  Raw Hair Material
-                </li>
-              </ul>
-            </Card>
-
-            <Card className="p-6">
-              <h3 className="text-2xl font-semibold mb-4 text-[#C19A6B]">Men's Wholesale</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#C19A6B] rounded-full" />
-                  Hair System Bundles
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#C19A6B] rounded-full" />
-                  Toupee Collections
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#C19A6B] rounded-full" />
-                  Bulk Base Materials
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#C19A6B] rounded-full" />
-                  Adhesive & Maintenance Kits
-                </li>
-              </ul>
-            </Card>
+          <div className="mt-16 grid gap-10 border-t border-brand-line pt-12 md:grid-cols-2">
+            {categories.map((c) => (
+              <div key={c.title}>
+                <h3 className="text-2xl text-brand-ink sm:text-3xl">{c.title}</h3>
+                <ul className="mt-4 divide-y divide-brand-line border-y border-brand-line">
+                  {c.items.map((item) => (
+                    <li key={item} className="py-3 text-brand-ink">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-        </section>
+        </Container>
+      </Section>
 
-        <section className="mb-16 bg-gradient-to-r from-[#F5E6EA] to-[#E4B5C0] rounded-2xl p-8">
-          <h2
-            className="text-4xl font-serif text-center text-[#C19A6B] mb-8"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            World Wide Delivery Available
-          </h2>
-          <div className="text-center mb-8">
-            <p className="text-lg text-gray-700 mb-6">
-              We provide worldwide delivery through our trusted courier partners to ensure your orders reach you safely and on time.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white rounded-lg p-4 shadow-md">
-                <h3 className="font-semibold text-[#C19A6B] mb-2">Blue Dart</h3>
-                <p className="text-sm text-gray-600">Premium express delivery service</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-md">
-                <h3 className="font-semibold text-[#C19A6B] mb-2">Delhivery</h3>
-                <p className="text-sm text-gray-600">Reliable logistics partner</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-md">
-                <h3 className="font-semibold text-[#C19A6B] mb-2">DHL Express</h3>
-                <p className="text-sm text-gray-600">International shipping specialist</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-md">
-                <h3 className="font-semibold text-[#C19A6B] mb-2">FedEx</h3>
-                <p className="text-sm text-gray-600">Global delivery network</p>
-              </div>
+      <Section tone="blush">
+        <Container className="grid gap-14 lg:grid-cols-2">
+          <div>
+            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Pricing tiers</h2>
+            <p className="mt-3 text-brand-stone">Minimum order: 10 units per product category.</p>
+            <div className="-mx-5 mt-8 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+              <table className="w-full min-w-[420px] border-collapse text-left">
+                <thead>
+                  <tr className="border-b border-brand-primary/30 text-sm text-brand-stone">
+                    <th scope="col" className="py-3 pr-4 font-medium">Order volume</th>
+                    <th scope="col" className="px-4 py-3 font-medium">Discount</th>
+                    <th scope="col" className="px-4 py-3 font-medium">Payment</th>
+                    <th scope="col" className="py-3 pl-4 font-medium">Delivery</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tiers.map((t) => (
+                    <tr key={t.volume} className="border-b border-brand-primary/15">
+                      <th scope="row" className="py-4 pr-4 font-medium text-brand-ink">{t.volume}</th>
+                      <td className="px-4 py-4 font-display text-2xl text-brand-primary">{t.discount}</td>
+                      <td className="px-4 py-4 text-brand-ink">{t.terms}</td>
+                      <td className="py-4 pl-4 text-brand-ink">{t.delivery}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-            <p className="text-sm text-gray-600 mt-4">
-              All our premium hair patches and wigs are carefully packaged and shipped worldwide through these trusted courier partners.
+          </div>
+          <div>
+            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Worldwide delivery</h2>
+            <p className="mt-3 text-brand-stone">
+              Every order is carefully packed and shipped through our trusted courier partners.
+            </p>
+            <dl className="mt-8 grid grid-cols-2 gap-x-8">
+              {couriers.map((c) => (
+                <div key={c.name} className="border-t border-brand-primary/20 py-4">
+                  <dt className="font-semibold text-brand-ink">{c.name}</dt>
+                  <dd className="text-sm text-brand-stone">{c.note}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="register" tone="white">
+        <Container className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Apply for a trade account</h2>
+            <p className="mt-4 text-brand-stone">
+              Tell us about your business and we'll send you wholesale pricing and terms.
+            </p>
+            <p className="mt-6 text-brand-stone">
+              Need our catalogue, price list or partnership terms first?{' '}
+              <a
+                href={whatsappUrl('Hi! Please send me your wholesale catalogue, price list and terms.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline font-semibold text-brand-primary"
+              >
+                Request them on WhatsApp
+              </a>
+              .
             </p>
           </div>
-        </section>
-
-        <section className="mb-16">
-          <h2
-            className="text-4xl font-serif text-center text-[#C19A6B] mb-8"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Premium Hair Patches & Wigs Collection
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { src: '/Data/IMG-20251003-WA0073.jpg', name: 'Classic Men\'s Hair System', description: 'Natural hairline • Comfortable wear • Salon grade' },
-              { src: '/Data/IMG-20251003-WA0074.jpg', name: 'Premium Hair Patch', description: 'High quality • Durable • Natural look' },
-              { src: '/Data/IMG-20251003-WA0075.jpg', name: 'Professional Hair System', description: 'Salon grade • Long lasting • Easy maintenance' },
-              { src: '/Data/IMG-20251003-WA0076.jpg', name: 'Natural Hair Patch', description: 'Breathable • Comfortable • Professional finish' },
-              { src: '/Data/IMG-20251003-WA0077.jpg', name: 'Premium Hair System', description: 'High quality materials • Natural appearance' },
-              { src: '/Data/IMG-20251003-WA0078.jpg', name: 'Professional Hair Patch', description: 'Salon quality • Durable • Natural look' },
-              { src: '/Data/Golden_Silk_hair_patch.jpg', name: 'Golden Silk Hair Patch', description: 'Premium silk base • Natural hair • Luxurious feel' },
-              { src: '/Data/Golden_hair_patch.jpg', name: 'Golden Hair Patch', description: 'Golden tone • Premium quality • Natural appearance' },
-              { src: '/Data/Australian_mirage.jpg', name: 'Australian Mirage', description: 'Australian hair • Premium quality • Natural look' },
-              { src: '/Data/mf_patch.jpg', name: 'MF Hair Patch', description: 'Multi-fiber • Durable • Professional grade' },
-              { src: '/Data/china_mirage.jpg', name: 'China Mirage', description: 'Chinese hair • High quality • Natural appearance' },
-              { src: '/Data/golden_miraz.jpg', name: 'Golden Miraz', description: 'Golden tone • Premium quality • Natural look' },
-              { src: '/Data/mono_hair_patch.jpg', name: 'Mono Hair Patch', description: 'Monofilament base • Natural parting • Professional grade' },
-            ].map((item, idx) => (
-              <Card key={idx} hover className="overflow-hidden">
-                <img src={item.src} alt={item.name} className="w-full h-56 object-cover" />
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg text-gray-800 mb-1">{item.name}</h3>
-                  <p className="text-sm text-gray-600">{item.description}</p>
-                </div>
-              </Card>
-            ))}
+          <div className="lg:col-span-8">
+            <RegistrationForm />
           </div>
-        </section>
-
-        <section className="mb-16 bg-gray-50 rounded-2xl p-8">
-          <h2
-            className="text-4xl font-serif text-center text-[#C19A6B] mb-8"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Pricing Tiers
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b-2 border-[#C19A6B]">
-                  <th className="text-left py-3 px-4 font-semibold">Order Volume</th>
-                  <th className="text-center py-3 px-4 font-semibold">Discount</th>
-                  <th className="text-center py-3 px-4 font-semibold">Payment Terms</th>
-                  <th className="text-center py-3 px-4 font-semibold">Delivery Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-gray-200">
-                  <td className="py-3 px-4">10-50 units</td>
-                  <td className="text-center py-3 px-4 text-[#D4AF37] font-semibold">10%</td>
-                  <td className="text-center py-3 px-4">Net 15</td>
-                  <td className="text-center py-3 px-4">7-10 days</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="py-3 px-4">50-100 units</td>
-                  <td className="text-center py-3 px-4 text-[#D4AF37] font-semibold">20%</td>
-                  <td className="text-center py-3 px-4">Net 30</td>
-                  <td className="text-center py-3 px-4">5-7 days</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4">100+ units</td>
-                  <td className="text-center py-3 px-4 text-[#D4AF37] font-semibold">30%</td>
-                  <td className="text-center py-3 px-4">Net 30</td>
-                  <td className="text-center py-3 px-4">3-5 days</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="text-sm text-gray-600 mt-4 text-center">
-            Minimum Order Quantity (MOQ): 10 units per product category
-          </p>
-        </section>
-
-        <section className="mb-16">
-          <h2
-            className="text-4xl font-serif text-center text-[#C19A6B] mb-8"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            B2B Registration
-          </h2>
-          <Card className="max-w-3xl mx-auto p-8">
-            <form id="wholesale-form" action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} className="space-y-6">
-              <input type="hidden" name="access_key" value="675b3c24-8999-426b-819b-29bc8e789cc7" />
-              <input type="hidden" name="subject" value="New Website Enquiry - B2B Wholesale" />
-              <input type="hidden" name="from_name" value="Hair 2 Hair Studio Website" />
-              <input type="hidden" name="redirect" value="https://web3forms.com/success" />
-              <input type="checkbox" name="botcheck" id="" style={{ display: 'none' }} />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Business Name *</label>
-                  <input
-                    name="businessName"
-                    type="text"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1538]"
-                    value={formData.businessName}
-                    onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Business Type *</label>
-                  <select
-                    name="businessType"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1538]"
-                    value={formData.businessType}
-                    onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
-                  >
-                    <option value="">Select type</option>
-                    <option value="salon">Salon</option>
-                    <option value="retailer">Retailer</option>
-                    <option value="distributor">Distributor</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">GST Number</label>
-                <input
-                  name="gst"
-                  type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1538]"
-                  value={formData.gst}
-                  onChange={(e) => setFormData({ ...formData, gst: e.target.value })}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Contact Person *</label>
-                  <input
-                    name="contactPerson"
-                    type="text"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1538]"
-                    value={formData.contactPerson}
-                    onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
-                  <input
-                    name="phone"
-                    type="tel"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1538]"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1538]"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Address *</label>
-                <textarea
-                  name="address"
-                  required
-                  rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1538]"
-                  value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Expected Monthly Order Volume *</label>
-                <select
-                  name="monthlyVolume"
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1538]"
-                  value={formData.monthlyVolume}
-                  onChange={(e) => setFormData({ ...formData, monthlyVolume: e.target.value })}
-                >
-                  <option value="">Select volume</option>
-                  <option value="10-50">10-50 units</option>
-                  <option value="50-100">50-100 units</option>
-                  <option value="100+">100+ units</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Product Interest *</label>
-                <textarea
-                  name="productInterest"
-                  required
-                  rows={3}
-                  placeholder="Please specify which products you're interested in..."
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1538]"
-                  value={formData.productInterest}
-                  onChange={(e) => setFormData({ ...formData, productInterest: e.target.value })}
-                />
-              </div>
-
-              <Button type="submit" size="lg" className="w-full">
-                Submit Application
-              </Button>
-            </form>
-          </Card>
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="p-6 text-center" hover>
-            <h3 className="font-semibold mb-2">Product Catalog</h3>
-            <p className="text-sm text-gray-600 mb-4">Download our complete product catalog</p>
-            <Button variant="outline" size="sm">
-              Download PDF
-            </Button>
-          </Card>
-          <Card className="p-6 text-center" hover>
-            <h3 className="font-semibold mb-2">Price List</h3>
-            <p className="text-sm text-gray-600 mb-4">Access wholesale pricing</p>
-            <Button variant="outline" size="sm">
-              Request Access
-            </Button>
-          </Card>
-          <Card className="p-6 text-center" hover>
-            <h3 className="font-semibold mb-2">Terms & Conditions</h3>
-            <p className="text-sm text-gray-600 mb-4">Business partnership terms</p>
-            <Button variant="outline" size="sm">
-              View Terms
-            </Button>
-          </Card>
-          <Card className="p-6 text-center" hover>
-            <h3 className="font-semibold mb-2">Agreement Template</h3>
-            <p className="text-sm text-gray-600 mb-4">Wholesale agreement template</p>
-            <Button variant="outline" size="sm">
-              Download
-            </Button>
-          </Card>
-        </section>
-      </div>
+        </Container>
+      </Section>
     </div>
   );
 }

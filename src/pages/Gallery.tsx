@@ -1,195 +1,187 @@
-import { useState } from 'react';
-import Card from '../components/Card';
+import { useEffect, useRef, useState } from 'react';
+import { Play, X, Instagram } from 'lucide-react';
+import { Container, PageHero, Section } from '../components/ui';
+import { SITE } from '../lib/site';
+
+type Item = { url: string; category: string; caption: string; type: 'image' | 'video' };
+
+const images: Item[] = [
+  { url: '/Data/Golden_Silk_hair_patch.jpg', category: 'women', caption: 'Golden Silk hair patch, premium quality', type: 'image' },
+  { url: '/Data/Golden_hair_patch.jpg', category: 'women', caption: 'Golden hair patch, natural look', type: 'image' },
+  { url: '/Data/Australian_mirage.jpg', category: 'women', caption: 'Australian Mirage, premium hair', type: 'image' },
+  { url: '/Data/gallery/3.mp4', category: 'men', caption: "Men's hair system, professional look", type: 'video' },
+  { url: '/Data/gallery/4.mp4', category: 'men', caption: 'Natural hairline restoration', type: 'video' },
+  { url: '/Data/gallery/5.mp4', category: 'men', caption: 'Hair system for an active lifestyle', type: 'video' },
+  { url: '/Data/gallery/1.mp4', category: 'products', caption: 'Premium quality hair patches', type: 'video' },
+  { url: '/Data/gallery/2.mp4', category: 'products', caption: 'Our wig collections', type: 'video' },
+  { url: '/Data/gallery/6.mp4', category: 'products', caption: 'Professional hair solutions', type: 'video' },
+  { url: '/Data/gallery/7.mp4', category: 'products', caption: 'Advanced hair systems', type: 'video' },
+  { url: '/Data/gallery/8.mp4', category: 'products', caption: 'Advanced hair systems, close-up', type: 'video' },
+  { url: '/Data/gallery/9.mp4', category: 'products', caption: 'Premium hair products', type: 'video' },
+  { url: '/Data/mf_patch.jpg', category: 'services', caption: 'MF hair patch, professional grade', type: 'image' },
+  { url: '/Data/china_mirage.jpg', category: 'services', caption: 'China Mirage, high quality hair', type: 'image' },
+  { url: '/Data/golden_miraz.jpg', category: 'women', caption: 'Golden Miraz, premium hair solution', type: 'image' },
+];
+
+const filters = [
+  { key: 'all', label: 'Everything' },
+  { key: 'men', label: 'Men' },
+  { key: 'women', label: 'Women' },
+  { key: 'products', label: 'Products' },
+  { key: 'services', label: 'Services' },
+];
+
+function Lightbox({ item, onClose }: { item: Item; onClose: () => void }) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={item.caption}
+      className="fixed inset-0 z-[60] flex flex-col bg-brand-deep/95 p-4 sm:p-8"
+      onClick={onClose}
+    >
+      <div className="flex justify-end">
+        <button
+          ref={closeRef}
+          type="button"
+          onClick={onClose}
+          className="rounded-full p-2 text-white/80 hover:bg-white/10 hover:text-white"
+          aria-label="Close"
+        >
+          <X size={28} />
+        </button>
+      </div>
+      <div className="flex min-h-0 flex-1 items-center justify-center" onClick={(e) => e.stopPropagation()}>
+        {item.type === 'video' ? (
+          <video
+            src={item.url}
+            poster={item.url.replace(/\/(\d+)\.mp4$/, '/posters/$1.jpg')}
+            className="max-h-full max-w-full rounded-lg"
+            controls
+            autoPlay
+            playsInline
+            loop
+          />
+        ) : (
+          <img src={item.url} alt={item.caption} className="max-h-full max-w-full rounded-lg object-contain" />
+        )}
+      </div>
+      <p className="mt-4 text-center text-white/80">{item.caption}</p>
+    </div>
+  );
+}
 
 export default function Gallery() {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [open, setOpen] = useState<Item | null>(null);
 
-  const images = [
-    {
-      url: '/Data/Golden_Silk_hair_patch.jpg',
-      category: 'women',
-      caption: 'Golden Silk Hair Patch - Premium Quality',
-      type: 'image',
-    },
-    {
-      url: '/Data/Golden_hair_patch.jpg',
-      category: 'women',
-      caption: 'Golden Hair Patch - Natural Look',
-      type: 'image',
-    },
-    {
-      url: '/Data/Australian_mirage.jpg',
-      category: 'women',
-      caption: 'Australian Mirage - Premium Hair',
-      type: 'image',
-    },
-    {
-      url: '/Data/gallery/3.mp4',
-      category: 'men',
-      caption: 'Men\'s Hair System - Professional Look',
-      type: 'video',
-    },
-    {
-      url: '/Data/gallery/4.mp4',
-      category: 'men',
-      caption: 'Natural Hairline Restoration',
-      type: 'video',
-    },
-    {
-      url: '/Data/gallery/5.mp4',
-      category: 'men',
-      caption: 'Active Lifestyle Hair System',
-      type: 'video',
-    },
-    {
-      url: '/Data/gallery/1.mp4',
-      category: 'products',
-      caption: 'Premium Quality Hair Patches',
-      type: 'video',
-    },
-    {
-      url: '/Data/gallery/2.mp4',
-      category: 'products',
-      caption: 'Various Wig Collections',
-      type: 'video',
-    },
-    {
-      url: '/Data/gallery/6.mp4',
-      category: 'products',
-      caption: 'Professional Hair Solutions',
-      type: 'video',
-    },
-    {
-      url: '/Data/gallery/78.mp4',
-      category: 'products',
-      caption: 'Advanced Hair Systems',
-      type: 'video',
-    },
-    {
-      url: '/Data/gallery/9.mp4',
-      category: 'products',
-      caption: 'Premium Hair Products',
-      type: 'video',
-    },
-    {
-      url: '/Data/mf_patch.jpg',
-      category: 'services',
-      caption: 'MF Hair Patch - Professional Grade',
-      type: 'image',
-    },
-    {
-      url: '/Data/china_mirage.jpg',
-      category: 'services',
-      caption: 'China Mirage - High Quality Hair',
-      type: 'image',
-    },
-    {
-      url: '/Data/golden_miraz.jpg',
-      category: 'women',
-      caption: 'Golden Miraz - Premium Hair Solution',
-      type: 'image',
-    },
-  ];
-
-  const filteredImages = activeFilter === 'all' ? images : images.filter((img) => img.category === activeFilter);
+  const filtered = activeFilter === 'all' ? images : images.filter((img) => img.category === activeFilter);
 
   return (
-    <div className="min-h-screen pb-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-serif text-[#8B1538] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Our Gallery
-          </h1>
-          <p className="text-xl text-gray-600">Transformations that speak for themselves</p>
-        </div>
+    <div>
+      <PageHero
+        title="Gallery"
+        intro="Real fittings, real products and real clients from our studio. Tap any photo or video to see it full size."
+      />
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {['all', 'women', 'men', 'products', 'services'].map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-2 rounded-full font-medium transition ${
-                activeFilter === filter
-                  ? 'bg-[#8B1538] text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              {filter.charAt(0).toUpperCase() + filter.slice(1)}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredImages.map((image, index) => (
-            <Card
-              key={index}
-              hover
-              className="overflow-hidden cursor-pointer"
-              onClick={() => setLightboxImage(image.url)}
-            >
-              <div className="relative group">
-                {image.type === 'video' ? (
-                  <video 
-                    src={image.url} 
-                    className="w-full h-72 object-cover" 
-                    muted 
-                    loop 
-                    playsInline
-                    onMouseEnter={(e) => e.currentTarget.play()}
-                    onMouseLeave={(e) => e.currentTarget.pause()}
-                  />
-                ) : (
-                  <img src={image.url} alt={image.caption} className="w-full h-72 object-cover" />
-                )}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                  <p className="text-white text-center px-4 font-medium">{image.caption}</p>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        {lightboxImage && (
-          <div
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            onClick={() => setLightboxImage(null)}
-          >
-            <button
-              className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300"
-              onClick={() => setLightboxImage(null)}
-            >
-              ×
-            </button>
-            {lightboxImage.endsWith('.mp4') ? (
-              <video 
-                src={lightboxImage} 
-                className="max-w-full max-h-full object-contain" 
-                controls 
-                autoPlay
-                loop
-              />
-            ) : (
-              <img src={lightboxImage} alt="Enlarged view" className="max-w-full max-h-full object-contain" />
-            )}
+      <Section className="pt-10 sm:pt-12">
+        <Container>
+          <div role="group" aria-label="Filter gallery" className="-mx-5 mb-10 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:flex-wrap sm:px-0">
+            {filters.map((f) => {
+              const count = f.key === 'all' ? images.length : images.filter((i) => i.category === f.key).length;
+              const active = activeFilter === f.key;
+              return (
+                <button
+                  key={f.key}
+                  type="button"
+                  onClick={() => setActiveFilter(f.key)}
+                  aria-pressed={active}
+                  className={`shrink-0 rounded-pill border px-5 py-2.5 text-sm font-medium transition-colors ${
+                    active
+                      ? 'border-brand-primary bg-brand-primary text-white'
+                      : 'border-brand-line bg-white text-brand-ink hover:border-brand-primary'
+                  }`}
+                >
+                  {f.label} <span className={active ? 'text-white/70' : 'text-brand-stone'}>{count}</span>
+                </button>
+              );
+            })}
           </div>
-        )}
 
-        <section className="mt-16 bg-gradient-to-r from-[#F5E6EA] to-[#E4B5C0] rounded-2xl p-8 text-center">
-          <h2 className="text-3xl font-serif text-[#8B1538] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Follow Our Transformations
-          </h2>
-          <p className="text-gray-700 mb-6">@h2h_hairstudio_ on Instagram</p>
+          <ul className="columns-2 gap-4 lg:columns-3 lg:gap-6">
+            {filtered.map((item) => (
+              <li key={item.url} className="mb-4 break-inside-avoid lg:mb-6">
+                <button
+                  type="button"
+                  onClick={() => setOpen(item)}
+                  className="group block w-full text-left"
+                  aria-label={`Open ${item.type === 'video' ? 'video' : 'photo'}: ${item.caption}`}
+                >
+                  <div className="relative overflow-hidden rounded-xl bg-brand-blush">
+                    {item.type === 'video' ? (
+                      <>
+                        <img
+                          src={item.url.replace(/\/(\d+)\.mp4$/, '/posters/$1.jpg')}
+                          alt={item.caption}
+                          loading="lazy"
+                          decoding="async"
+                          className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                        />
+                        <span className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-pill bg-brand-deep/70 px-3 py-1.5 text-xs font-medium text-white backdrop-blur">
+                          <Play size={12} fill="currentColor" aria-hidden="true" />
+                          Video
+                        </span>
+                      </>
+                    ) : (
+                      <img
+                        src={item.url}
+                        alt={item.caption}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      />
+                    )}
+                  </div>
+                  <p className="mt-2 text-sm text-brand-stone">{item.caption}</p>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
+      <Section tone="blush">
+        <Container className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">More on Instagram</h2>
+            <p className="mt-2 text-lg text-brand-stone">New transformations every week at @h2h_hairstudio_</p>
+          </div>
           <a
-            href="https://www.instagram.com/h2h_hairstudio_/?__pwa=1"
+            href={SITE.social.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-[#8B1538] text-white px-8 py-3 rounded-lg hover:bg-[#A0153E] transition font-medium"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-pill bg-brand-primary px-7 py-3.5 font-semibold text-white transition-colors hover:bg-brand-accent"
           >
-            Follow Us on Instagram
+            <Instagram size={18} aria-hidden="true" />
+            Follow on Instagram
           </a>
-        </section>
-      </div>
+        </Container>
+      </Section>
+
+      {open && <Lightbox item={open} onClose={() => setOpen(null)} />}
     </div>
   );
 }

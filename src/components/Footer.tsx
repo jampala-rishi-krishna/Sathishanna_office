@@ -1,106 +1,105 @@
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { BRANCHES, SITE, whatsappUrl } from '../lib/site';
+
+const explore = [
+  { to: '/men', label: "Men's hair systems" },
+  { to: '/women', label: "Women's patches & wigs" },
+  { to: '/women#extensions', label: 'Hair extensions' },
+  { to: '/services', label: 'Services & procedures' },
+  { to: '/wholesale', label: 'Wholesale' },
+];
+
+const studio = [
+  { to: '/about', label: 'About us' },
+  { to: '/gallery', label: 'Gallery' },
+  { to: '/#faq', label: 'Questions' },
+  { to: '/contact', label: 'Contact' },
+  { to: '/booking', label: 'Book a consultation' },
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-dark text-white">
-      <div className="max-w-7xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <h2 className="text-2xl font-serif mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Hair 2 Hair Studio
-            </h2>
-            <p className="text-gray-400 mb-4 text-sm leading-relaxed">
-              Premium hair replacement solutions, wigs, and patches. We understand your needs and provide natural, undetectable solutions.
+    <footer className="bg-brand-deep pb-24 text-white/75 lg:pb-0">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p className="font-display text-3xl text-white">Hair 2 Hair Studio</p>
+            <p className="mt-1 font-display italic text-brand-goldsoft">{SITE.tagline}</p>
+            <p className="mt-5 max-w-xs text-[0.95rem] leading-relaxed">
+              Non-surgical hair replacement, wigs and extensions for men and women, fitted by hand in Hyderabad and
+              Khammam for over 15 years.
             </p>
-            
-            {/* Hidden SEO Content */}
-            <div className="hidden">
-              <h3>H2H Hair Studio - Best Hair Patches & Wigs in Hyderabad, Khammam, Kothagudem, Dilsukhnagar</h3>
-              <p>H2H Hair Studio (Hair2Hair) is the leading hair replacement specialist in Hyderabad, Khammam, Kothagudem, and Dilsukhnagar. We offer premium hair patches, wigs, and non-surgical hair replacement solutions with 15+ years of experience. Our main branch is located in Dilsukhnagar, Hyderabad, serving customers across Telangana.</p>
-              <p>Visit H2H Hair Studio for the best hair patches in Hyderabad, hair studio Khammam services, hair studio Kothagudem solutions, and hair studio Dilsukhnagar expertise. We provide professional hair replacement services including hair patches for men, wigs for women, hair systems, toupees, hair bonding, and complete hair replacement solutions.</p>
-              <p>Our expert team at H2H Hair Studio provides natural-looking hair replacement solutions for men and women. We serve customers from all areas of Hyderabad, Khammam, Kothagudem, Dilsukhnagar, Secunderabad, and surrounding districts in Telangana. Contact us for the best hair studio experience in the region.</p>
-            </div>
-            <p className="text-brand-gold italic font-medium mb-4">Beauty Meets Comfort</p>
-            <div className="flex gap-3">
-              <a href="https://www.facebook.com/share/1BoX9WysMB/" target="_blank" rel="noopener noreferrer" className="bg-[#4A4A4A] p-2 rounded-full hover:bg-brand-primary transition">
-                <Facebook size={20} />
-              </a>
-              <a href="https://www.instagram.com/h2h_hairstudio_/?__pwa=1" target="_blank" rel="noopener noreferrer" className="bg-[#4A4A4A] p-2 rounded-full hover:bg-brand-primary transition">
+            <div className="mt-6 flex gap-4">
+              <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white">
                 <Instagram size={20} />
               </a>
-              <a href="https://youtube.com/source/DNoNgL8tSsY/shorts?si=c4ej8ETEsCjXOADc" target="_blank" rel="noopener noreferrer" className="bg-[#4A4A4A] p-2 rounded-full hover:bg-brand-primary transition">
+              <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white">
+                <Facebook size={20} />
+              </a>
+              <a href={SITE.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white">
                 <Youtube size={20} />
               </a>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-brand-gold">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="/" className="text-gray-400 hover:text-white transition">Home</a></li>
-              <li><a href="/about" className="text-gray-400 hover:text-white transition">About Us</a></li>
-              <li><a href="/services" className="text-gray-400 hover:text-white transition">Services</a></li>
-              <li><a href="/gallery" className="text-gray-400 hover:text-white transition">Gallery</a></li>
-              <li><a href="/wholesale" className="text-gray-400 hover:text-white transition">Wholesale</a></li>
-              <li><a href="/faq" className="text-gray-400 hover:text-white transition">FAQ</a></li>
-              <li><a href="/privacy" className="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
-              <li><a href="/terms" className="text-gray-400 hover:text-white transition">Terms & Conditions</a></li>
+          <nav aria-label="Explore" className="lg:col-span-2">
+            <p className="mb-4 text-sm font-semibold text-white">Explore</p>
+            <ul className="space-y-2.5 text-[0.95rem]">
+              {explore.map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className="hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-brand-gold">Services</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="/women" className="text-gray-400 hover:text-white transition">Women's Hair Patches</a></li>
-              <li><a href="/women" className="text-gray-400 hover:text-white transition">Women's Wigs</a></li>
-              <li><a href="/men" className="text-gray-400 hover:text-white transition">Men's Hair Systems</a></li>
-              <li><a href="/women#extensions" className="text-gray-400 hover:text-white transition">Hair Extensions</a></li>
-              <li><a href="/wholesale" className="text-gray-400 hover:text-white transition">Wholesale Products</a></li>
-              <li><a href="/care" className="text-gray-400 hover:text-white transition">Care Products</a></li>
+          <nav aria-label="Studio" className="lg:col-span-2">
+            <p className="mb-4 text-sm font-semibold text-white">Studio</p>
+            <ul className="space-y-2.5 text-[0.95rem]">
+              {studio.map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className="hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-brand-gold">Contact Info</h3>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-2 text-gray-400">
-                <MapPin size={16} className="mt-1 flex-shrink-0" />
-                <span>1st Floor, beside Sai Baba Temple, Pratap Nagar, Dilsukhnagar, Hyderabad, Telangana 500060</span>
-              </li>
-              <li className="flex items-center gap-2 text-gray-400">
-                <Phone size={16} className="flex-shrink-0" />
-                <a href="tel:+918121999243" className="hover:text-white transition">+91 81219 99243</a>
-              </li>
-              <li className="flex items-center gap-2 text-gray-400">
-                <Mail size={16} className="flex-shrink-0" />
-                <a href="mailto:hair2hairstidio2024@gmail.com" className="hover:text-white transition break-all">
-                  hair2hairstidio2024@gmail.com
+          <div className="space-y-6 text-[0.95rem] lg:col-span-4">
+            {BRANCHES.map((b) => (
+              <div key={b.name}>
+                <p className="font-semibold text-white">
+                  {b.name} <span className="font-normal text-white/50">({b.note.toLowerCase()})</span>
+                </p>
+                <p className="mt-1 leading-relaxed">{b.address}</p>
+                <a href={b.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block text-brand-goldsoft hover:text-white">
+                  Get directions
                 </a>
-              </li>
-              <li className="flex items-start gap-2 text-gray-400">
-                <Clock size={16} className="mt-1 flex-shrink-0" />
-                <div>
-                  <p>Mon-Fri: 9:00 AM – 7:00 PM</p>
-                  <p>Sat-Sun: 9:00 AM – 7:00 PM</p>
-                </div>
-              </li>
-            </ul>
-            <a
-              href="https://www.google.com/maps?sca_esv=2286ae5c4aad172f&rlz=1C1CHBF_enIN1003IN1003&sxsrf=AE3TifN9v7wVjK-Cfq4Nuf7Et3DMZzzogQ:1761147267709&gs_lp=Egxnd3Mtd2l6LXNlcnAiIWgyaCBoYWlyIHN0dWRpbyBoeWRlcmFiYWQgZGlsc2h1ayoCCAAyBxAhGKABGAoyBxAhGKABGApIvClQyw5YzRpwAXgAkAEAmAGAAqABjgyqAQUwLjYuM7gBAcgBAPgBAZgCCqAC7QzCAggQABiABBiwA8ICDhAAGIAEGLADGIYDGIoFwgILEAAYgAQYsAMYogTCAgsQABiwAxiiBBiJBcICBRAhGKABwgIEECEYFZgDAIgGAZAGCZIHBTEuNi4zoAexK7IHBTAuNi4zuAfjDMIHBzAuMi42LjLIBzw&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=Kedsqbs3mcs7MZ1hrQ1iZ5S4&daddr=1st+Floor,+beside+Sai+Baba+Temple,+Pratap+Nagar,+Dilsukhnagar,+Hyderabad,+Telangana+500060"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-3 text-brand-gold hover:text-white transition text-sm font-medium"
-            >
-              Get Directions →
-            </a>
+              </div>
+            ))}
+            <div>
+              <a href={SITE.phoneHref} className="block font-semibold text-white hover:text-brand-goldsoft">
+                {SITE.phoneDisplay}
+              </a>
+              <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="block hover:text-white">
+                WhatsApp us
+              </a>
+              <a href={`mailto:${SITE.email}`} className="block break-all hover:text-white">
+                {SITE.email}
+              </a>
+              <p className="mt-2 text-white/55">{SITE.hours}</p>
+            </div>
           </div>
         </div>
       </div>
-
-      <div className="border-t border-gray-700 py-6">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-          <p>© 2025 Hair2Hair Studio – All Rights Reserved</p>
-          <p>Design & Development by Rishi</p>
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-2 px-5 py-6 text-sm text-white/45 sm:flex-row sm:px-8">
+          <p>© {new Date().getFullYear()} Hair 2 Hair Studio. All rights reserved.</p>
+          <p>Design & development by Rishi</p>
         </div>
       </div>
     </footer>

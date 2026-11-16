@@ -1,284 +1,153 @@
-import { useState } from 'react';
-import { MapPin, Phone, Clock, Send } from 'lucide-react';
-import Card from '../components/Card';
+import { FormEvent } from 'react';
+import { MessageCircle, Phone, Mail } from 'lucide-react';
 import Button from '../components/Button';
+import { Container, FormError, FormSent, Honeypot, PageHero, Section } from '../components/ui';
+import { BRANCHES, SITE, whatsappUrl } from '../lib/site';
+import { useWeb3Form } from '../lib/useWeb3Form';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    concern: '',
-    message: '',
-  });
+  const { status, submit, fromForm, reset } = useWeb3Form('New Contact Form Submission - Hair 2 Hair Studio');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    
-    try {
-      // Use Web3Forms service with traditional form submission
-      const form = document.createElement('form');
-      form.action = 'https://api.web3forms.com/submit';
-      form.method = 'POST';
-      form.style.display = 'none';
-      
-      // Add Web3Forms fields
-      const fields = {
-        access_key: '675b3c24-8999-426b-819b-29bc8e789cc7',
-        subject: 'New Contact Form Submission - Hair 2 Hair Studio',
-        from_name: 'Hair 2 Hair Studio Website',
-        redirect: 'https://web3forms.com/success',
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        concern: formData.concern,
-        message: formData.message,
-        botcheck: ''
-      };
-      
-      Object.entries(fields).forEach(([key, value]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value;
-        form.appendChild(input);
-      });
-      
-      document.body.appendChild(form);
-      form.submit();
-      
-      // Show success message
-      alert('Thank you for your message! We will get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        concern: '',
-        message: '',
-      });
-      
-    } catch (error) {
-      console.error('Error sending email:', error);
-      alert('Sorry, there was an error sending your message. Please try again.');
-    }
-  };
+    const form = e.currentTarget;
+    if (await submit(fromForm(form))) form.reset();
+  }
 
   return (
-    <div className="min-h-screen pb-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-serif text-[#C19A6B] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Get In Touch
-          </h1>
-          <p className="text-xl text-gray-600">We're here to answer all your questions</p>
-          
-          {/* Hidden SEO Content */}
-          <div className="hidden">
-            <h2>Contact H2H Hair Studio - Best Hair Patches & Wigs in Hyderabad, Khammam, Kothagudem, Dilsukhnagar</h2>
-            <p>H2H Hair Studio (Hair2Hair) is your trusted hair replacement specialist in Hyderabad, Khammam, Kothagudem, and Dilsukhnagar. Contact us for premium hair patches, wigs, and non-surgical hair replacement solutions. Our main branch is located in Dilsukhnagar, Hyderabad, serving customers across Telangana.</p>
-            <p>Visit H2H Hair Studio for the best hair patches in Hyderabad, hair studio Khammam services, hair studio Kothagudem solutions, and hair studio Dilsukhnagar expertise. We provide professional hair replacement services with 15+ years of experience.</p>
-          </div>
+    <div>
+      <PageHero
+        title="Get in touch"
+        intro="Ask us anything about hair patches, wigs, extensions or wholesale. Most people find WhatsApp the quickest way to reach us."
+      >
+        <div className="grid gap-3 sm:grid-cols-3">
+          <a
+            href={whatsappUrl('Hi! I would like to know more about your services.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 rounded-xl border border-brand-line bg-white p-4 transition-colors hover:border-whatsapp"
+          >
+            <MessageCircle className="text-whatsapp" size={22} aria-hidden="true" />
+            <span>
+              <span className="block font-semibold text-brand-ink">WhatsApp</span>
+              <span className="text-sm text-brand-stone">Fastest reply</span>
+            </span>
+          </a>
+          <a
+            href={SITE.phoneHref}
+            className="flex items-center gap-3 rounded-xl border border-brand-line bg-white p-4 transition-colors hover:border-brand-primary"
+          >
+            <Phone className="text-brand-primary" size={22} aria-hidden="true" />
+            <span>
+              <span className="block font-semibold text-brand-ink">Call</span>
+              <span className="text-sm text-brand-stone">{SITE.phoneDisplay}</span>
+            </span>
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            className="flex items-center gap-3 rounded-xl border border-brand-line bg-white p-4 transition-colors hover:border-brand-primary"
+          >
+            <Mail className="text-brand-primary" size={22} aria-hidden="true" />
+            <span className="min-w-0">
+              <span className="block font-semibold text-brand-ink">Email</span>
+              <span className="block truncate text-sm text-brand-stone">{SITE.email}</span>
+            </span>
+          </a>
         </div>
+      </PageHero>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-12">
-          <Card hover className="p-6 text-center border-2 border-[#C19A6B]">
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#C19A6B] to-[#D4AF37] rounded-full mb-4">
-              <MapPin className="text-white" size={24} />
-            </div>
-            <h3 className="font-semibold text-lg mb-3 text-gray-800">
-              Main Branch - Hyderabad
-              <span className="block text-sm text-[#C19A6B] font-medium mt-1">Dilshuknagar</span>
-            </h3>
-            <p className="text-gray-600 mb-4">
-              1st Floor, beside Sai Baba Temple, Pratap Nagar, Dilsukhnagar, Hyderabad, Telangana 500060
-            </p>
-            <a
-              href="https://www.google.com/maps?sca_esv=2286ae5c4aad172f&rlz=1C1CHBF_enIN1003IN1003&sxsrf=AE3TifN9v7wVjK-Cfq4Nuf7Et3DMZzzogQ:1761147267709&gs_lp=Egxnd3Mtd2l6LXNlcnAiIWgyaCBoYWlyIHN0dWRpbyBoeWRlcmFiYWQgZGlsc2h1ayoCCAAyBxAhGKABGAoyBxAhGKABGApIvClQyw5YzRpwAXgAkAEAmAGAAqABjgyqAQUwLjYuM7gBAcgBAPgBAZgCCqAC7QzCAggQABiABBiwA8ICDhAAGIAEGLADGIYDGIoFwgILEAAYgAQYsAMYogTCAgsQABiwAxiiBBiJBcICBRAhGKABwgIEECEYFZgDAIgGAZAGCZIHBTEuNi4zoAexK7IHBTAuNi4zuAfjDMIHBzAuMi42LjLIBzw&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=Kedsqbs3mcs7MZ1hrQ1iZ5S4&daddr=1st+Floor,+beside+Sai+Baba+Temple,+Pratap+Nagar,+Dilsukhnagar,+Hyderabad,+Telangana+500060"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#C19A6B] font-medium hover:text-[#D4AF37] transition"
-            >
-              Get Directions →
-            </a>
-          </Card>
+      <Section tone="white">
+        <Container className="grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Send us a message</h2>
+            <p className="mt-3 text-brand-stone">We'll call or WhatsApp you back as soon as we can.</p>
 
-          <Card hover className="p-6 text-center">
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-gray-500 to-gray-600 rounded-full mb-4">
-              <MapPin className="text-white" size={24} />
-            </div>
-            <h3 className="font-semibold text-lg mb-3 text-gray-800">Khammam Branch</h3>
-            <p className="text-gray-600 mb-4">
-              2nd floor, Star complex, Near new bus stand, Khammam, Telangana 507002
-            </p>
-            <a
-              href="https://maps.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 font-medium hover:text-gray-800 transition"
-            >
-              Get Directions →
-            </a>
-          </Card>
-
-          <Card hover className="p-6 text-center">
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#C19A6B] to-[#D4AF37] rounded-full mb-4">
-              <Phone className="text-white" size={24} />
-            </div>
-            <h3 className="font-semibold text-lg mb-3 text-gray-800">Call/Email Us</h3>
-            <div className="space-y-2 text-gray-600">
-              <p>
-                <a href="tel:+918121999243" className="hover:text-[#C19A6B] transition">
-                  +91 81219 99243
-                </a>
-              </p>
-              <p>
-                <a href="mailto:hair2hairstidio2024@gmail.com" className="hover:text-[#C19A6B] transition break-all">
-                  hair2hairstidio2024@gmail.com
-                </a>
-              </p>
-              <a
-                href={`https://wa.me/918121999243?text=${encodeURIComponent('Hi! I would like to know more about your services.')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-2 text-[#25D366] font-medium hover:underline"
-              >
-                WhatsApp Us →
-              </a>
-            </div>
-          </Card>
-
-          <Card hover className="p-6 text-center">
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#C19A6B] to-[#D4AF37] rounded-full mb-4">
-              <Clock className="text-white" size={24} />
-            </div>
-            <h3 className="font-semibold text-lg mb-3 text-gray-800">Business Hours</h3>
-            <div className="space-y-2 text-gray-600">
-              <p>Monday - Friday</p>
-              <p className="font-medium">9:00 AM – 7:00 PM</p>
-              <p>Saturday - Sunday</p>
-              <p className="font-medium">9:00 AM – 7:00 PM</p>
-            </div>
-          </Card>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <Card className="p-8">
-              <h2 className="text-3xl font-serif text-[#C19A6B] mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Send Us a Message
-              </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C19A6B]"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                  <input
-                    type="email"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C19A6B]"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
-                  <input
-                    type="tel"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C19A6B]"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Select Your Concern *</label>
-                  <select
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C19A6B]"
-                    value={formData.concern}
-                    onChange={(e) => setFormData({ ...formData, concern: e.target.value })}
-                  >
-                    <option value="">Choose an option</option>
-                    <option value="Hair Replacement">Hair Replacement</option>
-                    <option value="Hair Extensions">Hair Extensions</option>
-                    <option value="Wigs for Women">Wigs for Women</option>
-                    <option value="Men's Hair Systems">Men's Hair Systems</option>
-                    <option value="Wholesale Enquiry">Wholesale Enquiry</option>
-                    <option value="Product Care & Maintenance">Product Care & Maintenance</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message *</label>
-                  <textarea
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C19A6B]"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  />
-                </div>
-
-                <Button type="submit" size="lg" className="w-full bg-[#C19A6B] hover:bg-[#D4AF37]">
-                  <Send size={20} className="mr-2" />
-                  Send Message
-                </Button>
-              </form>
-            </Card>
-          </div>
-
-          <div>
-            <Card className="h-full p-8">
-              <h2 className="text-3xl font-serif text-[#C19A6B] mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Find Us
-              </h2>
-              <div className="aspect-video bg-gray-200 rounded-lg mb-6 overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.8!2d80.1514!3d17.2473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDE0JzUwLjMiTiA4MMKwMDknMDUuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  title="Hair2Hair Studio Location"
+            <div className="mt-8">
+              {status === 'sent' ? (
+                <FormSent
+                  title="Message sent"
+                  body="Thank you. Someone from the studio will be in touch soon."
+                  onReset={reset}
                 />
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold text-lg mb-2 text-gray-800">Quick Links</h3>
-                  <div className="space-y-2">
-                    <Button href="/booking" className="w-full">
-                      Book an Appointment
-                    </Button>
-                    <Button
-                      href={`https://wa.me/918121999243?text=${encodeURIComponent('Hi! I would like to know more.')}`}
-                      className="w-full bg-[#25D366] hover:bg-[#128C7E]"
-                    >
-                      WhatsApp Direct Chat
-                    </Button>
-                    <Button href="tel:+918121999243" variant="outline" className="w-full">
-                      Call Now
+              ) : (
+                <form onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2">
+                  <Honeypot />
+                  <div>
+                    <label htmlFor="c-name" className="field-label">Name</label>
+                    <input id="c-name" name="name" required autoComplete="name" className="field" />
+                  </div>
+                  <div>
+                    <label htmlFor="c-phone" className="field-label">Phone or WhatsApp</label>
+                    <input id="c-phone" name="phone" type="tel" inputMode="tel" required autoComplete="tel" className="field" />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label htmlFor="c-email" className="field-label">
+                      Email <span className="font-normal text-brand-stone">(optional)</span>
+                    </label>
+                    <input id="c-email" name="email" type="email" autoComplete="email" className="field" />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label htmlFor="c-concern" className="field-label">What's it about?</label>
+                    <select id="c-concern" name="concern" required className="field" defaultValue="">
+                      <option value="" disabled>Choose one</option>
+                      <option value="Hair Replacement">Hair replacement</option>
+                      <option value="Hair Extensions">Hair extensions</option>
+                      <option value="Wigs for Women">Wigs for women</option>
+                      <option value="Men's Hair Systems">Men's hair systems</option>
+                      <option value="Wholesale Enquiry">Wholesale enquiry</option>
+                      <option value="Franchise Enquiry">Franchise enquiry</option>
+                      <option value="Product Care & Maintenance">Product care &amp; maintenance</option>
+                      <option value="Other">Something else</option>
+                    </select>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label htmlFor="c-message" className="field-label">Message</label>
+                    <textarea id="c-message" name="message" rows={5} required className="field" />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <FormError status={status} />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <Button type="submit" size="lg" disabled={status === 'sending'} className="w-full sm:w-auto">
+                      {status === 'sending' ? 'Sending…' : 'Send message'}
                     </Button>
                   </div>
-                </div>
-              </div>
-            </Card>
+                </form>
+              )}
+            </div>
           </div>
-        </div>
-      </div>
+
+          <aside className="lg:col-span-5">
+            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Our studios</h2>
+            <p className="mt-3 text-brand-stone">Open {SITE.hours.toLowerCase()}.</p>
+            <div className="mt-8 space-y-8">
+              {BRANCHES.map((b) => (
+                <div key={b.name} className="border-t border-brand-line pt-5">
+                  <h3 className="text-2xl text-brand-ink">
+                    {b.name} <span className="font-sans text-sm font-normal text-brand-stone">{b.note}</span>
+                  </h3>
+                  <p className="mt-2 text-brand-stone">{b.address}</p>
+                  <a href={b.mapsUrl} target="_blank" rel="noopener noreferrer" className="link-underline mt-3 inline-block font-semibold text-brand-primary">
+                    Get directions
+                  </a>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 aspect-[4/3] overflow-hidden rounded-2xl border border-brand-line bg-brand-blush">
+              <iframe
+                src={BRANCHES[0].embedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Map of Hair 2 Hair Studio, Dilsukhnagar"
+              />
+            </div>
+          </aside>
+        </Container>
+      </Section>
     </div>
   );
 }

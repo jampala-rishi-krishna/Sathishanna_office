@@ -1,5 +1,7 @@
-import Card from '../components/Card';
 import Button from '../components/Button';
+import ProductCard from '../components/ProductCard';
+import { Container, CtaBand, Meter, PageHero, Section, SectionHeading } from '../components/ui';
+import { whatsappUrl } from '../lib/site';
 
 export default function Men() {
   const patches = [
@@ -58,223 +60,140 @@ export default function Men() {
   ];
 
   const coverageAreas = [
-    {
-      title: 'Receding Hairline',
-      description: 'Restore your natural hairline with invisible frontal solutions',
-      icon: '👨',
-    },
-    {
-      title: 'Crown Thinning',
-      description: 'Target coverage for crown area hair loss',
-      icon: '⭕',
-    },
-    {
-      title: 'Full Bald Coverage',
-      description: 'Complete transformation for full hair loss',
-      icon: '👤',
-    },
-    {
-      title: 'Partial Coverage',
-      description: 'Blend seamlessly with existing hair',
-      icon: '✨',
-    },
+    { title: 'Receding hairline', description: 'Restore your natural hairline with invisible frontal solutions' },
+    { title: 'Crown thinning', description: 'Targeted coverage for crown-area hair loss' },
+    { title: 'Full bald coverage', description: 'Complete transformation for full hair loss' },
+    { title: 'Partial coverage', description: 'Blends seamlessly with your existing hair' },
+  ];
+
+  const baseTypes = [
+    { name: 'Lace', breathability: 5, durability: 3, look: 5, comfort: 4, bestFor: 'Natural hairline' },
+    { name: 'PU (skin)', breathability: 3, durability: 5, look: 4, comfort: 3, bestFor: 'Active lifestyle' },
+    { name: 'Monofilament', breathability: 4, durability: 4, look: 5, comfort: 5, bestFor: 'Daily wear' },
+    { name: 'Hybrid', breathability: 4, durability: 4, look: 4, comfort: 4, bestFor: 'All-round' },
   ];
 
   return (
-    <div className="min-h-screen pb-16">
-      <div
-        className="h-64 bg-cover bg-center relative mb-12"
-        style={{
-          backgroundImage: 'url(/Data/IMG-20251003-WA0075.jpg)',
-        }}
+    <div>
+      <PageHero
+        title="Hair systems for men"
+        intro="Confidence, style and natural results. Whether it's a receding hairline, a thinning crown or full coverage, we match a system to your hair and your routine."
+        image="/Data/IMG-20251003-WA0075.jpg"
+        imageAlt="Men's hair system fitted at Hair 2 Hair Studio"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#C19A6B]/80 to-[#D4AF37]/60" />
-        <div className="relative h-full flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-5xl font-serif mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Hair Systems & Solutions for Men
-            </h1>
-            <p className="text-xl">Confidence. Style. Natural Results.</p>
-          </div>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/booking" size="lg">
+            Book a free consultation
+          </Button>
+          <Button href={whatsappUrl("Hi! I'd like to know about men's hair systems.")} size="lg" variant="outline">
+            Ask on WhatsApp
+          </Button>
         </div>
-      </div>
+      </PageHero>
 
-      <div className="max-w-7xl mx-auto px-4">
-        <section className="mb-16">
-          <h2
-            className="text-4xl font-serif text-center text-[#C19A6B] mb-8"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Coverage Solutions
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {coverageAreas.map((area, index) => (
-              <Card key={index} hover className="p-6 text-center">
-                <div className="text-5xl mb-4">{area.icon}</div>
-                <h3 className="font-semibold text-lg mb-2 text-gray-800">{area.title}</h3>
-                <p className="text-sm text-gray-600">{area.description}</p>
-              </Card>
+      <Section tone="white">
+        <Container>
+          <SectionHeading title="What kind of coverage do you need?" />
+          <dl className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-4">
+            {coverageAreas.map((area) => (
+              <div key={area.title} className="border-t border-brand-primary/25 py-5">
+                <dt className="font-display text-2xl text-brand-ink">{area.title}</dt>
+                <dd className="mt-2 text-brand-stone">{area.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </Section>
+
+      <Section id="patches">
+        <Container>
+          <SectionHeading
+            title="Hair patches & systems"
+            intro="Built for durability, comfort and a natural look. The base type decides how it feels and how long it lasts, so choose the one that suits your lifestyle."
+          />
+          <div className="grid grid-cols-2 gap-x-4 gap-y-10 lg:grid-cols-4 lg:gap-x-6">
+            {patches.map((product) => (
+              <ProductCard
+                key={product.name}
+                name={product.name}
+                image={product.image}
+                specs={[
+                  { label: 'Base', value: product.base },
+                  { label: 'Coverage', value: product.coverage },
+                ]}
+                features={product.features}
+              />
             ))}
           </div>
-        </section>
+        </Container>
+      </Section>
 
-        <section id="patches" className="mb-16">
-          <h2
-            className="text-4xl font-serif text-[#C19A6B] mb-4"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Hair Patches & Systems
-          </h2>
-          <p className="text-gray-600 mb-8 text-lg">
-            Our men's hair systems are designed for durability, comfort, and natural appearance. Choose the perfect
-            base type for your lifestyle.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {patches.map((product, index) => (
-              <Card key={index} hover className="overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 text-gray-800">{product.name}</h3>
-                  <div className="mb-3">
-                    <p className="text-sm text-gray-600">
-                      <span className="font-medium">Base:</span> {product.base}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      <span className="font-medium">Coverage:</span> {product.coverage}
-                    </p>
-                  </div>
-                  <ul className="space-y-1 mb-4">
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} className="text-sm text-gray-600 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#C19A6B] rounded-full" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button href="/contact" variant="outline" size="sm" className="w-full">
-                    Enquire Now
-                  </Button>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <section id="wigs" className="mb-16">
-          <h2
-            className="text-4xl font-serif text-[#C19A6B] mb-4"
-            style={{ fontFamily: 'Playfair Display, serif' }}
-          >
-            Full Wigs & Toupees
-          </h2>
-          <p className="text-gray-600 mb-8 text-lg">
-            Complete hair solutions styled for different occasions and lifestyles. <strong>World Wide Delivery Available</strong>
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {wigs.map((product, index) => (
-              <Card key={index} hover className="overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-56 object-cover" />
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 text-gray-800">{product.name}</h3>
-                  <div className="mb-3">
-                    <p className="text-sm text-gray-600">
-                      <span className="font-medium">Style:</span> {product.style}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      <span className="font-medium">Type:</span> {product.type}
-                    </p>
-                  </div>
-                  <ul className="space-y-1 mb-4">
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} className="text-sm text-gray-600 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#C19A6B] rounded-full" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button href="/contact" variant="outline" size="sm" className="w-full">
-                    Enquire Now
-                  </Button>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gray-50 rounded-2xl p-8 mb-16">
-          <h3 className="text-3xl font-serif text-[#C19A6B] mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Choosing the Right Base Type
-          </h3>
-          <div className="overflow-x-auto">
-            <table className="w-full">
+      <Section tone="blush">
+        <Container>
+          <SectionHeading
+            title="Choosing the right base"
+            intro="A quick comparison of the four bases we fit most. We'll help you decide at your consultation."
+          />
+          <div className="-mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+            <table className="w-full min-w-[640px] border-collapse text-left">
+              <caption className="sr-only">Comparison of hair system base types, rated out of 5</caption>
               <thead>
-                <tr className="border-b-2 border-[#C19A6B]">
-                  <th className="text-left py-3 px-4 font-semibold">Base Type</th>
-                  <th className="text-center py-3 px-4 font-semibold">Breathability</th>
-                  <th className="text-center py-3 px-4 font-semibold">Durability</th>
-                  <th className="text-center py-3 px-4 font-semibold">Natural Look</th>
-                  <th className="text-center py-3 px-4 font-semibold">Comfort</th>
-                  <th className="text-center py-3 px-4 font-semibold">Best For</th>
+                <tr className="border-b border-brand-primary/30 text-sm text-brand-stone">
+                  <th scope="col" className="py-3 pr-4 font-medium">Base</th>
+                  <th scope="col" className="px-4 py-3 font-medium">Breathability</th>
+                  <th scope="col" className="px-4 py-3 font-medium">Durability</th>
+                  <th scope="col" className="px-4 py-3 font-medium">Natural look</th>
+                  <th scope="col" className="px-4 py-3 font-medium">Comfort</th>
+                  <th scope="col" className="py-3 pl-4 font-medium">Best for</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-gray-200">
-                  <td className="py-3 px-4 font-medium">Lace</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐</td>
-                  <td className="py-3 px-4 text-sm">Natural hairline</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="py-3 px-4 font-medium">PU (Skin)</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐</td>
-                  <td className="py-3 px-4 text-sm">Active lifestyle</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="py-3 px-4 font-medium">Monofilament</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐⭐</td>
-                  <td className="py-3 px-4 text-sm">Daily wear</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-medium">Hybrid</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐</td>
-                  <td className="text-center py-3 px-4">⭐⭐⭐⭐</td>
-                  <td className="py-3 px-4 text-sm">All-around</td>
-                </tr>
+                {baseTypes.map((b) => (
+                  <tr key={b.name} className="border-b border-brand-primary/15">
+                    <th scope="row" className="py-4 pr-4 font-display text-xl font-normal text-brand-ink">
+                      {b.name}
+                    </th>
+                    <td className="px-4 py-4"><Meter value={b.breathability} /></td>
+                    <td className="px-4 py-4"><Meter value={b.durability} /></td>
+                    <td className="px-4 py-4"><Meter value={b.look} /></td>
+                    <td className="px-4 py-4"><Meter value={b.comfort} /></td>
+                    <td className="py-4 pl-4 text-brand-ink">{b.bestFor}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
-        </section>
+        </Container>
+      </Section>
 
-        <section className="bg-gradient-to-r from-[#F5E6EA] to-[#E4B5C0] rounded-2xl p-8 text-center">
-          <h3 className="text-3xl font-serif text-[#C19A6B] mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Start Your Transformation Today
-          </h3>
-          <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-            Our experts will help you choose the perfect hair system for your lifestyle. Book a confidential
-            consultation now.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/booking" size="lg">
-              Book Consultation
-            </Button>
-            <Button href="/contact" variant="outline" size="lg">
-              Contact Us
-            </Button>
+      <Section id="wigs">
+        <Container>
+          <SectionHeading
+            title="Full wigs & toupees"
+            intro="Complete hair solutions styled for different occasions and lifestyles. Worldwide delivery available."
+          />
+          <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {wigs.map((product) => (
+              <ProductCard
+                key={product.name}
+                name={product.name}
+                image={product.image}
+                aspect="aspect-[4/3]"
+                specs={[
+                  { label: 'Style', value: product.style },
+                  { label: 'Type', value: product.type },
+                ]}
+                features={product.features}
+              />
+            ))}
           </div>
-        </section>
-      </div>
+        </Container>
+      </Section>
+
+      <CtaBand
+        title="Start with a private conversation"
+        body="Our specialists will help you choose the right hair system for your lifestyle. The consultation is free and confidential."
+      />
     </div>
   );
 }

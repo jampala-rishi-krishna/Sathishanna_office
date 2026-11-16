@@ -1,86 +1,92 @@
-import { useEffect } from 'react';
+import { Star } from 'lucide-react';
+import { SITE } from '../lib/site';
+
+const reviews = [
+  {
+    author: 'Jampala Rishi Krishna',
+    text: 'Excellent service and best quality hair patches available in Hyderabad',
+    when: '3 weeks ago',
+  },
+  {
+    author: 'Rohit Kumar Veeravalli',
+    text: 'I recently visited Hair 2 Hair Studio and had an incredible experience! The staff was welcoming, the ambiance was inviting, and the stylists were truly skilled. My haircut surpassed expectations—precise and tailored perfectly.',
+    when: 'a year ago',
+  },
+  {
+    author: 'Doravari Srikanth',
+    text: 'Best hair patch studio in Hyderabad',
+    when: 'a week ago',
+  },
+  {
+    author: 'Fire Ravi',
+    text: 'Good service satish',
+    when: '4 weeks ago',
+  },
+  {
+    author: 'New Evergreen',
+    text: "Very Good Service and with well trained people you can get a better service at reasonable price .it's a top nutch .Must visit",
+    when: 'a year ago',
+  },
+  {
+    author: 'Uttej Kumar',
+    text: 'This review is after using patch from a month..I have done my hair patch service in Hair 2 Hair Studio and Completed my first servicing today.. My Experience: Recieving and explanation is good and clearing our doubts',
+    when: '2 years ago',
+  },
+];
+
+function Stars({ size = 16 }: { size?: number }) {
+  return (
+    <span className="flex gap-0.5 text-brand-gold" aria-hidden="true">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} size={size} fill="currentColor" strokeWidth={0} />
+      ))}
+    </span>
+  );
+}
 
 export default function GoogleReviews() {
-  useEffect(() => {
-    // Real Google Reviews data
-    const fallbackReviews = [
-      {
-        author_name: "JAMPALA RISHI KRISHNA",
-        rating: 5,
-        text: "Excellent service and best quality hair patches available in Hyderabad",
-        relative_time_description: "3 weeks ago"
-      },
-      {
-        author_name: "ROHIT KUMAR VEERAVALLI",
-        rating: 5,
-        text: "I recently visited Hair 2 Hair Studio and had an incredible experience! The staff was welcoming, the ambiance was inviting, and the stylists were truly skilled. My haircut surpassed expectations—precise and tailored perfectly.",
-        relative_time_description: "a year ago"
-      },
-      {
-        author_name: "Doravari Srikanth",
-        rating: 5,
-        text: "Best hair patch studio in Hyderabad",
-        relative_time_description: "a week ago"
-      },
-      {
-        author_name: "Fire Ravi",
-        rating: 5,
-        text: "Good service satish",
-        relative_time_description: "4 weeks ago"
-      },
-      {
-        author_name: "New Evergreen",
-        rating: 5,
-        text: "Very Good Service and with well trained people you can get a better service at reasonable price .it's a top nutch .Must visit",
-        relative_time_description: "a year ago"
-      },
-      {
-        author_name: "uttej kumar",
-        rating: 5,
-        text: "This review is after using patch from a month..I have done my hair patch service in Hair 2 Hair Studio and Completed my first servicing today.. My Experience: Recieving and explanation is good and clearing our doubts",
-        relative_time_description: "2 years ago"
-      }
-    ];
+  // Longest review leads, the rest flow in columns.
+  const [lead, ...rest] = [...reviews].sort((a, b) => b.text.length - a.text.length);
 
-    function displayReviews() {
-      // Display fallback reviews (frontend only)
-      const reviewSummary = document.getElementById("review-summary");
-      if (reviewSummary) {
-        reviewSummary.innerHTML = "Based on 86 Google reviews";
-      }
-      
-      const container = document.getElementById("reviews-container");
-      if (container) {
-        container.innerHTML = `
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-            ${fallbackReviews
-              .map(r => `
-                <div class="bg-white text-black rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
-                  <div class="flex items-center mb-4">
-                    <div class="w-10 h-10 bg-gradient-to-br from-[#8B1538] to-[#A0153E] rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
-                      ${r.author_name.charAt(0)}
-                    </div>
-                    <div class="flex-1">
-                      <p class="font-semibold text-gray-800 text-sm">${r.author_name}</p>
-                      <div class="flex items-center gap-1">
-                        <div class="flex text-yellow-400">
-                          ${'★'.repeat(r.rating)}
-                        </div>
-                        <span class="text-xs text-gray-500 ml-2">${r.relative_time_description}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-gray-700 text-sm leading-relaxed flex-grow">${r.text}</p>
-                </div>
-              `)
-              .join('')}
+  return (
+    <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+      <div className="lg:col-span-5">
+        <div className="flex items-baseline gap-3">
+          <span className="font-display text-7xl leading-none text-white sm:text-8xl">{SITE.rating}</span>
+          <div>
+            <Stars size={18} />
+            <p className="mt-1 text-sm text-white/70">from {SITE.reviewCount} Google reviews</p>
           </div>
-        `;
-      }
-    }
+        </div>
+        <figure className="mt-10 border-l border-brand-gold/60 pl-6">
+          <blockquote className="font-display text-2xl italic leading-snug text-white sm:text-[1.7rem]">
+            “{lead.text}”
+          </blockquote>
+          <figcaption className="mt-4 text-sm text-white/70">
+            {lead.author}, {lead.when}
+          </figcaption>
+        </figure>
+        <a
+          href={SITE.reviewsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-10 inline-flex rounded-pill border border-white/40 px-6 py-3 font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+        >
+          Read all reviews on Google
+        </a>
+      </div>
 
-    displayReviews();
-  }, []);
-
-  return null; // This component only handles the side effect
+      <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+        {rest.map((r) => (
+          <li key={r.author} className="flex flex-col rounded-2xl bg-white/[0.06] p-6 ring-1 ring-white/10">
+            <Stars size={14} />
+            <p className="mt-3 flex-1 leading-relaxed text-white/90">{r.text}</p>
+            <p className="mt-4 text-sm text-white/55">
+              <span className="font-semibold text-white/80">{r.author}</span>, {r.when}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }

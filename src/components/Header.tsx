@@ -1,84 +1,155 @@
-import { useState } from 'react';
-import { Facebook, Instagram, Youtube, Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Menu, X, Phone, Instagram, Facebook, Youtube } from 'lucide-react';
+import { SITE } from '../lib/site';
+
+const NAV = [
+  { to: '/men', label: 'Men' },
+  { to: '/women', label: 'Women' },
+  { to: '/services', label: 'Services' },
+  { to: '/gallery', label: 'Gallery' },
+  { to: '/wholesale', label: 'Wholesale' },
+  { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact' },
+];
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
+  const overHero = pathname === '/' && !scrolled && !open;
+
+  useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-white shadow-md">
-      <div className="bg-brand-cream text-[#C19A6B] py-2">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center gap-3">
-            <a href="https://www.facebook.com/share/1BoX9WysMB/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition">
-              <Facebook size={16} />
-            </a>
-            <a href="https://www.instagram.com/h2h_hairstudio_/?__pwa=1" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition">
-              <Instagram size={16} />
-            </a>
-            <a href="https://youtube.com/source/DNoNgL8tSsY/shorts?si=c4ej8ETEsCjXOADc" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition">
-              <Youtube size={16} />
-            </a>
-          </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        overHero ? 'bg-brand-deep text-white' : 'border-b border-brand-line bg-brand-porcelain/95 text-brand-ink backdrop-blur'
+      }`}
+    >
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:text-brand-ink"
+      >
+        Skip to content
+      </a>
+      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
+        <Link to="/" className="flex flex-col leading-none" aria-label="Hair 2 Hair Studio, home">
+          <span className="font-display text-[1.45rem] font-medium tracking-tight sm:text-[1.6rem]">
+            Hair 2 Hair
+          </span>
+          <span className={`mt-1 text-[0.7rem] tracking-[0.2em] ${overHero ? 'text-brand-goldsoft' : 'text-brand-gold'}`}>
+            STUDIO
+          </span>
+        </Link>
+
+        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
+          {NAV.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                `relative px-3 py-2 text-[0.95rem] font-medium transition-colors ${
+                  overHero ? 'text-white/80 hover:text-white' : 'text-brand-stone hover:text-brand-ink'
+                } ${isActive ? (overHero ? '!text-white' : '!text-brand-primary') : ''}
+                after:absolute after:inset-x-3 after:-bottom-0.5 after:h-px after:origin-left after:bg-current after:transition-transform ${
+                  isActive ? 'after:scale-x-100' : 'after:scale-x-0'
+                }`
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-5 lg:flex">
+          <a
+            href={SITE.phoneHref}
+            className={`flex items-center gap-2 text-sm font-medium ${overHero ? 'text-white/85 hover:text-white' : 'text-brand-stone hover:text-brand-ink'}`}
+          >
+            <Phone size={15} aria-hidden="true" />
+            {SITE.phoneDisplay}
+          </a>
+          <Link
+            to="/booking"
+            className={`rounded-pill px-5 py-2.5 text-sm font-semibold transition-colors ${
+              overHero ? 'bg-white text-brand-deep hover:bg-brand-blush' : 'bg-brand-primary text-white hover:bg-brand-accent'
+            }`}
+          >
+            Book free consultation
+          </Link>
         </div>
+
+        <button
+          type="button"
+          className="-mr-2 p-2 lg:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+        >
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
-      <nav className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16 py-2">
-            <div className="flex items-center">
-              <a href="/" className="flex items-center mr-12">
-                <div className="flex flex-col">
-                  <h1 className="text-2xl font-serif text-[#C19A6B] leading-tight whitespace-nowrap" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    Hair 2 Hair Studio
-                  </h1>
-                  <p className="text-xs text-gray-600 italic leading-tight">Beauty Meets Comfort</p>
-                </div>
-              </a>
-            </div>
-
-            <button
-              className="lg:hidden text-gray-700"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+      {open && (
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[4.5rem] overflow-y-auto bg-brand-porcelain text-brand-ink lg:hidden">
+          <nav aria-label="Mobile" className="flex flex-col px-5 pb-10 pt-4">
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `border-b border-brand-line py-4 font-display text-[1.75rem] ${isActive ? 'text-brand-primary' : ''}`
+              }
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-
-            <div className="hidden lg:flex items-center space-x-4">
-              <a href="/" className="text-sm text-center text-gray-700 hover:text-[#C19A6B] transition font-medium px-3 py-2 rounded hover:bg-gray-50">Home</a>
-              <a href="/women" className="text-sm text-center text-gray-700 hover:text-[#C19A6B] transition font-medium px-3 py-2 rounded hover:bg-gray-50">Women Solutions</a>
-              <a href="/men" className="text-sm text-center text-gray-700 hover:text-[#C19A6B] transition font-medium px-3 py-2 rounded hover:bg-gray-50">Men Solutions</a>
-              <a href="/services" className="text-sm text-center text-gray-700 hover:text-[#C19A6B] transition font-medium px-3 py-2 rounded hover:bg-gray-50">Services</a>
-              <a href="/gallery" className="text-sm text-center text-gray-700 hover:text-[#C19A6B] transition font-medium px-3 py-2 rounded hover:bg-gray-50">Gallery</a>
-              <a href="/about" className="text-sm text-center text-gray-700 hover:text-[#C19A6B] transition font-medium px-3 py-2 rounded hover:bg-gray-50">About Us</a>
-              <a href="/contact" className="text-sm text-center text-gray-700 hover:text-[#C19A6B] transition font-medium px-3 py-2 rounded hover:bg-gray-50">Contact Us</a>
-              <a
-                href="/about"
-                className="bg-[#C19A6B] text-center text-white text-sm px-4 py-2 rounded hover:bg-[#D4AF37] transition-all duration-300 font-medium whitespace-nowrap"
+              Home
+            </NavLink>
+            {NAV.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  `border-b border-brand-line py-4 font-display text-[1.75rem] ${isActive ? 'text-brand-primary' : ''}`
+                }
               >
-                Book Free Appointment
+                {item.label}
+              </NavLink>
+            ))}
+            <Link
+              to="/booking"
+              className="mt-8 rounded-pill bg-brand-primary py-4 text-center font-semibold text-white"
+            >
+              Book free consultation
+            </Link>
+            <a href={SITE.phoneHref} className="mt-3 rounded-pill border border-brand-line py-4 text-center font-semibold">
+              Call {SITE.phoneDisplay}
+            </a>
+            <div className="mt-8 flex justify-center gap-6 text-brand-stone">
+              <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <Instagram size={22} />
+              </a>
+              <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <Facebook size={22} />
+              </a>
+              <a href={SITE.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <Youtube size={22} />
               </a>
             </div>
-          </div>
-        </div>
-      </nav>
-
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
-          <div className="px-4 py-4 space-y-3">
-            <a href="/" className="block py-2 text-gray-700 hover:text-[#C19A6B] transition font-medium">Home</a>
-            <a href="/women" className="block py-2 text-gray-700 hover:text-[#C19A6B] transition font-medium">Women's Solutions</a>
-            <a href="/men" className="block py-2 text-gray-700 hover:text-[#C19A6B] transition font-medium">Men's Solutions</a>
-            <a href="/services" className="block py-2 text-gray-700 hover:text-[#C19A6B] transition font-medium">Services</a>
-            <a href="/gallery" className="block py-2 text-gray-700 hover:text-[#C19A6B] transition font-medium">Gallery</a>
-            <a href="/about" className="block py-2 text-gray-700 hover:text-[#C19A6B] transition font-medium">About Us</a>
-            <a href="/contact" className="block py-2 text-gray-700 hover:text-[#C19A6B] transition font-medium">Contact</a>
-            <a
-              href="/about"
-              className="block text-center bg-[#C19A6B] text-white px-6 py-3 rounded hover:bg-[#D4AF37] transition-all duration-300 font-medium mt-4"
-            >
-              Book Appointment
-            </a>
-          </div>
+          </nav>
         </div>
       )}
     </header>

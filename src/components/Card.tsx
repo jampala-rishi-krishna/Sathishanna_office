@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface CardProps {
   children: ReactNode;
@@ -8,12 +9,14 @@ interface CardProps {
 }
 
 export default function Card({ children, className = '', hover = false, onClick }: CardProps) {
-  const hoverClasses = hover ? 'hover:shadow-xl hover:-translate-y-1 cursor-pointer' : '';
-
   return (
     <div
       onClick={onClick}
-      className={`bg-white rounded-lg shadow-md transition-all duration-300 ${hoverClasses} ${className}`}
+      className={twMerge(
+        'rounded-2xl border border-brand-line bg-white',
+        hover && 'transition-colors hover:border-brand-gold/60',
+        className
+      )}
     >
       {children}
     </div>
