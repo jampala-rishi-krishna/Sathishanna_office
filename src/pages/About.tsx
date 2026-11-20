@@ -53,17 +53,11 @@ export default function About() {
     },
   ];
 
-  const credentials = [
-    { title: 'Professional training', description: 'Certified by International Hair Replacement Academy' },
-    { title: 'Quality standards', description: 'ISO certified quality management systems' },
-    { title: 'Premium suppliers', description: 'Partnerships with leading international hair suppliers' },
-  ];
-
   return (
     <div>
       <PageHero
         title="Where beauty meets comfort"
-        intro="We're a family-run team specialising in hair replacement, extensions and wigs. For over 15 years we've helped people across Telangana feel like themselves again."
+        intro="We're a family-run team specialising in hair replacement, extensions and wigs, serving customers at our listed studios in Hyderabad and Khammam."
         image="/Data/about us.png"
         imageAlt="Hair 2 Hair Studio: non-surgical hair replacement services"
         imageFit="contain"
@@ -141,14 +135,20 @@ export default function About() {
             </dl>
           </div>
           <div>
-            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Certifications &amp; partnerships</h2>
+            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">What to expect at a consultation</h2>
             <dl className="mt-8">
-              {credentials.map((c) => (
-                <div key={c.title} className="border-t border-brand-primary/20 py-5">
-                  <dt className="font-display text-2xl text-brand-ink">{c.title}</dt>
-                  <dd className="mt-1 text-brand-stone">{c.description}</dd>
-                </div>
-              ))}
+              <div className="border-t border-brand-primary/20 py-5">
+                <dt className="font-display text-2xl text-brand-ink">Discuss your requirements</dt>
+                <dd className="mt-1 text-brand-stone">Talk through the coverage, style, colour, texture and daily routine you want the solution to fit.</dd>
+              </div>
+              <div className="border-t border-brand-primary/20 py-5">
+                <dt className="font-display text-2xl text-brand-ink">Compare suitable options</dt>
+                <dd className="mt-1 text-brand-stone">Ask to see the available base constructions, hair types and attachment methods that suit the specific system.</dd>
+              </div>
+              <div className="border-t border-brand-primary/20 py-5">
+                <dt className="font-display text-2xl text-brand-ink">Understand care and cost</dt>
+                <dd className="mt-1 text-brand-stone">Request aftercare instructions, recommended servicing and an itemised quote before deciding.</dd>
+              </div>
             </dl>
           </div>
         </Container>
@@ -159,8 +159,7 @@ export default function About() {
           <div className="lg:col-span-5">
             <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Visit our studio</h2>
             <p className="mt-4 text-lg text-brand-stone">
-              A warm, welcoming space where privacy and comfort come first. Come and see why thousands trust us with
-              their hair.
+              Visit either listed studio to discuss hair systems, wigs, extensions, fitting options and aftercare in person.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/booking">Schedule a visit</Button>
