@@ -44,7 +44,7 @@ if (!sitemapResponse.ok) {
 }
 
 const sitemapXml = await sitemapResponse.text();
-const urlList = [...sitemapXml.matchAll(/<loc>\\s*([^<]+?)\\s*<\\/loc>/gi)]
+const urlList = [...sitemapXml.matchAll(new RegExp('<loc>\\\\s*([^<]+?)\\\\s*</loc>', 'gi'))]
   .map((match) => match[1].trim())
   .filter((url, index, all) => {
     const parsed = new URL(url);
