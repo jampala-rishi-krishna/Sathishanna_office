@@ -44,8 +44,8 @@ if (!sitemapResponse.ok) {
 }
 
 const sitemapXml = await sitemapResponse.text();
-const urlList = [...sitemapXml.matchAll(new RegExp('<loc>\\\\s*([^<]+?)\\\\s*</loc>', 'gi'))]
-  .map((match) => match[1].trim())
+const urlList = sitemapXml.split('<loc>').slice(1)
+  .map((entry) => entry.split('</loc>')[0].trim())
   .filter((url, index, all) => {
     const parsed = new URL(url);
     return parsed.protocol === 'https:'
