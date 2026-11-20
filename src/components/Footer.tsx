@@ -79,6 +79,12 @@ export default function Footer() {
                 <a href={b.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block text-brand-goldsoft hover:text-white">
                   Get directions
                 </a>
+                <Link
+                  to={b.name.includes('Khammam') ? '/hair-replacement-khammam/' : '/hair-replacement-hyderabad/'}
+                  className="mt-1 block text-brand-goldsoft hover:text-white"
+                >
+                  Hair replacement services &amp; location details
+                </Link>
               </div>
             ))}
             <div>
