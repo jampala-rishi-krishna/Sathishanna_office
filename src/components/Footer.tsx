@@ -3,6 +3,7 @@ import { Facebook, Instagram, Youtube } from 'lucide-react';
 import { BRANCHES, SITE, whatsappUrl } from '../lib/site';
 
 const explore = [
+  { to: '/hair-replacement-services/', label: 'All hair replacement services' },
   { to: '/men', label: "Men's hair systems" },
   { to: '/women', label: "Women's patches & wigs" },
   { to: '/women#extensions', label: 'Hair extensions' },
@@ -48,9 +49,15 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[0.95rem]">
               {explore.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="hover:text-white">
-                    {l.label}
-                  </Link>
+                  {l.to === '/hair-replacement-services/' ? (
+                    <a href={l.to} className="hover:text-white">
+                      {l.label}
+                    </a>
+                  ) : (
+                    <Link to={l.to} className="hover:text-white">
+                      {l.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

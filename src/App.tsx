@@ -48,7 +48,7 @@ const ROUTE_METADATA: Record<string, { title: string; description: string }> = {
   },
   '/booking': {
     title: 'Book a Hair Consultation | Hair 2 Hair Studio',
-    description: 'Request a consultation with Hair 2 Hair Studio to discuss men's hair systems, women's hair solutions, wigs and extensions.',
+    description: "Request a consultation with Hair 2 Hair Studio to discuss men's hair systems, women's hair solutions, wigs and extensions.",
   },
 };
 
@@ -74,7 +74,7 @@ function RouteMetadata() {
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
-    const canonicalPath = pathname === '/' ? '/' : pathname.replace(/\\/+$/, '');
+    const canonicalPath = pathname === '/' ? '/' : pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
     canonical.href = `https://hair2hair.in${canonicalPath}`;
   }, [pathname]);
 
