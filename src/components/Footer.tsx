@@ -20,6 +20,7 @@ const studio = [
   { to: '/#faq', label: 'Questions' },
   { to: '/contact', label: 'Contact' },
   { to: '/booking', label: 'Book a consultation' },
+  { to: '/editorial-policy/', label: 'Editorial policy & corrections' },
 ];
 
 export default function Footer() {
@@ -52,7 +53,12 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[0.95rem]">
               {explore.map((l) => (
                 <li key={l.to}>
-                  {l.to === '/hair-replacement-services/' ? (
+                  {[
+                    '/hair-replacement-services/',
+                    '/hair-patch-selection-guide/',
+                    '/hair-system-maintenance-guide/',
+                    '/editorial-policy/',
+                  ].includes(l.to) ? (
                     <a href={l.to} className="hover:text-white">
                       {l.label}
                     </a>
@@ -71,9 +77,13 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[0.95rem]">
               {studio.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="hover:text-white">
-                    {l.label}
-                  </Link>
+                  {l.to === '/editorial-policy/' ? (
+                    <a href={l.to} className="hover:text-white">{l.label}</a>
+                  ) : (
+                    <Link to={l.to} className="hover:text-white">
+                      {l.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
