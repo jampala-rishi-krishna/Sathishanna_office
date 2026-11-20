@@ -44,7 +44,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     
-    <!-- Structured data: verified parent brand identity. Branch-level markup will be added after addresses and contact details are confirmed. -->
+    <!-- Structured data: parent brand, current physical branches and visible homepage FAQs. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -53,9 +53,19 @@
           "@type": "Organization",
           "@id": "https://hair2hair.in/#organization",
           "name": "Hair 2 Hair Studio",
-          "alternateName": ["H2H Hair Studio", "Hair2Hair"],
+          "alternateName": [
+            "H2H Hair Studio",
+            "Hair2Hair"
+          ],
           "url": "https://hair2hair.in/",
           "description": "Hair 2 Hair Studio offers men's hair patches, women's hair patches, human hair wigs, hair extensions, hair bonding and weaving, and wholesale hair products. The business has physical branches in Dilsukhnagar, Hyderabad and Khammam, Telangana, India.",
+          "telephone": "+91 81219 99243",
+          "email": "hair2hairstidio2024@gmail.com",
+          "sameAs": [
+            "https://www.instagram.com/h2h_hairstudio_/",
+            "https://www.facebook.com/share/1BoX9WysMB/",
+            "https://youtube.com/source/DNoNgL8tSsY/shorts"
+          ],
           "knowsAbout": [
             "Men's hair patches",
             "Women's hair patches",
@@ -65,6 +75,14 @@
             "Hair weaving",
             "Wholesale hair products",
             "Non-surgical hair replacement"
+          ],
+          "subOrganization": [
+            {
+              "@id": "https://hair2hair.in/#dilsukhnagar"
+            },
+            {
+              "@id": "https://hair2hair.in/#khammam"
+            }
           ]
         },
         {
@@ -75,11 +93,108 @@
           "publisher": {
             "@id": "https://hair2hair.in/#organization"
           },
-          "inLanguage": ["en-IN", "te-IN"]
+          "inLanguage": [
+            "en-IN",
+            "te-IN"
+          ]
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://hair2hair.in/#dilsukhnagar",
+          "name": "Hair 2 Hair Studio - Dilsukhnagar",
+          "url": "https://hair2hair.in/hair-replacement-hyderabad/",
+          "parentOrganization": {
+            "@id": "https://hair2hair.in/#organization"
+          },
+          "telephone": "+91 81219 99243",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1st Floor, beside Sai Baba Temple, Pratap Nagar, Dilsukhnagar",
+            "addressLocality": "Hyderabad",
+            "addressRegion": "Telangana",
+            "postalCode": "500060",
+            "addressCountry": "IN"
+          },
+          "openingHours": "Mo-Su 09:00-19:00",
+          "hasMap": "https://maps.app.goo.gl/w4wrJEm8rgbL19vB7"
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://hair2hair.in/#khammam",
+          "name": "Hair 2 Hair Studio - Khammam",
+          "url": "https://hair2hair.in/hair-replacement-khammam/",
+          "parentOrganization": {
+            "@id": "https://hair2hair.in/#organization"
+          },
+          "telephone": "+91 81219 99243",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "2nd floor, Star complex, Near new bus stand",
+            "addressLocality": "Khammam",
+            "addressRegion": "Telangana",
+            "postalCode": "507002",
+            "addressCountry": "IN"
+          },
+          "openingHours": "Mo-Su 09:00-19:00",
+          "hasMap": "https://maps.app.goo.gl/cHGQB3nsq2i19qLZ9"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://hair2hair.in/#homepage-faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Will people be able to tell I am wearing a hair system?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When matched and fitted properly, the hair colour, density, texture and hairline are matched to your own hair and blended with your existing hair."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I shower, sleep, swim and exercise with a hair system?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The website explains that bonded systems are water-resistant and can be worn while sleeping, showering, working out or wearing a helmet. Ask the studio about care instructions for your specific system."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is hair replacement surgery? Does it hurt?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The hair systems described by Hair 2 Hair Studio are non-surgical options. Attachment methods may include adhesive, tape, weaving or clips depending on the system."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How often does a bonded hair system need servicing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The website says bonded systems are usually serviced every 4–6 weeks. The interval may vary by system and individual needs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is the first consultation free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Hair 2 Hair Studio states that the first consultation is free, allowing customers to view hair bases and types and ask questions without committing to a purchase."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Hair 2 Hair Studio serve customers outside Hyderabad?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Hair 2 Hair Studio lists branches in Dilsukhnagar, Hyderabad and Khammam, Telangana. The website also states that it serves customers across Telangana and offers worldwide wig delivery."
+              }
+            }
+          ]
         }
       ]
     }
-    </script>
+    </script>ipt>
     
   </head>
   <body>
