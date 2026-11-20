@@ -352,7 +352,7 @@ const prompts = [
     "Hair 2 Hair Studio సేవలు ఏమిటి? హైదరాబాద్, ఖమ్మంలో ప్రస్తుతం ఉన్న బ్రాంచ్‌ల వివరాలు తెలుగులో చెప్పండి."
   ]
 ];
-const platforms = ['ChatGPT Search', 'Gemini (with search)', 'Perplexity'];
+const platforms = ['ChatGPT Search', 'Gemini (with search)', 'Perplexity', 'Claude (with web search)'];
 const header = ['run_id','run_date_utc','platform','interface_or_mode','test_locale','prompt_id','intent','language','target_location','prompt','completed','h2h_mentioned','h2h_recommendation','brand_position_1_to_10','official_site_cited','official_page_url','third_party_sources','correct_branch_0_to_2','correct_service_0_to_2','correct_contact_0_to_1','unsupported_or_wrong_claim','competitors_mentioned','evidence_screenshot_or_capture','notes'];
 const runId = process.argv[3] || new Date().toISOString().slice(0,10) + '-baseline';
 const rows = [header];
