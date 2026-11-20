@@ -3,6 +3,7 @@ import { Facebook, Instagram, Youtube } from 'lucide-react';
 import { BRANCHES, SITE, whatsappUrl } from '../lib/site';
 
 const explore = [
+  { to: '/hair-replacement-services/', label: 'All hair replacement services' },
   { to: '/men', label: "Men's hair systems" },
   { to: '/women', label: "Women's patches & wigs" },
   { to: '/women#extensions', label: 'Hair extensions' },
