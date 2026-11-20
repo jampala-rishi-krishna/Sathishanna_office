@@ -1,39 +1,19 @@
-import { Star } from 'lucide-react';
 import { SITE } from '../lib/site';
-
-function Stars({ size = 16 }: { size?: number }) {
-  return (
-    <span className="flex gap-0.5 text-brand-gold" aria-hidden="true">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} size={size} fill="currentColor" strokeWidth={0} />
-      ))}
-    </span>
-  );
-}
 
 export default function GoogleReviews() {
   return (
     <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
       <div className="lg:col-span-5">
-        <div className="flex items-baseline gap-3">
-          <span className="font-display text-7xl leading-none text-white sm:text-8xl">{SITE.rating}</span>
-          <div>
-            <Stars size={18} />
-            <p className="mt-1 text-sm text-white/70">
-              from {SITE.reviewCount} Google reviews
-            </p>
-            <p className="mt-1 text-xs text-white/50">
-              Listing snapshot checked {SITE.reviewCountCheckedAt}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex flex-col justify-center rounded-2xl bg-white/[0.06] p-7 ring-1 ring-white/10 lg:col-span-7">
-        <h3 className="font-display text-2xl text-white">Read customer feedback at its source</h3>
+        <h3 className="font-display text-3xl text-white">Read current customer feedback</h3>
         <p className="mt-3 leading-relaxed text-white/75">
-          Review totals and comments can change. View the current Google Business Profile for the latest
-          customer feedback and dates rather than relying on copied review excerpts.
+          Ratings, review totals and customer comments can change. Read the latest reviews
+          directly on Google rather than relying on a copied count or outdated review snapshot.
+        </p>
+      </div>
+      <div className="flex flex-col justify-center rounded-2xl bg-white/[0.06] p-7 ring-1 ring-white/10 lg:col-span-7">
+        <p className="leading-relaxed text-white/75">
+          See recent customer feedback and the dates it was posted. Please share honest feedback
+          based on your own experience with the studio.
         </p>
         <a
           href={SITE.reviewsUrl}
