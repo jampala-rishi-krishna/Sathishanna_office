@@ -119,7 +119,7 @@ export default function Contact() {
 
           <aside className="lg:col-span-5">
             <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Our studios</h2>
-            <p className="mt-3 text-brand-stone">Open {SITE.hours.toLowerCase()}.</p>
+            <p className="mt-3 text-brand-stone">Opening hours are shown separately for each studio. Contact Khammam to confirm its current hours.</p>
             <div className="mt-8 space-y-8">
               {BRANCHES.map((b) => (
                 <div key={b.name} className="border-t border-brand-line pt-5">
@@ -127,6 +127,7 @@ export default function Contact() {
                     {b.name} <span className="font-sans text-sm font-normal text-brand-stone">{b.note}</span>
                   </h3>
                   <p className="mt-2 text-brand-stone">{b.address}</p>
+                  <p className="mt-1 text-sm text-brand-stone">{b.hours}</p>
                   <a href={b.mapsUrl} target="_blank" rel="noopener noreferrer" className="link-underline mt-3 inline-block font-semibold text-brand-primary">
                     Get directions
                   </a>
