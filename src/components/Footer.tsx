@@ -49,9 +49,15 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[0.95rem]">
               {explore.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="hover:text-white">
-                    {l.label}
-                  </Link>
+                  {l.to === '/hair-replacement-services/' ? (
+                    <a href={l.to} className="hover:text-white">
+                      {l.label}
+                    </a>
+                  ) : (
+                    <Link to={l.to} className="hover:text-white">
+                      {l.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
