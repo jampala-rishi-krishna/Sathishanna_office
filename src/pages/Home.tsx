@@ -545,14 +545,15 @@ export default function Home() {
                 <div key={b.name} className="border-t border-brand-primary/20 pt-5">
                   <h3 className="text-2xl text-brand-ink">{b.name}</h3>
                   <p className="mt-1 text-brand-stone">{b.address}</p>
-                  <a href={b.mapsUrl} target="_blank" rel="noopener noreferrer" className="link-underline mt-2 inline-block font-semibold text-brand-primary">
+                  <p className="mt-1 text-sm text-brand-stone">{b.hours}</p>
+                  <a href={b.mapsUrl target="_blank" rel="noopener noreferrer" className="link-underline mt-2 inline-block font-semibold text-brand-primary">
                     Get directions
                   </a>
                 </div>
               ))}
               <p className="border-t border-brand-primary/20 pt-5 text-brand-stone">
-                Open {SITE.hours.toLowerCase()} ·{' '}
-                <a href={SITE.phoneHref} className="font-semibold text-brand-ink">
+                Dilsukhnagar: 7:00 AM–7:00 PM daily · Khammam: contact the studio to confirm current hours ·{' '}
+                  <a href={SITE.phoneHref} className="font-semibold text-brand-ink">
                   {SITE.phoneDisplay}
                 </a>
               </p>
