@@ -24,6 +24,12 @@ jobs:
         run: npm ci
       - name: Validate GEO metadata and crawlability
         run: npm run validate:geo
+      - name: Generate AI visibility and directory audit templates
+        run: |
+          npm run benchmark:geo -- /tmp/h2h-geo-visibility-baseline.csv
+          npm run citations:geo -- /tmp/h2h-directory-citation-audit.csv
+          test -s /tmp/h2h-geo-visibility-baseline.csv
+          test -s /tmp/h2h-directory-citation-audit.csv
       - name: Type-check
         run: npm run typecheck
       - name: Lint
