@@ -48,7 +48,7 @@ const ROUTE_METADATA: Record<string, { title: string; description: string }> = {
   },
   '/booking': {
     title: 'Book a Hair Consultation | Hair 2 Hair Studio',
-    description: 'Request a consultation with Hair 2 Hair Studio to discuss men's hair systems, women's hair solutions, wigs and extensions.',
+    description: "Request a consultation with Hair 2 Hair Studio to discuss men's hair systems, women's hair solutions, wigs and extensions.",
   },
 };
 
