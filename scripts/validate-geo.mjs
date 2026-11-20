@@ -13,6 +13,7 @@ const htmlFiles = [
   'public/hair-replacement-hyderabad/index.html',
   'public/hair-replacement-khammam/index.html',
   'public/hair-replacement-services/index.html',
+  'public/hair-patch-telugu/index.html',
 ];
 
 for (const file of htmlFiles) {
@@ -40,6 +41,7 @@ for (const url of [
   'https://hair2hair.in/hair-replacement-hyderabad/',
   'https://hair2hair.in/hair-replacement-khammam/',
   'https://hair2hair.in/hair-replacement-services/',
+  'https://hair2hair.in/hair-patch-telugu/',
 ]) assert(sitemap.includes(`<loc>${url}</loc>`), `Missing sitemap URL: ${url}`);
 
 const llms = read('public/llms.txt');
