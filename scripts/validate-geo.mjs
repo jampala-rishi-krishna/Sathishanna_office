@@ -14,6 +14,9 @@ const htmlFiles = [
   'public/hair-replacement-khammam/index.html',
   'public/hair-replacement-services/index.html',
   'public/hair-patch-telugu/index.html',
+  'public/hair-patch-selection-guide/index.html',
+  'public/hair-system-maintenance-guide/index.html',
+  'public/editorial-policy/index.html',
 ];
 
 for (const file of htmlFiles) {
@@ -42,14 +45,40 @@ for (const url of [
   'https://hair2hair.in/hair-replacement-khammam/',
   'https://hair2hair.in/hair-replacement-services/',
   'https://hair2hair.in/hair-patch-telugu/',
-]) assert(sitemap.includes(`<loc>${url}</loc>`), `Missing sitemap URL: ${url}`);
+  'https://hair2hair.in/hair-patch-selection-guide/',
+  'https://hair2hair.in/hair-system-maintenance-guide/',
+  'https://hair2hair.in/editorial-policy/',
+]) {
+  assert(sitemap.includes(`<loc>${url}</loc>`), `Missing sitemap URL: ${url}`);
+}
 
 const llms = read('public/llms.txt');
 assert(llms.includes('Dilsukhnagar, Hyderabad') && llms.includes('Khammam'), 'llms.txt must list both current branches');
 assert(llms.includes('planned expansion') && llms.includes('Kukatpally'), 'llms.txt must distinguish planned Kukatpally expansion');
+for (const url of [
+  'https://hair2hair.in/hair-patch-selection-guide/',
+  'https://hair2hair.in/hair-system-maintenance-guide/',
+  'https://hair2hair.in/editorial-policy/',
+]) assert(llms.includes(url), `llms.txt is missing ${url}`);
 
 const robots = read('public/robots.txt');
 assert(/User-agent: OAI-SearchBot[\s\S]*?Allow: \/[\s\S]*?Sitemap:/m.test(robots), 'robots.txt must allow OAI-SearchBot and declare the sitemap');
 assert(existsSync(join(root, 'public/llms.txt')), 'public/llms.txt must exist');
 
-console.log('GEO validation passed: JSON-LD, canonicals, sitemap, llms.txt and crawler rules.');
+for (const file of [
+  'public/hair-patch-selection-guide/index.html',
+  'public/hair-system-maintenance-guide/index.html',
+]) {
+  const html = read(file);
+  assert(html.includes('Frequently asked questions'), `Missing visible FAQ section: ${file}`);
+  const faqBlock = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert(faqBlock, `Missing JSON-LD: ${file}`);
+  const jsonLd = JSON.parse(faqBlock[1]);
+  assert(jsonLd['@graph'].some((item) => item['@type'] === 'FAQPage'), `Missing FAQ schema: ${file}`);
+}
+
+assert(existsSync(join(root, 'docs/phase-5-external-authority.md')), 'Missing Phase 5 authority playbook');
+assert(existsSync(join(root, 'docs/phase-5-directory-citation-audit-template.csv')), 'Missing directory citation audit template');
+assert(existsSync(join(root, 'scripts/create-geo-citation-audit.mjs')), 'Missing citation audit generator');
+
+console.log('GEO validation passed: JSON-LD, canonicals, sitemap, llms.txt, crawler rules and Phase 5 authority assets.');

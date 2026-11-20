@@ -76,7 +76,7 @@ const benefits = [
 ];
 
 const whyChooseUs = [
-  { title: 'Expert team', description: '15+ years of experience in hair solutions' },
+  { title: 'Expert team', description: 'Practical guidance on hair replacement options and aftercare' },
   { title: 'Premium quality', description: 'Only the finest materials and craftsmanship' },
   { title: 'Personalised solutions', description: 'Custom-tailored to your unique needs' },
   { title: 'Aftercare support', description: 'Comprehensive maintenance guidance' },

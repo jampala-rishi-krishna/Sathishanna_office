@@ -4,6 +4,9 @@ import { BRANCHES, SITE, whatsappUrl } from '../lib/site';
 
 const explore = [
   { to: '/hair-replacement-services/', label: 'All hair replacement services' },
+  { to: '/hair-patch-selection-guide/', label: 'Hair patch selection guide' },
+  { to: '/hair-system-maintenance-guide/', label: 'Hair system care guide' },
+  { to: '/editorial-policy/', label: 'Editorial policy & corrections' },
   { to: '/men', label: "Men's hair systems" },
   { to: '/women', label: "Women's patches & wigs" },
   { to: '/women#extensions', label: 'Hair extensions' },
@@ -17,6 +20,7 @@ const studio = [
   { to: '/#faq', label: 'Questions' },
   { to: '/contact', label: 'Contact' },
   { to: '/booking', label: 'Book a consultation' },
+  { to: '/editorial-policy/', label: 'Editorial policy & corrections' },
 ];
 
 export default function Footer() {
@@ -28,8 +32,7 @@ export default function Footer() {
             <p className="font-display text-3xl text-white">Hair 2 Hair Studio</p>
             <p className="mt-1 font-display italic text-brand-goldsoft">{SITE.tagline}</p>
             <p className="mt-5 max-w-xs text-[0.95rem] leading-relaxed">
-              Non-surgical hair replacement, wigs and extensions for men and women, fitted by hand in Hyderabad and
-              Khammam for over 15 years.
+              Men's and women's hair replacement options, wigs and extensions at our listed studios in Hyderabad and Khammam.
             </p>
             <div className="mt-6 flex gap-4">
               <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white">
@@ -49,7 +52,12 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[0.95rem]">
               {explore.map((l) => (
                 <li key={l.to}>
-                  {l.to === '/hair-replacement-services/' ? (
+                  {[
+                    '/hair-replacement-services/',
+                    '/hair-patch-selection-guide/',
+                    '/hair-system-maintenance-guide/',
+                    '/editorial-policy/',
+                  ].includes(l.to) ? (
                     <a href={l.to} className="hover:text-white">
                       {l.label}
                     </a>
@@ -68,9 +76,13 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[0.95rem]">
               {studio.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="hover:text-white">
-                    {l.label}
-                  </Link>
+                  {l.to === '/editorial-policy/' ? (
+                    <a href={l.to} className="hover:text-white">{l.label}</a>
+                  ) : (
+                    <Link to={l.to} className="hover:text-white">
+                      {l.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
