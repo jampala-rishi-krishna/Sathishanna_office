@@ -11,8 +11,9 @@ Use the official website as the source of truth until the owner confirms an upda
 | Brand | Hair 2 Hair Studio | Confirm exact storefront/signage spelling |
 | Phone | +91 81219 99243 | Confirm call and WhatsApp routing |
 | Email | hair2hairstidio2024@gmail.com | Confirm mailbox is monitored |
-| Hours | Every day, 9:00 AM–7:00 PM | Confirm holiday exceptions |
-| Hyderabad | 1st Floor, beside Sai Baba Temple, Pratap Nagar, Dilsukhnagar, Hyderabad, Telangana 500060 | Confirm map pin and entrance wording |
+| Dilsukhnagar hours | Every day, 7:00 AM–7:00 PM | Confirm holiday exceptions |
+| Khammam hours | Not published until owner confirms | Confirm actual branch hours before publishing |
+| Dilsukhnagar, Hyderabad | Shop No. 90, 1st Floor, beside Sai Baba Temple, Gaddiannaram, Dilsukhnagar, Hyderabad, Telangana 500060 | Matches owner-managed Google profile; confirm exact signage and map pin |
 | Khammam | 2nd floor, Star complex, Near new bus stand, Khammam, Telangana 507002 | Confirm map pin, floor and spelling |
 | Planned location | Kukatpally is planned only | Do not publish as an operating branch |
 
