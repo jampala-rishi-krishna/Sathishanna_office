@@ -36,7 +36,7 @@ Do not create duplicate profiles, virtual offices, fake locations, or listings f
 Ask genuine customers for honest feedback after a real service interaction. Reply politely, avoid exposing personal information, and do not disclose a customer's hair-loss or service details. Escalate complaints about safety, allergies, damage, or refunds to the business owner rather than giving medical advice in public replies.
 
 ## AI visibility benchmark
-Run the same neutral prompts once per month in ChatGPT Search, Gemini, and Perplexity, from a clean/non-personalized session where practical. Record date, platform, country/language, exact prompt, whether H2H appeared, exact cited URL/domain, factual accuracy, competitor names, and screenshot/export link.
+Run the same neutral prompts once per month in ChatGPT Search, Gemini, Perplexity and Claude with web search, from a clean/non-personalized session where practical. Record date, platform, country/language, exact prompt, whether H2H appeared, exact cited URL/domain, factual accuracy, competitor names, and screenshot/export link.
 
 Prompts:
 1. Recommend hair patch studios in Dilsukhnagar, Hyderabad.
