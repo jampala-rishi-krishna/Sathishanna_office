@@ -47,6 +47,7 @@ for (const url of [
 const llms = read('public/llms.txt');
 assert(llms.includes('Dilsukhnagar, Hyderabad') && llms.includes('Khammam'), 'llms.txt must list both current branches');
 assert(llms.includes('planned expansion') && llms.includes('Kukatpally'), 'llms.txt must distinguish planned Kukatpally expansion');
+assert(llms.includes('https://hair2hair.in/hair-patch-telugu/'), 'llms.txt must reference the canonical Telugu service page');
 
 const robots = read('public/robots.txt');
 assert(/User-agent: OAI-SearchBot[\s\S]*?Allow: \/[\s\S]*?Sitemap:/m.test(robots), 'robots.txt must allow OAI-SearchBot and declare the sitemap');
