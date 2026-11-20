@@ -25,12 +25,13 @@ Justdial public results also show an H2H listing at Flat 201, near RK Bar and Re
 
 ## 2. AI-assistant benchmark
 
-The benchmark generator creates **50 prompts × 3 platforms = 150 test rows**:
+The benchmark generator creates **50 prompts × 4 platforms = 200 test rows**:
 - ChatGPT Search
 - Gemini with search
 - Perplexity
+- Claude with web search enabled
 
-The prompt set covers non-branded discovery, services, local competition, brand facts, branch accuracy and Telugu. It includes Kukatpally queries to ensure assistants do not hallucinate a branch that is only planned.
+The prompt set covers non-branded discovery, services, local competition, brand facts, branch accuracy and Telugu. It includes Kukatpally queries to ensure assistants do not hallucinate a branch that is only planned. The four platforms are ChatGPT Search, Gemini with search, Perplexity and Claude with web search.
 
 Run:
 ```bash
@@ -46,7 +47,7 @@ npm run benchmark:geo -- h2h-ai-visibility-2026-11.csv 2026-11-baseline
 ### Test controls
 1. Use a clean, non-personalized session where possible; record sign-in state and platform mode.
 2. Test the Indian/Telangana market consistently. The operator may be physically outside India; record the visible location/context setting instead of assuming the platform is using Hyderabad.
-3. Use equivalent search-enabled modes on each platform and record the exact mode/interface label, date and locale.
+3. Use equivalent search-enabled modes on each platform and record the exact mode/interface label, date and locale. For Claude, explicitly enable Web Search (or record the experience's automatic search mode) and keep it consistent across the run.
 4. Run the same prompts on all platforms without rewriting them to favour H2H.
 5. Save answer text or screenshots, capture cited URLs, and record an explicit "no" for H2H mention when a completed response does not mention it.
 6. Do not score an answer as poor only because it recommends a competitor. A correct, source-supported recommendation can be better than an inaccurate H2H mention.
