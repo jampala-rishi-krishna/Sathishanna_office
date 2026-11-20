@@ -74,7 +74,8 @@ function RouteMetadata() {
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
-    canonical.href = `https://hair2hair.in${pathname === '/' ? '/' : pathname}`;
+    const canonicalPath = pathname === '/' ? '/' : pathname.replace(/\\/+$/, '');
+    canonical.href = `https://hair2hair.in${canonicalPath}`;
   }, [pathname]);
 
   return null;
