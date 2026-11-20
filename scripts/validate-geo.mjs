@@ -53,8 +53,8 @@ for (const url of [
 }
 
 const homepageSource = read('src/pages/Home.tsx');
-for (const unsupportedClaim of [/15\\+ years/i, /over 15 years/i, /1000\\+/i, /35% a year/i, /6–12 months/i]) {
-  assert(!unsupportedClaim.test(homepageSource), `Homepage must not reintroduce unsupported claim: ${unsupportedClaim}`);
+for (const unsupportedClaim of ['15+ years', 'over 15 years', '1000+', '35% a year', '6–12 months']) {
+  assert(!homepageSource.includes(unsupportedClaim), `Homepage must not reintroduce unsupported claim: ${unsupportedClaim}`);
 }
 
 const llms = read('public/llms.txt');
