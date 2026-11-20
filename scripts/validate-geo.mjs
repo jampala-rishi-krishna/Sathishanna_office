@@ -67,7 +67,7 @@ for (const route of commercialRoutes) {
   assert(html.includes(`<link rel="canonical" href="${route.url}">`), `Incorrect canonical URL: ${route.file}`);
   assert(html.includes(`<title>${route.name}`) || html.includes(route.name), `Missing route-specific service content: ${route.file}`);
   assert(sitemap.includes(`<loc>${route.url}</loc>`), `Missing commercial URL in sitemap: ${route.url}`);
-  const schemaBlock = html.match(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/);
+  const schemaBlock = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   assert(schemaBlock, `Missing JSON-LD: ${route.file}`);
   const schema = JSON.parse(schemaBlock[1]);
   assert(schema['@graph'].some((item) => item['@type'] === 'Service'), `Missing Service schema: ${route.file}`);
