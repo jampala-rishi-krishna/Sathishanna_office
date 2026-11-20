@@ -12,8 +12,9 @@ This is an internal working guide, not a public ranking or independent endorseme
 | Website | https://hair2hair.in/ | Canonical domain |
 | Phone | +91 81219 99243 | Verify routing to both branches |
 | Email | hair2hairstidio2024@gmail.com | Verify monitored inbox |
-| Hours | Every day, 9:00 AM–7:00 PM | Confirm real branch hours and holidays |
-| Dilsukhnagar | 1st Floor, beside Sai Baba Temple, Pratap Nagar, Dilsukhnagar, Hyderabad, Telangana 500060 | Verify pin, signage and customer access |
+| Dilsukhnagar hours | Every day, 7:00 AM–7:00 PM | Confirm holiday exceptions |
+| Khammam hours | Not published until owner confirms | Do not infer 24-hour or 8 AM–10 PM hours from third-party records |
+| Dilsukhnagar | Shop No. 90, 1st Floor, beside Sai Baba Temple, Gaddiannaram, Dilsukhnagar, Hyderabad, Telangana 500060 | Owner-managed Google profile; check exact map pin and entrance spelling |
 | Khammam | 2nd floor, Star complex, Near new bus stand, Khammam, Telangana 507002 | Verify pin, signage and customer access |
 | Kukatpally | Planned expansion only | Do not create a current branch listing or imply it is open |
 
@@ -23,7 +24,7 @@ Local business discovery on 20 November 2026 returned the following examples. Th
 
 | Business | Area | Discovery snapshot | Relevance |
 |---|---|---|---|
-| H2H Hair Patch Fixing Studio | Dilsukhnagar / Gaddiannaram, Hyderabad | 4.9 rating; 218 reviews; phone +91 81219 99243 | Matches H2H's supplied Dilsukhnagar location and phone; verify the displayed business name matches storefront signage |
+| H2H Hair Patch Fixing Studio | Dilsukhnagar / Gaddiannaram, Hyderabad | Owner screenshot, 20 Nov 2026: 4.9 rating; 239 Google reviews; phone +91 81219 99243; 7 AM–7 PM | Owner-managed profile; do not copy the changing review total into the website |
 | RK Hair Studio || Khammam | NTR Circle, New Busstand Road, beside SBI Bank, Khammam | 5.0 rating; 172 reviews | Direct local hair-replacement competitor |
 | American Hair Club | Madhapur, Hyderabad | 4.9 rating; 867 reviews | Broader hair replacement and extension competitor |
 | QHT Hair Transplant Clinic | Banjara Hills, Hyderabad | 4.9 rating; 1,627 reviews | Adjacent clinical/transplant and hair-restoration provider |
@@ -32,6 +33,13 @@ Local business discovery on 20 November 2026 returned the following examples. Th
 **Interpretation:** review counts alone do not establish quality, customer fit or ranking. Do not copy competitor claims, reviews or wording. H2H can differentiate with accurate branch details, original consented customer evidence, clear service descriptions, transparent quote inclusions, maintenance instructions and reliable follow-up.
 
 ## 3. External profile audit
+
+### New public directory observations — 20 November 2026
+- Justdial shows an H2H/“Hair 2 Hair Studio” result in Dilsukhnagar at Sai Baba Temple Road, 4.9 / 89 ratings in the retrieved category page. It appears in a broad hair-fixing list, while the separate Dilsukhnagar hair-patch-dealer list's visible top five did not include H2H. Recheck the exact profile identity and category with the owner before changing categories: https://www.justdial.com/Hyderabad/Hair-Fixing-Services-in-Dilsukh-Nagar/nct-11980776 and https://www.justdial.com/Hyderabad/Hair-Patch-Dealers-in-Dilsukh-Nagar/nct-11307148
+- Justdial has an H2H Hair 2 Hair Studio listing at Flat 201, near RK Bar and Restaurant, Star Complex, Khammam City; its result showed 5.0 / 1,169 ratings and 8 AM–10 PM. The postal code in the result is 507001, which differs from the website's 507002. Confirm the actual map pin, phone and hours before updating it: https://www.justdial.com/Khammam/H2h-Hair-2-Hair-Studio-Near-Rk-Bar-and-Restaurant-Khammam-City/9999P8742-8742-230224121500-B2V7_BZDET
+- A separate “Hair 2 Hair Studio” result in Balaji Nagar, Khammam showed 4.9 / 77 ratings and 8 AM–10 PM. Treat it as a separate candidate record until the owner verifies the place ID/map pin; do not merge it with the Star Complex listing: https://www.justdial.com/Khammam/Wig-Dealers/nct-10538931
+- The public Google Maps result at Raparthi Nagar with phone +91 85238 33028 remains an unresolved identity match. Do not edit/merge it unless the owner confirms that it is the business's own profile.
+
 
 Audit existing profiles before creating anything new. Record public URL, account owner, claim/verification status, exact name, phone, address, hours, category, website, services, photos and last-checked date.
 
