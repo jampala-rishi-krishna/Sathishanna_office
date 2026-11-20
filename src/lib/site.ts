@@ -6,7 +6,8 @@ export const SITE = {
   email: 'hair2hairstidio2024@gmail.com',
   hours: 'Every day, 9:00 AM – 7:00 PM',
   rating: '4.9',
-  reviewCount: 86,
+  reviewCount: 218,
+  reviewCountCheckedAt: '20 November 2026',
   reviewsUrl: 'https://share.google/r8DPpoClZQkq3dS7W',
   social: {
     instagram: 'https://www.instagram.com/h2h_hairstudio_/?__pwa=1',
