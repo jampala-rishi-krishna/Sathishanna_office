@@ -12,6 +12,27 @@
 - Search result snippets can lag a deployment or retain legacy text. After this branch is merged, the production site must be checked directly and Google Search Console URL Inspection used to request recrawling of the homepage. A GitHub merge/build alone does not prove that Cloudflare Pages has deployed the changes.
 - A competitor discovery snapshot returned **RK Hair Studio** at NTR Circle, New Bus Stand Road, beside SBI Bank, Bank Colony, Khammam 507001 (public business result snapshot: 5.0 rating / 172 reviews; phone +91 99663 01113). Its own site also lists its Khammam branch. Another Hyderabad result returned **American Hair Club** in Madhapur as a hair replacement service. These are discovery leads for competitive monitoring, not audited quality rankings. Do not copy competitor claims or review text.
 
+### Current local competitor observations — 20 November 2026
+
+These are structured local-search snapshots, not a universal ranking. Ratings and review totals change and do not prove service quality.
+
+| Target area | Business | Public snapshot | What it means for H2H |
+|---|---|---|---|
+| Dilsukhnagar | H2H Hair Patch Fixing Studio | 4.9 / 218 reviews; address Shop No. 90, 1st Floor, H2h Hair Studio, Temple beside Sai Baba, Gaddiannaram; phone +91 81219 99243; category hair replacement service | H2H has real local relevance. An owner screenshot on the same date showed 239 reviews, so the count conflicts across surfaces; do not publish a static total. |
+| Dilsukhnagar | RK Hair Studio | 4.8 / 485 reviews; Dilsukhnagar Main Road, VR Colony, Chaitanyapuri; phone +91 88976 41507; hair replacement service | A nearby direct competitor with substantially more visible reviews in this snapshot. |
+| Dilsukhnagar | Professional Hair Centre | No rating/review count returned; KK Arcade, opposite Konark Theatre, Gaddiannaram; phone +91 99633 97834 | Nearby direct hair-replacement service. |
+| Kukatpally | Sudheer Hair Studio | 4.8 / 420 reviews; Pillar 808, Sai Vikram Towers, near Kukatpally Metro; phone +91 99128 80180; hair replacement, extensions and wig shop categories | An established local competitor; H2H must not imply it has a Kukatpally branch. |
+| Kukatpally / KPHB | Thaswika Hair Extensions | 4.9 / 350 reviews; KPHB, Kukatpally; phone +91 99637 77514; hair extensions supplier | Relevant for extensions and some hair-patch discovery, but not identical to a dedicated hair-replacement studio. |
+| Kukatpally | Wig Wonders Hair Studio | Its website advertises branches in Kukatpally and Secunderabad | A direct local competitor with a physical Kukatpally presence. Source: https://www.wigwondershairstudio.com/ |
+| Khammam | RK Hair Studio | 5.0 / 172 reviews; NTR Circle, New Busstand Road, beside SBI Bank; phone +91 99663 01113; hair replacement service | Direct local competitor with a strong visible review profile. |
+| Khammam | VCare Hair And Skin Clinic | 4.8 / 423 reviews; Khammam–Yellandu Road, Bank Colony; phone +91 73958 24242; clinic and hair-replacement categories | Adjacent clinical provider; distinguish medical treatments from non-surgical systems when comparing. |
+
+**Practical implications**
+- Dilsukhnagar: strengthen the existing H2H Google profile's completeness, categories, current photos, appointment/contact details and external citations. Do not buy reviews or add keywords to the business name.
+- Kukatpally: H2H has no confirmed operating branch there. The truthful strategy is to explain current branch locations and confirm whether enquiries can be served from a current studio; a fake address or false “near me” claim would weaken trust.
+- Khammam: verify/claim the correct Star Complex Justdial and Google records and reconcile address, postcode, phone and hours before attempting merges.
+- Across all areas: publish real fitter-led explanations, product comparisons and consented customer experiences. Avoid city-page duplication or keyword-stuffed service-area claims.
+
 ### Sources used for this snapshot
 - H2H official homepage and current location snippets: https://hair2hair.in/
 - H2H Hyderabad location page: https://hair2hair.in/hair-replacement-hyderabad/
