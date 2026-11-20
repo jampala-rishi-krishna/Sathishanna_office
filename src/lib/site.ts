@@ -23,7 +23,7 @@ export const BRANCHES = [
       encodeURIComponent('Hair 2 Hair Studio, Shop No. 90, 1st Floor, beside Sai Baba Temple, Gaddiannaram, Dilsukhnagar, Hyderabad, Telangana 500060'),
     embedUrl:
       'https://www.google.com/maps?output=embed&q=' +
-      encodeURIComponent('1st Floor, beside Sai Baba Temple, Pratap Nagar, Dilsukhnagar, Hyderabad, Telangana 500060'),
+      encodeURIComponent('Shop No. 90, 1st Floor, beside Sai Baba Temple, Gaddiannaram, Dilsukhnagar, Hyderabad, Telangana 500060'),
   },
   {
     name: 'Khammam',
