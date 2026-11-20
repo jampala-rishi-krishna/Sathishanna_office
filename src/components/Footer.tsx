@@ -32,8 +32,7 @@ export default function Footer() {
             <p className="font-display text-3xl text-white">Hair 2 Hair Studio</p>
             <p className="mt-1 font-display italic text-brand-goldsoft">{SITE.tagline}</p>
             <p className="mt-5 max-w-xs text-[0.95rem] leading-relaxed">
-              Non-surgical hair replacement, wigs and extensions for men and women, fitted by hand in Hyderabad and
-              Khammam for over 15 years.
+              Men's and women's hair replacement options, wigs and extensions at our listed studios in Hyderabad and Khammam.
             </p>
             <div className="mt-6 flex gap-4">
               <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white">
