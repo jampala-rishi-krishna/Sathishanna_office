@@ -17,6 +17,10 @@ const htmlFiles = [
   'public/hair-patch-selection-guide/index.html',
   'public/hair-system-maintenance-guide/index.html',
   'public/editorial-policy/index.html',
+  'public/men.html',
+  'public/women.html',
+  'public/services.html',
+  'public/wholesale.html',
 ];
 
 for (const file of htmlFiles) {
@@ -50,6 +54,26 @@ for (const url of [
   'https://hair2hair.in/editorial-policy/',
 ]) {
   assert(sitemap.includes(`<loc>${url}</loc>`), `Missing sitemap URL: ${url}`);
+}
+
+const commercialRoutes = [
+  { file: 'public/men.html', url: 'https://hair2hair.in/men', name: "Men's hair patches and hair systems" },
+  { file: 'public/women.html', url: 'https://hair2hair.in/women', name: "Women's hair patches, toppers and wigs" },
+  { file: 'public/services.html', url: 'https://hair2hair.in/services', name: 'Hair bonding, weaving and extension services' },
+  { file: 'public/wholesale.html', url: 'https://hair2hair.in/wholesale', name: 'Wholesale hair products for salons and trade buyers' },
+];
+for (const route of commercialRoutes) {
+  const html = read(route.file);
+  assert(html.includes(`<link rel="canonical" href="${route.url}">`), `Incorrect canonical URL: ${route.file}`);
+  assert(html.includes(`<title>${route.name}`) || html.includes(route.name), `Missing route-specific service content: ${route.file}`);
+  assert(sitemap.includes(`<loc>${route.url}</loc>`), `Missing commercial URL in sitemap: ${route.url}`);
+  const schemaBlock = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert(schemaBlock, `Missing JSON-LD: ${route.file}`);
+  const schema = JSON.parse(schemaBlock[1]);
+  assert(schema['@graph'].some((item) => item['@type'] === 'Service'), `Missing Service schema: ${route.file}`);
+  assert(schema['@graph'].some((item) => item['@type'] === 'FAQPage'), `Missing FAQPage schema: ${route.file}`);
+  assert(html.includes('Frequently asked questions'), `Missing visible FAQ content: ${route.file}`);
+  assert(html.includes('wa.me/918121999243') && html.includes('/booking'), `Missing enquiry paths: ${route.file}`);
 }
 
 const homepageSource = read('src/pages/Home.tsx');
