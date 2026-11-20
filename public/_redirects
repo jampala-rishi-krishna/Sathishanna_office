@@ -1,0 +1,10 @@
+# Keep only the React Router routes that genuinely need the SPA entry point.
+# Static HTML routes and files are served directly; unknown paths receive 404.html.
+/about /index.html 200
+/about/ /index.html 200
+/gallery /index.html 200
+/gallery/ /index.html 200
+/contact /index.html 200
+/contact/ /index.html 200
+/booking /index.html 200
+/booking/ /index.html 200
