@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "validate:geo": "node scripts/validate-geo.mjs",
-    "benchmark:geo": "node scripts/create-geo-visibility-benchmark.mjs"
+    "benchmark:geo": "node scripts/create-geo-visibility-benchmark.mjs",
+    "citations:geo": "node scripts/create-geo-citation-audit.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
