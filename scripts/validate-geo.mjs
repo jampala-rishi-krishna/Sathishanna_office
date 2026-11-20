@@ -14,6 +14,9 @@ const htmlFiles = [
   'public/hair-replacement-khammam/index.html',
   'public/hair-replacement-services/index.html',
   'public/hair-patch-telugu/index.html',
+  'public/hair-patch-selection-guide/index.html',
+  'public/hair-system-maintenance-guide/index.html',
+  'public/editorial-policy/index.html',
 ];
 
 for (const file of htmlFiles) {
@@ -42,6 +45,9 @@ for (const url of [
   'https://hair2hair.in/hair-replacement-khammam/',
   'https://hair2hair.in/hair-replacement-services/',
   'https://hair2hair.in/hair-patch-telugu/',
+  'https://hair2hair.in/hair-patch-selection-guide/',
+  'https://hair2hair.in/hair-system-maintenance-guide/',
+  'https://hair2hair.in/editorial-policy/',
 ]) assert(sitemap.includes(`<loc>${url}</loc>`), `Missing sitemap URL: ${url}`);
 
 const llms = read('public/llms.txt');
