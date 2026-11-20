@@ -20,7 +20,7 @@ A modern, responsive website for Hair 2 Hair Studio - Non-Surgical Hair Replacem
 - **Email**: hair2hairstidio2024@gmail.com
 
 ### Dilshuknagar, Hyderabad Branch
-- **Address**: 1st Floor, Hair 2 Hair studio - Non Surgical Hair Replacement Services, beside Sai Baba Temple, Dilsukhnagar, Hyderabad, Telangana 500060
+- **Address**: Shop No. 90, 1st Floor, H2H Hair Studio, beside Sai Baba Temple, Gaddiannaram, Dilsukhnagar, Hyderabad, Telangana 500060
 - **Google Maps**: [Get Directions](https://www.google.com/maps/dir/17.598009,79.992184/1st+Floor,+Hair+2+Hair+studio+-+Non+Surgical+Hair+Replacement+Services,+beside+Sai+Baba+Temple,+Dilsukhnagar,+Hyderabad,+Telangana+500060/@17.5646473,77.9319743,8z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bcb9937bba96ce7:0xb89467620dad619d!2m2!1d78.5315941!2d17.3684658?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D)
 
 ## Tech Stack
