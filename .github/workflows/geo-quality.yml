@@ -42,5 +42,5 @@ jobs:
           test -s dist/404.html
           test -s dist/_redirects
           grep -q 'not_found_handling.*404-page' wrangler.jsonc
-          grep -q '^/contact /index.html 200 dist/_redirects
-          grep -q '^/booking /index.html 200 dist/_redirects
+          grep -Fq '/contact /index.html 200' dist/_redirects
+          grep -Fq '/booking /index.html 200' dist/_redirects
