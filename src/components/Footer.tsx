@@ -4,6 +4,9 @@ import { BRANCHES, SITE, whatsappUrl } from '../lib/site';
 
 const explore = [
   { to: '/hair-replacement-services/', label: 'All hair replacement services' },
+  { to: '/hair-patch-selection-guide/', label: 'Hair patch selection guide' },
+  { to: '/hair-system-maintenance-guide/', label: 'Hair system care guide' },
+  { to: '/editorial-policy/', label: 'Editorial policy & corrections' },
   { to: '/men', label: "Men's hair systems" },
   { to: '/women', label: "Women's patches & wigs" },
   { to: '/women#extensions', label: 'Hair extensions' },
