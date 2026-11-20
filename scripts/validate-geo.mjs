@@ -58,9 +58,9 @@ for (const url of [
 
 const commercialRoutes = [
   { file: 'public/men.html', url: 'https://hair2hair.in/men', name: "Men's hair patches and hair systems" },
-  { file: 'public/women.html', url: 'https://hair2hair.in/women', name: "Women's hair patches, toppers and wigs" },
-  { file: 'public/services.html', url: 'https://hair2hair.in/services', name: 'Hair bonding, weaving and extension services' },
-  { file: 'public/wholesale.html', url: 'https://hair2hair.in/wholesale', name: 'Wholesale hair products for salons and trade buyers' },
+  { file: 'public/women.html', url: 'https://hair2hair.in/women', name: "Women's Hair Patches, Toppers &amp; Human Hair Wigs in Hyderabad and Khammam | H2H Hair Studio" },
+  { file: 'public/services.html', url: 'https://hair2hair.in/services', name: 'Hair Bonding, Weaving &amp; Extensions in Hyderabad and Khammam | H2H Hair Studio' },
+  { file: 'public/wholesale.html', url: 'https://hair2hair.in/wholesale', name: 'Wholesale Hair Patches, Wigs &amp; Systems in Hyderabad | H2H Hair Studio' },
 ];
 for (const route of commercialRoutes) {
   const html = read(route.file);
@@ -75,6 +75,32 @@ for (const route of commercialRoutes) {
   assert(html.includes('Frequently asked questions'), `Missing visible FAQ content: ${route.file}`);
   assert(html.includes('wa.me/918121999243') && html.includes('/booking'), `Missing enquiry paths: ${route.file}`);
 }
+
+
+const branchData = read('src/lib/site.ts');
+assert(branchData.includes("Every day, 7:00 AM–7:00 PM"), 'Dilsukhnagar hours must match the owner-managed Google profile');
+assert(branchData.includes('Shop No. 90, 1st Floor'), 'Dilsukhnagar canonical address must include Shop No. 90');
+assert(branchData.includes('Contact the studio to confirm current hours'), 'Khammam hours must remain unpublished until owner confirmation');
+assert(!branchData.includes('reviewCount') && !branchData.includes("hours: 'Every day, 9:"), 'Do not reintroduce stale site-wide hours or copied review counts');
+
+const homeSchema = homepage['@graph'].filter((item) => item['@type'] === 'HairSalon');
+const dilsukhnagarSchema = homeSchema.find((item) => item['@id'] === 'https://hair2hair.in/#dilsukhnagar');
+const khammamSchema = homeSchema.find((item) => item['@id'] === 'https://hair2hair.in/#khammam');
+assert(dilsukhnagarSchema?.openingHours === 'Mo-Su 07:00-19:00', 'Dilsukhnagar structured hours must be 07:00–19:00');
+assert(!khammamSchema?.openingHours, 'Do not publish unconfirmed Khammam structured hours');
+assert(dilsukhnagarSchema?.address?.streetAddress?.includes('Shop No. 90'), 'Dilsukhnagar schema must include Shop No. 90');
+
+const reviewComponent = read('src/components/GoogleReviews.tsx');
+assert(!reviewComponent.includes('reviewCount') && !reviewComponent.includes('218'), 'Do not display a stale static Google review count');
+const hyderabadLocation = read('public/hair-replacement-hyderabad/index.html');
+const khammamLocation = read('public/hair-replacement-khammam/index.html');
+assert(hyderabadLocation.includes('Every day, 7:00 AM–7:00 PM'), 'Hyderabad location page must show verified 7 AM opening');
+assert(khammamLocation.includes('Contact the studio to confirm current opening hours'), 'Khammam location page must not invent opening hours');
+assert(!khammamLocation.includes('09:00-19:00') && !khammamLocation.includes('9:00 AM–7:00 PM'), 'Khammam location page must not retain unconfirmed 9 AM hours');
+
+const homeComponent = read('src/pages/Home.tsx');
+assert(homeComponent.includes('href={b.mapsUrl} target="_blank"'), 'Homepage branch directions link must be valid JSX');
+assert(!homeComponent.includes('href={b.mapsUrl target='), 'Homepage branch directions link must not contain malformed JSX');
 
 const homepageSource = read('src/pages/Home.tsx');
 for (const unsupportedClaim of ['15+ years', 'over 15 years', '1000+', '35% a year', '6–12 months']) {
