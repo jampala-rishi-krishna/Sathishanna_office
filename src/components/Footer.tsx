@@ -95,6 +95,7 @@ export default function Footer() {
                   {b.name} <span className="font-normal text-white/50">({b.note.toLowerCase()})</span>
                 </p>
                 <p className="mt-1 leading-relaxed">{b.address}</p>
+                <p className="mt-1 text-sm text-white/65">{b.hours}</p>
                 <a href={b.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block text-brand-goldsoft hover:text-white">
                   Get directions
                 </a>
@@ -116,7 +117,6 @@ export default function Footer() {
               <a href={`mailto:${SITE.email}`} className="block break-all hover:text-white">
                 {SITE.email}
               </a>
-              <p className="mt-2 text-white/55">{SITE.hours}</p>
             </div>
           </div>
         </div>
