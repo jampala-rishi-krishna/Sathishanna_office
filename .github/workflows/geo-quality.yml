@@ -29,7 +29,7 @@ jobs:
           npm run benchmark:geo -- /tmp/h2h-geo-visibility-baseline.csv
           npm run summarize:geo -- /tmp/h2h-geo-visibility-baseline.csv /tmp/h2h-geo-visibility-summary.json
           npm run citations:geo -- /tmp/h2h-directory-citation-audit.csv
-          node --input-type=module -e "import { readFileSync } from 'node:fs'; const count = readFileSync('/tmp/h2h-geo-visibility-baseline.csv','utf8').trimEnd().split(/\\r?\\n/).length; if (count !== 151) throw new Error('Expected 150 prompt/platform rows plus header; got ' + count); const report = JSON.parse(readFileSync('/tmp/h2h-geo-visibility-summary.json','utf8')); if (report.total_prompt_platform_rows !== 150 || report.completed_tests !== 0) throw new Error('Unexpected GEO summary smoke test');"
+          node --input-type=module -e "import { readFileSync } from 'node:fs'; const count = readFileSync('/tmp/h2h-geo-visibility-baseline.csv','utf8').trimEnd().split(/\\r?\\n/).length; if (count !== 201) throw new Error('Expected 200 prompt/platform rows plus header; got ' + count); const report = JSON.parse(readFileSync('/tmp/h2h-geo-visibility-summary.json','utf8')); if (report.total_prompt_platform_rows !== 200 || report.completed_tests !== 0) throw new Error('Unexpected GEO summary smoke test');"
           test -s /tmp/h2h-directory-citation-audit.csv
       - name: Type-check
         run: npm run typecheck
