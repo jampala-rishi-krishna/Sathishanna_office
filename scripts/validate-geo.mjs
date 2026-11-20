@@ -52,6 +52,11 @@ for (const url of [
   assert(sitemap.includes(`<loc>${url}</loc>`), `Missing sitemap URL: ${url}`);
 }
 
+const homepageSource = read('src/pages/Home.tsx');
+for (const unsupportedClaim of ['15+ years', 'over 15 years', '1000+', '35% a year', '6–12 months']) {
+  assert(!homepageSource.includes(unsupportedClaim), `Homepage must not reintroduce unsupported claim: ${unsupportedClaim}`);
+}
+
 const llms = read('public/llms.txt');
 assert(llms.includes('Dilsukhnagar, Hyderabad') && llms.includes('Khammam'), 'llms.txt must list both current branches');
 assert(llms.includes('planned expansion') && llms.includes('Kukatpally'), 'llms.txt must distinguish planned Kukatpally expansion');

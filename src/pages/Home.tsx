@@ -1,6 +1,6 @@
 import { useEffect, useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Plus, Minus } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import Button from '../components/Button';
 import GoogleReviews from '../components/GoogleReviews';
 import { Container, Section, SectionHeading, Honeypot, FormSent, FormError } from '../components/ui';
@@ -277,24 +277,16 @@ export default function Home() {
             </div>
           </div>
 
-          <dl className="mt-14 grid max-w-3xl grid-cols-3 gap-4 border-t border-white/15 pt-6 sm:mt-20">
+          <dl className="mt-14 grid max-w-3xl grid-cols-2 gap-4 border-t border-white/15 pt-6 sm:mt-20">
             <div>
-              <dt className="sr-only">Google rating</dt>
-              <dd className="flex items-center gap-1.5 font-display text-2xl sm:text-3xl">
-                {SITE.rating}
-                <Star size={18} className="text-brand-gold" fill="currentColor" strokeWidth={0} aria-hidden="true" />
-              </dd>
-              <dd className="mt-1 text-xs text-white/60 sm:text-sm">{SITE.reviewCount} Google reviews</dd>
+              <dt className="sr-only">Current studio locations</dt>
+              <dd className="font-display text-2xl sm:text-3xl">2</dd>
+              <dd className="mt-1 text-xs text-white/60 sm:text-sm">current studio locations</dd>
             </div>
             <div>
-              <dt className="sr-only">Experience</dt>
-              <dd className="font-display text-2xl sm:text-3xl">15+ years</dd>
-              <dd className="mt-1 text-xs text-white/60 sm:text-sm">fitting hair systems</dd>
-            </div>
-            <div>
-              <dt className="sr-only">Clients</dt>
-              <dd className="font-display text-2xl sm:text-3xl">1000+</dd>
-              <dd className="mt-1 text-xs text-white/60 sm:text-sm">transformations</dd>
+              <dt className="sr-only">Consultations</dt>
+              <dd className="font-display text-2xl sm:text-3xl">Private</dd>
+              <dd className="mt-1 text-xs text-white/60 sm:text-sm">consultation rooms</dd>
             </div>
           </dl>
         </Container>
@@ -518,7 +510,7 @@ export default function Home() {
           <div className="overflow-hidden rounded-2xl bg-brand-blush">
             <img
               src={encodeURI('/Data/gallery/brand outlet.png')}
-              alt="Hair 2 Hair Studio franchise outlets across India"
+              alt="Hair 2 Hair Studio franchise enquiry"
               loading="lazy"
               decoding="async"
               className="aspect-[4/3] w-full object-cover"
@@ -527,22 +519,8 @@ export default function Home() {
           <div>
             <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Open a Hair 2 Hair Studio</h2>
             <p className="mt-5 text-lg leading-relaxed text-brand-stone">
-              Build a business on a proven model in a fast-growing industry. With over 15 years of expertise, we
-              support franchise partners with training, marketing, CRM and day-to-day operations.
-            </p>
-            <dl className="mt-8 grid grid-cols-2 gap-6 border-y border-brand-line py-6">
-              <div>
-                <dt className="text-sm text-brand-stone">Industry growth</dt>
-                <dd className="font-display text-3xl text-brand-primary">35% a year</dd>
-              </div>
-              <div>
-                <dt className="text-sm text-brand-stone">Typical break-even</dt>
-                <dd className="font-display text-3xl text-brand-primary">6–12 months</dd>
-              </div>
-            </dl>
-            <p className="mt-6 leading-relaxed text-brand-stone">
-              We help with site setup, interiors and customer management, with ongoing digital marketing and R&amp;D
-              support, and you offer hair replacement, salon and spa services using our exclusive product range.
+              Interested in exploring a Hair 2 Hair Studio franchise? Contact our team to request current
+              information about eligibility, location requirements, setup costs and operating arrangements.
             </p>
             <div className="mt-8">
               <Button href="/contact" variant="outline">
