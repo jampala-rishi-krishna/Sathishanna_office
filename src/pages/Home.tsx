@@ -1,6 +1,6 @@
 import { useEffect, useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Plus, Minus } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import Button from '../components/Button';
 import GoogleReviews from '../components/GoogleReviews';
 import { Container, Section, SectionHeading, Honeypot, FormSent, FormError } from '../components/ui';
