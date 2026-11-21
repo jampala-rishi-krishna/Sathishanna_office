@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Header from './components/Header';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import FloatingSocialLinks from './components/FloatingSocialLinks';
 import Home from './pages/Home';
 import Women from './pages/Women';
 import Men from './pages/Men';
@@ -120,6 +121,7 @@ function App() {
         </main>
         <Footer />
         <WhatsAppButton />
+        <FloatingSocialLinks />
       </div>
     </Router>
   );

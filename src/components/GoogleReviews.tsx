@@ -6,11 +6,13 @@ const GOOGLE_RATING = '4.9';
 
 export default function GoogleReviews() {
   const [visibleCount, setVisibleCount] = useState(0);
+  const [visibleRating, setVisibleRating] = useState(0);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
       setVisibleCount(GOOGLE_REVIEW_COUNT);
+      setVisibleRating(Number(GOOGLE_RATING));
       return;
     }
 
@@ -23,6 +25,7 @@ export default function GoogleReviews() {
       const progress = Math.min((time - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setVisibleCount(Math.round(GOOGLE_REVIEW_COUNT * eased));
+      setVisibleRating(Number((Number(GOOGLE_RATING) * eased).toFixed(1)));
 
       if (progress < 1) {
         animationFrame = window.requestAnimationFrame(animate);
@@ -47,7 +50,7 @@ export default function GoogleReviews() {
       <div className="flex flex-col justify-center rounded-2xl bg-white/[0.06] p-7 ring-1 ring-white/10 lg:col-span-7 sm:p-9">
         <div className="flex flex-wrap items-end gap-x-8 gap-y-5">
           <div>
-            <div className="font-display text-5xl leading-none text-white sm:text-6xl">{GOOGLE_RATING}<span className="ml-2 text-2xl text-brand-gold">★</span></div>
+            <div className="font-display text-5xl leading-none text-white sm:text-6xl" aria-label={`${visibleRating.toFixed(1)} out of 5 stars`}>{visibleRating.toFixed(1)}<span className="ml-2 text-2xl text-brand-gold">★</span></div>
             <p className="mt-2 text-sm text-white/70">Google rating</p>
           </div>
           <div>

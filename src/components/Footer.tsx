@@ -18,7 +18,6 @@ const explore = [
 const studio = [
   { to: '/about', label: 'About us' },
   { to: '/gallery', label: 'Gallery' },
-  { to: '/#faq', label: 'Questions' },
   { to: '/contact', label: 'Contact' },
   { to: '/booking', label: 'Book a consultation' },
   { to: '/editorial-policy/', label: 'Editorial policy & corrections' },

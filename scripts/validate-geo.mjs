@@ -116,7 +116,14 @@ const aboutComponent = read('src/pages/About.tsx');
 assert(!homeComponent.includes('Meet the people behind H2H'), 'The H2H team introduction must remain on About, not Home');
 assert(aboutComponent.includes('title="Meet the people behind H2H"') && aboutComponent.includes("Get to know the team you'll speak with when comparing hair systems, fittings and aftercare."), 'About page must retain the requested H2H team introduction');
 assert(homeComponent.includes('Watch H2H in action') && homeComponent.includes('FfOXf_shf9A') && homeComponent.includes('0CuBjE-6BPg'), 'Homepage must feature verified H2H YouTube videos');
-assert(homeComponent.includes('SITE.social.instagram') && homeComponent.includes('SITE.social.facebook') && homeComponent.includes('SITE.social.youtube'), 'Homepage must link existing H2H social profiles');
+const floatingSocials = read('src/components/FloatingSocialLinks.tsx');
+const appComponent = read('src/App.tsx');
+assert(floatingSocials.includes('SITE.social.instagram') && floatingSocials.includes('SITE.social.facebook') && floatingSocials.includes('SITE.social.youtube'), 'Floating social links must use the official H2H profiles');
+assert(appComponent.includes('<FloatingSocialLinks />'), 'Floating social links must render site-wide');
+assert(!homeComponent.includes('Follow Hair 2 Hair Studio'), 'Remove the oversized social follow banner from the homepage');
+assert(!homeComponent.includes('Questions people ask us first'), 'Remove the homepage FAQ section');
+assert(!homeComponent.includes('Why people choose us'), 'Remove the Why people choose us list from the homepage');
+assert(!homeComponent.includes('intro="Start with the solutions made for you'), 'Keep the hair-loss section heading without a subline');
 assert(homeComponent.includes('href={b.mapsUrl} target="_blank"'), 'Homepage branch directions link must be valid JSX');
 assert(!homeComponent.includes('href={b.mapsUrl target='), 'Homepage branch directions link must not contain malformed JSX');
 

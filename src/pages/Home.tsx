@@ -1,6 +1,5 @@
 import { useEffect, useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Minus, Plus, Youtube } from 'lucide-react';
 import Button from '../components/Button';
 import GoogleReviews from '../components/GoogleReviews';
 import { Container, Section, SectionHeading, Honeypot, FormSent, FormError } from '../components/ui';
@@ -77,48 +76,12 @@ const benefits = [
   'Boosts self-esteem',
 ];
 
-const whyChooseUs = [
-  { title: 'Expert team', description: 'Practical guidance on hair replacement options and aftercare' },
-  { title: 'Premium quality', description: 'Only the finest materials and craftsmanship' },
-  { title: 'Personalised solutions', description: 'Custom-tailored to your unique needs' },
-  { title: 'Aftercare support', description: 'Comprehensive maintenance guidance' },
-  { title: 'Discreet consultations', description: 'Private and confidential service' },
-  { title: 'Transparent pricing', description: 'No hidden costs or surprises' },
-];
-
 const transformations = [
   { image: 'https://www.bglamhairstudio.com/wp-content/uploads/2024/03/HairPatch.jpg.webp', caption: 'Premium hair patch' },
   { image: 'https://www.bglamhairstudio.com/wp-content/uploads/2024/03/image1.jpg.webp', caption: 'Natural hair restoration' },
   {
     image: 'https://www.bglamhairstudio.com/wp-content/uploads/2024/03/120392424_3612544725444814_3743994574969795556_n.jpg',
     caption: 'Professional hair system',
-  },
-];
-
-const faqs = [
-  {
-    q: 'Will people be able to tell?',
-    a: 'Not when it is matched and fitted properly. We match the hair colour, density, texture and hairline to your own, then cut it into your existing hair so there is no visible edge.',
-  },
-  {
-    q: 'Can I shower, sleep, swim and exercise with it?',
-    a: 'Yes. Bonded systems are water-resistant and stay on while you sleep, shower, work out or wear a helmet. We show you how to dry and style it at home.',
-  },
-  {
-    q: 'Is it surgery? Does it hurt?',
-    a: 'No surgery, no needles and no pain. A hair system is attached with medical-grade adhesive, tape, weaving or clips, depending on what suits you.',
-  },
-  {
-    q: 'How often do I need to come back?',
-    a: 'A bonded system is usually serviced every 4–6 weeks: we remove it, clean your scalp and the system, and re-fix it. Clip-in options need no servicing.',
-  },
-  {
-    q: 'Is the first consultation really free?',
-    a: 'Yes. You can see the different bases and hair types, ask anything, and leave without committing to a purchase.',
-  },
-  {
-    q: 'I live outside Hyderabad. Can you still help?',
-    a: 'We have a studio in Khammam as well as Dilsukhnagar, serve clients from Kothagudem and across Telangana, and deliver wigs worldwide.',
   },
 ];
 
@@ -146,38 +109,6 @@ function HeroBackdrop() {
       <div className="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/80 to-transparent sm:via-brand-deep/55" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-brand-deep to-transparent" />
     </div>
-  );
-}
-
-function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
-  return (
-    <ul className="divide-y divide-brand-line border-y border-brand-line">
-      {faqs.map((item, i) => {
-        const isOpen = open === i;
-        return (
-          <li key={item.q}>
-            <button
-              type="button"
-              className="flex w-full items-center justify-between gap-6 py-5 text-left"
-              aria-expanded={isOpen}
-              aria-controls={`faq-${i}`}
-              onClick={() => setOpen(isOpen ? null : i)}
-            >
-              <span className="font-display text-xl text-brand-ink sm:text-[1.4rem]">{item.q}</span>
-              {isOpen ? (
-                <Minus className="shrink-0 text-brand-primary" size={20} aria-hidden="true" />
-              ) : (
-                <Plus className="shrink-0 text-brand-primary" size={20} aria-hidden="true" />
-              )}
-            </button>
-            <div id={`faq-${i}`} hidden={!isOpen}>
-              <p className="max-w-prose pb-6 leading-relaxed text-brand-stone">{item.a}</p>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
   );
 }
 
@@ -297,10 +228,11 @@ export default function Home() {
       {/* Who it's for */}
       <Section className="py-20 sm:py-28">
         <Container className="max-w-7xl">
-          <SectionHeading
-            title="Hair loss looks different for everyone. So does the fix."
-            intro="Start with the solutions made for you, or tell us what's happening and we'll suggest where to begin."
-          />
+          <div className="mb-10 sm:mb-14">
+            <h2 className="font-display text-[clamp(1.4rem,2.9vw,2.65rem)] leading-tight tracking-tight text-brand-ink lg:whitespace-nowrap">
+              Hair loss looks different for everyone. So does the fix.
+            </h2>
+          </div>
           <div className="grid gap-7 md:grid-cols-2 lg:gap-9">
             {paths.map((p) => (
               <Link key={p.title} to={p.link} className="group relative block overflow-hidden rounded-2xl bg-brand-deep shadow-sm ring-1 ring-brand-line/60">
@@ -442,15 +374,6 @@ export default function Home() {
               ))}
             </ul>
 
-            <h3 className="mt-14 text-2xl text-brand-ink sm:text-3xl">Why people choose us</h3>
-            <dl className="mt-6 grid gap-x-10 sm:grid-cols-2">
-              {whyChooseUs.map((w) => (
-                <div key={w.title} className="border-t border-brand-line py-4">
-                  <dt className="font-semibold text-brand-ink">{w.title}</dt>
-                  <dd className="mt-1 text-brand-stone">{w.description}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </Container>
       </Section>
@@ -550,44 +473,6 @@ export default function Home() {
             </article>
           </div>
 
-          <div className="mt-10 flex flex-col items-center justify-between gap-5 rounded-2xl bg-brand-blush px-6 py-7 sm:flex-row sm:px-8">
-            <div>
-              <h3 className="font-display text-2xl text-brand-ink">Follow Hair 2 Hair Studio</h3>
-              <p className="mt-1 text-sm text-brand-stone">Follow our existing Instagram, Facebook and YouTube pages for studio updates and videos.</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <a
-                href={SITE.social.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow Hair 2 Hair Studio on Instagram"
-                title="Instagram"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-brand-line bg-white text-brand-primary transition hover:-translate-y-1 hover:shadow-md"
-              >
-                <Instagram size={22} aria-hidden="true" />
-              </a>
-              <a
-                href={SITE.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow Hair 2 Hair Studio on Facebook"
-                title="Facebook"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-brand-line bg-white text-brand-primary transition hover:-translate-y-1 hover:shadow-md"
-              >
-                <Facebook size={22} aria-hidden="true" />
-              </a>
-              <a
-                href={SITE.social.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Watch Hair 2 Hair Studio on YouTube"
-                title="YouTube"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-brand-line bg-white text-brand-primary transition hover:-translate-y-1 hover:shadow-md"
-              >
-                <Youtube size={22} aria-hidden="true" />
-              </a>
-            </div>
-          </div>
         </Container>
       </Section>
 
@@ -598,25 +483,6 @@ export default function Home() {
             What our clients say
           </h2>
           <GoogleReviews />
-        </Container>
-      </Section>
-
-      {/* FAQ */}
-      <Section id="faq">
-        <Container className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">Questions people ask us first</h2>
-            <p className="mt-4 text-brand-stone">
-              Something else on your mind?{' '}
-              <a href={whatsappUrl('Hi! I have a question about hair patches.')} target="_blank" rel="noopener noreferrer" className="link-underline text-brand-primary">
-                Ask us on WhatsApp
-              </a>
-              .
-            </p>
-          </div>
-          <div className="lg:col-span-8">
-            <Faq />
-          </div>
         </Container>
       </Section>
 
