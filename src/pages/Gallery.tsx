@@ -94,7 +94,7 @@ export default function Gallery() {
     <div>
       <PageHero
         title="Gallery"
-        intro="Real fittings, real products and real clients from our studio. Tap any photo or video to see it full size."
+        intro="Browse selected H2H studio, product and service photos and videos. Tap any item to view it full size, then contact the team to discuss which options fit your needs."
       />
 
       <Section className="pt-10 sm:pt-12">
@@ -167,7 +167,7 @@ export default function Gallery() {
         <Container className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-[2rem] leading-[1.1] text-brand-ink sm:text-[2.6rem]">More on Instagram</h2>
-            <p className="mt-2 text-lg text-brand-stone">New transformations every week at @h2h_hairstudio_</p>
+            <p className="mt-2 text-lg text-brand-stone">Studio updates, product showcases and service highlights at @h2h_hairstudio_</p>
           </div>
           <a
             href={SITE.social.instagram}

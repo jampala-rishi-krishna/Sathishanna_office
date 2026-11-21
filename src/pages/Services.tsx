@@ -19,7 +19,7 @@ export default function Services() {
         'Styling and blending',
       ],
       benefits: ['Long-lasting (4-6 weeks)', 'Natural appearance', 'Water-resistant', 'Can shower and swim'],
-      image: 'https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/Data/IMG-20251003-WA0075.jpg',
     },
     {
       id: 'weaving',
@@ -35,7 +35,7 @@ export default function Services() {
         'Styling and finishing',
       ],
       benefits: ['No chemicals or glue', 'Breathable', 'Adjustable', 'Minimal tension on scalp'],
-      image: 'https://i.pinimg.com/originals/df/d8/72/dfd872195ea95e604d03ee5b28627766.jpg',
+      image: '/Data/IMG-20251003-WA0076.jpg',
     },
     {
       id: 'clip-in',
@@ -51,7 +51,7 @@ export default function Services() {
         'Styling guidance',
       ],
       benefits: ['No commitment', 'Easy to apply and remove', 'Can style as desired', 'Reusable'],
-      image: 'https://tse4.mm.bing.net/th/id/OIP.vEsLRRYpDjVnl8naWeCn7AHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3',
+      image: '/Data/IMG-20251003-WA0077.jpg',
     },
     {
       id: 'extensions',
@@ -68,7 +68,7 @@ export default function Services() {
         'Care instructions',
       ],
       benefits: ['Instant length and volume', 'Natural look', 'Long-lasting', 'Multiple methods available'],
-      image: 'https://images.pexels.com/photos/3065171/pexels-photo-3065171.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/Data/Australian_mirage.jpg',
     },
   ];
 
@@ -96,7 +96,7 @@ export default function Services() {
       <PageHero
         title="Our services"
         intro="How your hair system is attached matters as much as the hair itself. Here's what each method involves, how long it takes, and who it suits."
-        image="https://images.pexels.com/photos/3992870/pexels-photo-3992870.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/Data/main_img1.jpeg"
         imageAlt="Stylist fitting a hair system"
       >
         <nav aria-label="On this page" className="flex flex-wrap gap-2">
