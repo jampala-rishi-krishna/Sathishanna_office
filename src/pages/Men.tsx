@@ -10,14 +10,14 @@ export default function Men() {
       features: ['Durable PU base', 'Water-resistant', 'Active lifestyle ready', 'Natural appearance'],
       base: 'Polyurethane (PU)',
       coverage: 'Full/Partial',
-      image: '/Data/IMG-20251003-WA0073.jpg',
+      image: 'https://th.bing.com/th/id/R.7323914b2e757ff30370a1e787588950?rik=2WTqCVyALM6EPw&riu=http%3a%2f%2fwww.newhairline.com%2fcdn%2fshop%2fproducts%2fskin-pu-base-toupee-lace-frontal-hair-systme-for-men_c9002543-cf3f-4edd-a781-3eef109b01af_1200x1200.jpg%3fv%3d1596697281&ehk=36tzl%2bxFQyU623F%2fBFwaXLDsChk8%2bNXJpNB4cOnEYiI%3d&risl=&pid=ImgRaw&r=0',
     },
     {
       name: 'Lace Hair System',
       features: ['Breathable', 'Natural hairline', 'Lightweight', 'Comfortable wear'],
       base: 'Swiss Lace',
       coverage: 'Full Coverage',
-      image: '/Data/IMG-20251003-WA0074.jpg',
+      image: 'https://m.media-amazon.com/images/I/612y6HJ1sbL._SL1000_.jpg',
     },
     {
       name: 'Hybrid Base System',
@@ -41,7 +41,7 @@ export default function Men() {
       features: ['Classic style', 'Natural gray options', 'Conservative cut', 'Professional appearance'],
       style: 'Short/Medium',
       type: 'Full Wig',
-      image: '/Data/IMG-20251003-WA0078.jpg',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.ZWtjxUeUA_sQNiR4fIlUMgHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3',
     },
     {
       name: 'Casual Style Wig',

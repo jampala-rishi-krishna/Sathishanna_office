@@ -22,7 +22,7 @@ const paths = [
     body: 'Toppers for a thinning parting, full wigs and extensions in human hair, matched to your colour and texture.',
     link: '/women',
     cta: "See women's solutions",
-    image: '/Data/Golden_Silk_hair_patch.jpg',
+    image: 'https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=1200',
   },
 ];
 
@@ -35,10 +35,10 @@ const services = [
 ];
 
 const problems = [
-  { title: "Men's hair systems", description: 'Compare base types and coverage options for your consultation.', image: '/Data/IMG-20251003-WA0076.jpg', link: '/men' },
-  { title: "Women's toppers & patches", description: 'Explore options for parting and crown coverage.', image: '/Data/Golden_Silk_hair_patch.jpg', link: '/women#patches' },
-  { title: 'Wigs', description: 'Discuss full-coverage styles, fit and care.', image: '/Data/Golden_hair_patch.jpg', link: '/women#wigs' },
-  { title: 'Extensions & volume', description: 'Explore length and volume options with the team.', image: '/Data/Australian_mirage.jpg', link: '/women#extensions' },
+  { title: 'Thinning crown', description: 'Gradual hair loss at the crown', image: 'https://www.bglamhairstudio.com/wp-content/uploads/2025/05/Hair-Patch-1.1.webp' },
+  { title: 'All-over thinning', description: 'General thinning across the scalp', image: 'https://www.bglamhairstudio.com/wp-content/uploads/2025/05/Hair-Patch-4.webp' },
+  { title: 'Hair fall', description: 'Excessive shedding and loss', image: 'https://www.bglamhairstudio.com/wp-content/uploads/2025/05/Shot-hair-problem-2.webp' },
+  { title: 'Thin hair', description: 'Lack of volume and density', image: 'https://www.bglamhairstudio.com/wp-content/uploads/2025/05/Shot-hair-problem-3.webp' },
 ];
 
 const steps = [
@@ -60,34 +60,37 @@ const steps = [
   },
 ];
 
+const lifestyle = [
+  { title: 'Sleep', note: 'Comfortable all night', image: 'https://www.bglamhairstudio.com/wp-content/uploads/2025/05/hairpatchSleep.webp' },
+  { title: 'Shower', note: 'Water-resistant', image: 'https://www.bglamhairstudio.com/wp-content/uploads/2025/05/hairpatchshower.webp' },
+  { title: 'Work out', note: 'Stays put when you sweat', image: 'https://www.bglamhairstudio.com/wp-content/uploads/2025/05/hairpatchworkout.webp' },
+  { title: 'Ride', note: 'Helmet on, helmet off', image: 'https://www.bglamhairstudio.com/wp-content/uploads/2025/05/hairpatchride.webp' },
+];
+
 const benefits = [
-  'Non-surgical options',
-  'Coverage matched to your needs',
-  'Choice of base and attachment methods',
-  'Personal styling guidance',
-  'Aftercare explained before you decide',
+  'Instant transformation',
+  'Non-surgical & painless',
+  'Customisable to your needs',
+  'Durable & reusable',
+  'Boosts self-esteem',
 ];
 
 const whyChooseUs = [
-  { title: 'Guided consultations', description: 'Compare suitable systems and fitting methods before deciding.' },
-  { title: 'Personalised matching', description: 'Discuss colour, density, coverage and your everyday routine.' },
-  { title: 'Private studio visits', description: 'Talk through your requirements in a private consultation setting.' },
-  { title: 'Aftercare guidance', description: 'Understand cleaning, servicing and maintenance for your chosen system.' },
-  { title: 'Clear service information', description: 'Ask what is included, what it costs and what follow-up may be needed.' },
-  { title: 'Two listed studios', description: 'Find current studio information for Dilsukhnagar and Khammam.' },
+  { title: 'Expert team', description: 'Practical guidance on hair replacement options and aftercare' },
+  { title: 'Premium quality', description: 'Only the finest materials and craftsmanship' },
+  { title: 'Personalised solutions', description: 'Custom-tailored to your unique needs' },
+  { title: 'Aftercare support', description: 'Comprehensive maintenance guidance' },
+  { title: 'Discreet consultations', description: 'Private and confidential service' },
+  { title: 'Transparent pricing', description: 'No hidden costs or surprises' },
 ];
 
 const transformations = [
-  { image: '/Data/home_page1.png', caption: 'Hair 2 Hair product showcase' },
-  { image: '/Data/home_page3.jpg', caption: 'Hair system and patch options' },
-  { image: '/Data/main_img1.jpeg', caption: 'Studio hair solutions showcase' },
-];
-
-const teamProfiles = [
-  { name: 'Jampala Sathish', role: 'Founder & Master Hair Specialist', focus: 'Hair bonding and systems', image: '/Data/Sathish.jpg' },
-  { name: 'Jampala Anil', role: 'Hair Replacement Specialist', focus: "Men's hair systems", image: '/Data/anil.jpg' },
-  { name: 'Jampala Navya', role: 'Consultation Expert', focus: 'Customer consultation', image: '/Data/Navya.jpg' },
-  { name: 'Jampala Rishi Krishna', role: 'Chief Technical Officer', focus: 'Technical works and marketing', image: '/Data/Rishi.png' },
+  { image: 'https://www.bglamhairstudio.com/wp-content/uploads/2024/03/HairPatch.jpg.webp', caption: 'Premium hair patch' },
+  { image: 'https://www.bglamhairstudio.com/wp-content/uploads/2024/03/image1.jpg.webp', caption: 'Natural hair restoration' },
+  {
+    image: 'https://www.bglamhairstudio.com/wp-content/uploads/2024/03/120392424_3612544725444814_3743994574969795556_n.jpg',
+    caption: 'Professional hair system',
+  },
 ];
 
 const faqs = [
@@ -97,15 +100,15 @@ const faqs = [
   },
   {
     q: 'Can I shower, sleep, swim and exercise with it?',
-    a: 'Wear and water guidance depends on the system base, attachment method and your routine. Ask the team about the precautions for the exact system you choose; not every system is suitable for every activity.',
+    a: 'Yes. Bonded systems are water-resistant and stay on while you sleep, shower, work out or wear a helmet. We show you how to dry and style it at home.',
   },
   {
     q: 'Is it surgery? Does it hurt?',
-    a: 'A non-surgical hair system is different from a hair transplant. Fitting may use bonding, tape, weaving or clips. Tell the team about any scalp sensitivity so the suitable method can be discussed.',
+    a: 'No surgery, no needles and no pain. A hair system is attached with medical-grade adhesive, tape, weaving or clips, depending on what suits you.',
   },
   {
     q: 'How often do I need to come back?',
-    a: 'Service intervals depend on the base, attachment method, wear and care routine. Ask for the recommended cleaning and re-fitting schedule for the specific system selected.',
+    a: 'A bonded system is usually serviced every 4–6 weeks: we remove it, clean your scalp and the system, and re-fix it. Clip-in options need no servicing.',
   },
   {
     q: 'Is the first consultation really free?',
@@ -189,52 +192,57 @@ function EnquiryForm() {
     return (
       <FormSent
         title="Thanks, we've got your message"
-        body="Someone from the studio will call or WhatsApp you to discuss your enquiry."
+        body="Someone from the studio will call or WhatsApp you soon."
         onReset={reset}
       />
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-3 rounded-2xl border border-brand-line bg-white p-4 text-brand-ink shadow-xl sm:grid-cols-2 sm:p-5">
+    <form onSubmit={onSubmit} className="grid gap-4 rounded-2xl border border-brand-line bg-white p-6 sm:grid-cols-2 sm:p-8">
       <Honeypot />
       <div className="sm:col-span-2">
-        <label htmlFor="h-concern" className="field-label">What would you like help with?</label>
-        <select id="h-concern" name="concern" required defaultValue="" className="field">
-          <option value="" disabled>Select a service</option>
-          <option value="Men's Hair System Consultation">Men's hair system</option>
-          <option value="Women's Hair Patch Consultation">Women's hair patch or topper</option>
-          <option value="Wig Consultation">Wig consultation</option>
-          <option value="Hair Extension Fitting">Hair extensions</option>
-          <option value="Maintenance/Follow-up">Maintenance or follow-up</option>
-          <option value="Wholesale Enquiry">Wholesale enquiry</option>
-          <option value="Not sure">I'm not sure yet</option>
+        <label htmlFor="h-concern" className="field-label">
+          What would you like help with?
+        </label>
+        <select id="h-concern" name="concern" className="field" defaultValue="Hair Replacement">
+          <option value="Hair Replacement">Hair replacement</option>
+          <option value="Hair Extensions">Hair extensions</option>
+          <option value="Wigs">Wigs</option>
+          <option value="Others">Something else</option>
         </select>
       </div>
       <div>
-        <label htmlFor="h-name" className="field-label">Your name</label>
-        <input id="h-name" name="name" required autoComplete="name" className="field" placeholder="Name" />
+        <label htmlFor="h-name" className="field-label">
+          Name
+        </label>
+        <input id="h-name" name="name" required autoComplete="name" className="field" />
       </div>
       <div>
-        <label htmlFor="h-phone" className="field-label">Phone or WhatsApp</label>
-        <input id="h-phone" name="phone" type="tel" required autoComplete="tel" inputMode="tel" className="field" placeholder="Mobile number" />
+        <label htmlFor="h-phone" className="field-label">
+          Phone or WhatsApp
+        </label>
+        <input id="h-phone" name="phone" type="tel" required autoComplete="tel" inputMode="tel" className="field" />
       </div>
       <div className="sm:col-span-2">
-        <label htmlFor="h-location" className="field-label">Preferred studio / area</label>
-        <select id="h-location" name="preferred_location" defaultValue="" className="field">
-          <option value="">Choose an area (optional)</option>
-          <option value="Dilsukhnagar, Hyderabad">Dilsukhnagar, Hyderabad</option>
-          <option value="Khammam">Khammam</option>
-          <option value="Kukatpally / another area">Kukatpally / another area</option>
-        </select>
+        <label htmlFor="h-email" className="field-label">
+          Email <span className="font-normal text-brand-stone">(optional)</span>
+        </label>
+        <input id="h-email" name="email" type="email" autoComplete="email" className="field" />
+      </div>
+      <div className="sm:col-span-2">
+        <label htmlFor="h-message" className="field-label">
+          Anything we should know? <span className="font-normal text-brand-stone">(optional)</span>
+        </label>
+        <textarea id="h-message" name="message" rows={3} className="field" />
       </div>
       <div className="sm:col-span-2">
         <FormError status={status} />
       </div>
-      <div className="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs leading-relaxed text-brand-stone">We'll use these details only to respond to your enquiry.</p>
-        <Button type="submit" disabled={status === 'sending'} className="w-full sm:w-auto">
-          {status === 'sending' ? 'Sending…' : 'Request a callback'}
+      <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-brand-stone">Your details stay private and are only used to contact you.</p>
+        <Button type="submit" disabled={status === 'sending'}>
+          {status === 'sending' ? 'Sending…' : 'Send message'}
         </Button>
       </div>
     </form>
@@ -245,10 +253,10 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative -mt-[4.5rem] flex min-h-[640px] items-center overflow-hidden bg-brand-deep pt-[4.5rem] text-white sm:min-h-[min(92vh,880px)]">
+      <section className="relative -mt-[4.5rem] flex min-h-[640px] items-end overflow-hidden bg-brand-deep pt-[4.5rem] text-white sm:min-h-[min(92vh,880px)]">
         <HeroBackdrop />
-        <Container className="relative grid items-center gap-10 pb-12 pt-20 sm:pb-16 lg:grid-cols-12">
-          <div className="max-w-2xl lg:col-span-7">
+        <Container className="relative pb-14 pt-24 sm:pb-20">
+          <div className="max-w-2xl">
             <p className="animate-fade-up text-[0.95rem] text-brand-goldsoft">
               Non-surgical hair replacement in Hyderabad &amp; Khammam
             </p>
@@ -267,7 +275,9 @@ export default function Home() {
                 Ask on WhatsApp
               </Button>
             </div>
-          <dl className="mt-12 grid max-w-3xl grid-cols-2 gap-4 border-t border-white/15 pt-6 sm:mt-16">
+          </div>
+
+          <dl className="mt-14 grid max-w-3xl grid-cols-2 gap-4 border-t border-white/15 pt-6 sm:mt-20">
             <div>
               <dt className="sr-only">Current studio locations</dt>
               <dd className="font-display text-2xl sm:text-3xl">2</dd>
@@ -279,18 +289,6 @@ export default function Home() {
               <dd className="mt-1 text-xs text-white/60 sm:text-sm">consultation rooms</dd>
             </div>
           </dl>
-          </div>
-          <div className="lg:col-span-5">
-            <div className="rounded-2xl border border-white/20 bg-white/95 p-4 text-brand-ink shadow-2xl backdrop-blur sm:p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-primary">Start with a conversation</p>
-              <h2 className="mt-2 font-display text-3xl leading-tight text-brand-ink">Let's find the right option for you.</h2>
-              <p className="mt-2 text-sm leading-relaxed text-brand-stone">Tell us what you are looking for. The H2H team will get in touch to discuss the next step.</p>
-              <div className="mt-5">
-                <EnquiryForm />
-              </div>
-              <p className="mt-3 text-center text-xs text-brand-stone">Prefer to chat? <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand-primary underline underline-offset-4">Message H2H on WhatsApp</a>.</p>
-            </div>
-          </div>
         </Container>
       </section>
 
@@ -345,23 +343,20 @@ export default function Home() {
       <Section tone="white">
         <Container>
           <SectionHeading
-            title="Explore the solution that fits your needs"
-            intro="Start with a service area below. At consultation, the team can explain suitability, fitting choices and care for your requirements."
+            title="Where are you losing hair?"
+            intro="These are the patterns we see most often. Each one calls for a different base and a different fit."
           />
           <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4 lg:gap-x-6">
             {problems.map((p) => (
-              <Link key={p.title} to={p.link} className="group block">
-                <div className="overflow-hidden rounded-2xl bg-brand-blush">
-                  <img src={p.image} alt={p.title} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+              <figure key={p.title}>
+                <div className="overflow-hidden rounded-xl bg-brand-blush">
+                  <img src={p.image} alt={p.title} loading="lazy" decoding="async" className="aspect-square w-full object-cover" />
                 </div>
-                <div className="mt-4 flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="font-display text-xl text-brand-ink sm:text-2xl">{p.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-brand-stone">{p.description}</p>
-                  </div>
-                  <span className="mt-1 text-brand-primary" aria-hidden="true">→</span>
-                </div>
-              </Link>
+                <figcaption className="mt-3">
+                  <span className="block font-semibold text-brand-ink">{p.title}</span>
+                  <span className="text-sm text-brand-stone">{p.description}</span>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </Container>
@@ -387,6 +382,29 @@ export default function Home() {
             <Button href="/booking" size="lg">
               Book your free consultation
             </Button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Lifestyle */}
+      <Section>
+        <Container>
+          <SectionHeading
+            title="Made to be forgotten about"
+            intro="It feels like your own hair. Wear it to bed, in the shower, at the gym and under a helmet."
+          />
+          <div className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4 lg:gap-6">
+            {lifestyle.map((l) => (
+              <figure key={l.title} className="w-[70%] shrink-0 snap-start sm:w-auto">
+                <div className="overflow-hidden rounded-xl bg-brand-blush">
+                  <img src={l.image} alt={`${l.title} with a hair patch`} loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover" />
+                </div>
+                <figcaption className="mt-3">
+                  <span className="font-display text-2xl text-brand-ink">{l.title}</span>
+                  <span className="block text-sm text-brand-stone">{l.note}</span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </Container>
       </Section>
@@ -435,90 +453,11 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Team */}
-      <Section tone="white">
-        <Container>
-          <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-            <SectionHeading
-              title="Meet the people behind H2H"
-              intro="Get to know the team you'll speak with when comparing hair systems, fittings and aftercare."
-              className="mb-0"
-            />
-            <Link to="/about" className="link-underline shrink-0 font-semibold text-brand-primary">Meet the full team</Link>
-          </div>
-          <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
-            {teamProfiles.map((member) => (
-              <article key={member.name} className="group">
-                <div className="overflow-hidden rounded-2xl bg-brand-blush">
-                  <img src={member.image} alt={member.name} loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" />
-                </div>
-                <h3 className="mt-4 font-display text-lg leading-tight text-brand-ink sm:text-xl">{member.name}</h3>
-                <p className="mt-1 text-sm font-semibold text-brand-primary">{member.role}</p>
-                <p className="mt-1 text-sm text-brand-stone">{member.focus}</p>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Service comparison */}
-      <Section tone="blush">
-        <Container>
-          <SectionHeading
-            title="Compare your starting options"
-            intro="This guide helps you choose a page to explore. Your final system, fitting method and maintenance plan should be discussed with the H2H team."
-          />
-          <div className="-mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
-            <table className="w-full min-w-[680px] border-collapse text-left">
-              <caption className="sr-only">Compare H2H hair solution categories and next steps</caption>
-              <thead>
-                <tr className="border-b border-brand-primary/30 text-xs uppercase tracking-wide text-brand-stone">
-                  <th scope="col" className="py-4 pr-5 font-semibold">Your priority</th>
-                  <th scope="col" className="px-5 py-4 font-semibold">Options to explore</th>
-                  <th scope="col" className="px-5 py-4 font-semibold">Next step</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-brand-primary/15 text-sm sm:text-base">
-                <tr>
-                  <th scope="row" className="py-4 pr-5 font-semibold text-brand-ink">Hairline or crown coverage</th>
-                  <td className="px-5 py-4 text-brand-stone">Men's skin, lace, mono and hybrid hair systems</td>
-                  <td className="px-5 py-4"><Link to="/men" className="font-semibold text-brand-primary underline underline-offset-4">Explore men's systems</Link></td>
-                </tr>
-                <tr>
-                  <th scope="row" className="py-4 pr-5 font-semibold text-brand-ink">Parting or targeted coverage</th>
-                  <td className="px-5 py-4 text-brand-stone">Women's patches and toppers</td>
-                  <td className="px-5 py-4"><Link to="/women#patches" className="font-semibold text-brand-primary underline underline-offset-4">Explore toppers</Link></td>
-                </tr>
-                <tr>
-                  <th scope="row" className="py-4 pr-5 font-semibold text-brand-ink">Full-coverage styling</th>
-                  <td className="px-5 py-4 text-brand-stone">Wigs and wig fitting enquiries</td>
-                  <td className="px-5 py-4"><Link to="/women#wigs" className="font-semibold text-brand-primary underline underline-offset-4">Explore wigs</Link></td>
-                </tr>
-                <tr>
-                  <th scope="row" className="py-4 pr-5 font-semibold text-brand-ink">Length or added volume</th>
-                  <td className="px-5 py-4 text-brand-stone">Hair extension options</td>
-                  <td className="px-5 py-4"><Link to="/women#extensions" className="font-semibold text-brand-primary underline underline-offset-4">Explore extensions</Link></td>
-                </tr>
-                <tr>
-                  <th scope="row" className="py-4 pr-5 font-semibold text-brand-ink">Fitting and attachment</th>
-                  <td className="px-5 py-4 text-brand-stone">Bonding, weaving and clip-in methods</td>
-                  <td className="px-5 py-4"><Link to="/services" className="font-semibold text-brand-primary underline underline-offset-4">Compare services</Link></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/booking">Book a private consultation</Button>
-            <Button href={whatsappUrl('Hi H2H, I would like help choosing a hair solution.')} variant="outline">Discuss on WhatsApp</Button>
-          </div>
-        </Container>
-      </Section>
-
       {/* Transformations */}
       <Section>
         <Container>
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-            <SectionHeading title="Inside the H2H studio" intro="A closer look at selected H2H hair solutions and product visuals. Explore the full gallery for more photos and videos." className="mb-0 sm:mb-0" />
+            <SectionHeading title="Transformations" intro="A few of the results we're proud of." className="mb-0 sm:mb-0" />
             <Link to="/gallery" className="link-underline shrink-0 font-semibold text-brand-primary">
               View the full gallery
             </Link>
@@ -630,16 +569,8 @@ export default function Home() {
             </div>
           </div>
           <div className="lg:col-span-7">
-            <div className="h-full rounded-2xl border border-brand-primary/15 bg-white p-7 sm:p-9">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-primary">Your next step</p>
-              <h3 className="mt-3 font-display text-3xl leading-tight text-brand-ink sm:text-4xl">A good consultation starts with the right questions.</h3>
-              <p className="mt-4 max-w-xl leading-relaxed text-brand-stone">Bring your questions about coverage, base material, attachment, styling, servicing and cost. The team can explain available options before you decide.</p>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Button href="/booking">Choose a consultation time</Button>
-                <Button href={whatsappUrl('Hi H2H, I would like to discuss a hair solution and visit your studio.')} variant="outline">Ask on WhatsApp</Button>
-              </div>
-              <a href={SITE.phoneHref} className="mt-5 inline-block font-semibold text-brand-primary">{SITE.phoneDisplay}</a>
-            </div>
+            <h3 className="mb-5 text-2xl text-brand-ink">Prefer we call you?</h3>
+            <EnquiryForm />
           </div>
         </Container>
       </Section>
