@@ -94,7 +94,14 @@ assert(!khammamSchema?.openingHours, 'Do not publish unconfirmed Khammam structu
 assert(dilsukhnagarSchema?.address?.streetAddress?.includes('Shop No. 90'), 'Dilsukhnagar schema must include Shop No. 90');
 
 const reviewComponent = read('src/components/GoogleReviews.tsx');
-assert(!reviewComponent.includes('reviewCount') && !reviewComponent.includes('218'), 'Do not display a stale static Google review count');
+assert(
+  reviewComponent.includes('const GOOGLE_REVIEW_COUNT = 218;') &&
+    reviewComponent.includes('window.requestAnimationFrame') &&
+    reviewComponent.includes('Google profile snapshot checked 21 November 2026.') &&
+    reviewComponent.includes('href={SITE.reviewsUrl}') &&
+    reviewComponent.includes('latest public count we verified'),
+  'Google review count must be a dated animated snapshot linked to Google, not presented as a live API feed',
+);
 const hyderabadLocation = read('public/hair-replacement-hyderabad/index.html');
 const khammamLocation = read('public/hair-replacement-khammam/index.html');
 const kukatpallyInfo = read('public/areas/kukatpally/index.html');
@@ -105,6 +112,11 @@ assert(kukatpallyInfo.includes('planned expansion') && kukatpallyInfo.includes('
 assert(!kukatpallyInfo.includes('"@type": "HairSalon"'), 'Kukatpally area page must not create a fake studio entity');
 
 const homeComponent = read('src/pages/Home.tsx');
+const aboutComponent = read('src/pages/About.tsx');
+assert(!homeComponent.includes('Meet the people behind H2H'), 'The H2H team introduction must remain on About, not Home');
+assert(aboutComponent.includes('title="Meet the people behind H2H"') && aboutComponent.includes("Get to know the team you'll speak with when comparing hair systems, fittings and aftercare."), 'About page must retain the requested H2H team introduction');
+assert(homeComponent.includes('Watch H2H in action') && homeComponent.includes('FfOXf_shf9A') && homeComponent.includes('0CuBjE-6BPg'), 'Homepage must feature verified H2H YouTube videos');
+assert(homeComponent.includes('SITE.social.instagram') && homeComponent.includes('SITE.social.facebook') && homeComponent.includes('SITE.social.youtube'), 'Homepage must link existing H2H social profiles');
 assert(homeComponent.includes('href={b.mapsUrl} target="_blank"'), 'Homepage branch directions link must be valid JSX');
 assert(!homeComponent.includes('href={b.mapsUrl target='), 'Homepage branch directions link must not contain malformed JSX');
 
