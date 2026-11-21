@@ -15,14 +15,16 @@ const paths = [
     body: 'Skin, lace, mono and hybrid hair systems for a receding hairline, a thinning crown or full coverage.',
     link: '/men',
     cta: "See men's hair systems",
-    image: '/Data/IMG-20251003-WA0075.jpg',
+    image: '/Data/IMG-20251003-WA0076.jpg',
+    imageAlt: "H2H men's hair system product showing the hair and base construction",
   },
   {
     title: 'For women',
     body: 'Toppers for a thinning parting, full wigs and extensions in human hair, matched to your colour and texture.',
     link: '/women',
     cta: "See women's solutions",
-    image: 'https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/Data/golden_miraz.jpg',
+    imageAlt: "H2H long-hair women's hair patch product",
   },
 ];
 
@@ -293,21 +295,21 @@ export default function Home() {
       </section>
 
       {/* Who it's for */}
-      <Section>
-        <Container>
+      <Section className="py-20 sm:py-28">
+        <Container className="max-w-7xl">
           <SectionHeading
             title="Hair loss looks different for everyone. So does the fix."
             intro="Start with the solutions made for you, or tell us what's happening and we'll suggest where to begin."
           />
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-7 md:grid-cols-2 lg:gap-9">
             {paths.map((p) => (
-              <Link key={p.title} to={p.link} className="group relative block overflow-hidden rounded-2xl bg-brand-deep">
+              <Link key={p.title} to={p.link} className="group relative block overflow-hidden rounded-2xl bg-brand-deep shadow-sm ring-1 ring-brand-line/60">
                 <img
                   src={p.image}
-                  alt=""
+                  alt={p.imageAlt}
                   loading="lazy"
                   decoding="async"
-                  className="aspect-[4/3] w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-[1.03]"
+                  className="aspect-[5/4] w-full object-cover opacity-100 transition-transform duration-700 group-hover:scale-[1.03]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/30 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
