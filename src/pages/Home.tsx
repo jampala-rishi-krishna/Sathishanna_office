@@ -453,6 +453,71 @@ export default function Home() {
         </Container>
       </Section>
 
+      {/* H2H team */}
+      <Section tone="white">
+        <Container>
+          <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <SectionHeading
+              title="Meet the people behind H2H"
+              intro="Get to know the team you'll speak with when comparing hair systems, fittings and aftercare."
+              className="mb-0"
+            />
+            <Link to="/about" className="link-underline shrink-0 font-semibold text-brand-primary">
+              Meet the full team
+            </Link>
+          </div>
+          <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-12 lg:grid-cols-4 lg:gap-x-8">
+            {[
+              {
+                name: 'Jampala Sathish',
+                role: 'Founder & Master Hair Specialist',
+                experience: '10+ years',
+                expertise: 'Hair Bonding & Systems',
+                image: '/Data/Sathish.jpg',
+              },
+              {
+                name: 'Jampala Anil',
+                role: 'Hair Replacement Specialist',
+                experience: '5+ years',
+                expertise: "Men's Hair Systems",
+                image: '/Data/anil.jpg',
+              },
+              {
+                name: 'Jampala Navya',
+                role: 'Consultation Expert',
+                experience: '6+ years',
+                expertise: 'Marketing Lead',
+                image: '/Data/Navya.jpg',
+              },
+              {
+                name: 'Jampala Rishi Krishna',
+                role: 'Chief Technical Officer',
+                experience: '2+ years',
+                expertise: 'Technical Works and Marketing',
+                image: '/Data/Rishi.png',
+              },
+            ].map((member) => (
+              <figure key={member.name} className="group">
+                <div className="overflow-hidden rounded-arch bg-brand-blush">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[3/4] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <figcaption className="mt-4">
+                  <span className="block font-display text-xl text-brand-ink sm:text-2xl">{member.name}</span>
+                  <span className="mt-1 block text-sm font-semibold text-brand-primary">{member.role}</span>
+                  <span className="mt-1 block text-sm text-brand-stone">{member.expertise} · {member.experience}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
       {/* Transformations */}
       <Section>
         <Container>
