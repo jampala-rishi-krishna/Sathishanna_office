@@ -125,10 +125,10 @@ for (const url of [
 
 const robots = read('public/robots.txt');
 assert(/User-agent: OAI-SearchBot[\s\S]*?Allow: \/[\s\S]*?Sitemap:/m.test(robots), 'robots.txt must allow OAI-SearchBot and declare the sitemap');
-assert(robots.includes('User-agent: Claude-SearchBot\\nAllow: /'), 'robots.txt must allow Claude SearchBot');
-assert(robots.includes('User-agent: PerplexityBot\\nAllow: /'), 'robots.txt must allow PerplexityBot');
-assert(robots.includes('User-agent: ClaudeBot\\nDisallow: /'), 'robots.txt must opt out of Claude training crawl');
-assert(robots.includes('User-agent: GPTBot\\nDisallow: /'), 'robots.txt must retain the GPTBot training opt-out');
+assert(robots.includes('User-agent: Claude-SearchBot\nAllow: /'), 'robots.txt must allow Claude SearchBot');
+assert(robots.includes('User-agent: PerplexityBot\nAllow: /'), 'robots.txt must allow PerplexityBot');
+assert(robots.includes('User-agent: ClaudeBot\nDisallow: /'), 'robots.txt must opt out of Claude training crawl');
+assert(robots.includes('User-agent: GPTBot\nDisallow: /'), 'robots.txt must retain the GPTBot training opt-out');
 assert(existsSync(join(root, 'public/llms.txt')), 'public/llms.txt must exist');
 
 for (const file of [
