@@ -93,8 +93,8 @@ export default function About() {
       <Section>
         <Container>
           <SectionHeading
-            title="The people who'll look after you"
-            intro="You'll meet the same specialists at every appointment, from your first consultation to your regular servicing."
+            title="Meet the people behind H2H"
+            intro="Get to know the team you'll speak with when comparing hair systems, fittings and aftercare."
           />
           <div className="grid grid-cols-2 gap-x-4 gap-y-12 lg:grid-cols-4 lg:gap-x-8">
             {team.map((member) => (

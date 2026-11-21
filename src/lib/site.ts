@@ -6,9 +6,9 @@ export const SITE = {
   email: 'hair2hairstidio2024@gmail.com',
   reviewsUrl: 'https://share.google/r8DPpoClZQkq3dS7W',
   social: {
-    instagram: 'https://www.instagram.com/h2h_hairstudio_/?__pwa=1',
+    instagram: 'https://www.instagram.com/h2h_hairstudio_/',
     facebook: 'https://www.facebook.com/share/1BoX9WysMB/',
-    youtube: 'https://youtube.com/source/DNoNgL8tSsY/shorts?si=c4ej8ETEsCjXOADc',
+    youtube: 'https://www.youtube.com/watch?v=FfOXf_shf9A',
   },
 };
 

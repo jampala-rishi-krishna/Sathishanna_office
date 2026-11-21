@@ -1,6 +1,6 @@
 import { useEffect, useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Minus } from 'lucide-react';
+import { Facebook, Instagram, Minus, Plus, Youtube } from 'lucide-react';
 import Button from '../components/Button';
 import GoogleReviews from '../components/GoogleReviews';
 import { Container, Section, SectionHeading, Honeypot, FormSent, FormError } from '../components/ui';
@@ -455,71 +455,6 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* H2H team */}
-      <Section tone="white">
-        <Container>
-          <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-            <SectionHeading
-              title="Meet the people behind H2H"
-              intro="Get to know the team you'll speak with when comparing hair systems, fittings and aftercare."
-              className="mb-0"
-            />
-            <Link to="/about" className="link-underline shrink-0 font-semibold text-brand-primary">
-              Meet the full team
-            </Link>
-          </div>
-          <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-12 lg:grid-cols-4 lg:gap-x-8">
-            {[
-              {
-                name: 'Jampala Sathish',
-                role: 'Founder & Master Hair Specialist',
-                experience: '10+ years',
-                expertise: 'Hair Bonding & Systems',
-                image: '/Data/Sathish.jpg',
-              },
-              {
-                name: 'Jampala Anil',
-                role: 'Hair Replacement Specialist',
-                experience: '5+ years',
-                expertise: "Men's Hair Systems",
-                image: '/Data/anil.jpg',
-              },
-              {
-                name: 'Jampala Navya',
-                role: 'Consultation Expert',
-                experience: '6+ years',
-                expertise: 'Marketing Lead',
-                image: '/Data/Navya.jpg',
-              },
-              {
-                name: 'Jampala Rishi Krishna',
-                role: 'Chief Technical Officer',
-                experience: '2+ years',
-                expertise: 'Technical Works and Marketing',
-                image: '/Data/Rishi.png',
-              },
-            ].map((member) => (
-              <figure key={member.name} className="group">
-                <div className="overflow-hidden rounded-arch bg-brand-blush">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[3/4] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <figcaption className="mt-4">
-                  <span className="block font-display text-xl text-brand-ink sm:text-2xl">{member.name}</span>
-                  <span className="mt-1 block text-sm font-semibold text-brand-primary">{member.role}</span>
-                  <span className="mt-1 block text-sm text-brand-stone">{member.expertise} · {member.experience}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
       {/* Transformations */}
       <Section>
         <Container>
@@ -538,6 +473,120 @@ export default function Home() {
                 <figcaption className="mt-3 text-sm text-brand-stone">{t.caption}</figcaption>
               </figure>
             ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* H2H videos and social channels */}
+      <Section tone="white">
+        <Container>
+          <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <SectionHeading
+              title="Watch H2H in action"
+              intro="See Hair 2 Hair Studio videos about hair systems and hair-patch solutions, then follow our social pages for more studio updates."
+              className="mb-0"
+            />
+            <a
+              href={SITE.social.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline shrink-0 font-semibold text-brand-primary"
+            >
+              Visit H2H on YouTube
+            </a>
+          </div>
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
+            <article className="overflow-hidden rounded-2xl border border-brand-line bg-white shadow-sm">
+              <div className="aspect-video bg-brand-deep">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/FfOXf_shf9A"
+                  title="Get a Natural Hair Patch from Just ₹5,999 | Hair 2 Hair Studio Hyderabad"
+                  loading="lazy"
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              <div className="p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-gold">H2H on YouTube</p>
+                <h3 className="mt-2 font-display text-xl text-brand-ink sm:text-2xl">Get a Natural Hair Patch from Just ₹5,999</h3>
+                <a
+                  href="https://www.youtube.com/watch?v=FfOXf_shf9A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline mt-3 inline-block text-sm font-semibold text-brand-primary"
+                >
+                  Watch on YouTube
+                </a>
+              </div>
+            </article>
+
+            <article className="overflow-hidden rounded-2xl border border-brand-line bg-white shadow-sm">
+              <div className="aspect-video bg-brand-deep">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/0CuBjE-6BPg"
+                  title="Hair Patch ₹5,999 Only – Instant Transformation – Hyderabad"
+                  loading="lazy"
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              <div className="p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-gold">H2H on YouTube</p>
+                <h3 className="mt-2 font-display text-xl text-brand-ink sm:text-2xl">Hair Patch ₹5,999 Only – Instant Transformation</h3>
+                <a
+                  href="https://www.youtube.com/watch?v=0CuBjE-6BPg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline mt-3 inline-block text-sm font-semibold text-brand-primary"
+                >
+                  Watch on YouTube
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div className="mt-10 flex flex-col items-center justify-between gap-5 rounded-2xl bg-brand-blush px-6 py-7 sm:flex-row sm:px-8">
+            <div>
+              <h3 className="font-display text-2xl text-brand-ink">Follow Hair 2 Hair Studio</h3>
+              <p className="mt-1 text-sm text-brand-stone">Follow our existing Instagram, Facebook and YouTube pages for studio updates and videos.</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <a
+                href={SITE.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Hair 2 Hair Studio on Instagram"
+                title="Instagram"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-brand-line bg-white text-brand-primary transition hover:-translate-y-1 hover:shadow-md"
+              >
+                <Instagram size={22} aria-hidden="true" />
+              </a>
+              <a
+                href={SITE.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Hair 2 Hair Studio on Facebook"
+                title="Facebook"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-brand-line bg-white text-brand-primary transition hover:-translate-y-1 hover:shadow-md"
+              >
+                <Facebook size={22} aria-hidden="true" />
+              </a>
+              <a
+                href={SITE.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Watch Hair 2 Hair Studio on YouTube"
+                title="YouTube"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-brand-line bg-white text-brand-primary transition hover:-translate-y-1 hover:shadow-md"
+              >
+                <Youtube size={22} aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </Container>
       </Section>
