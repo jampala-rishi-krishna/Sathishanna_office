@@ -9,12 +9,39 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+# OpenAI search access is separate from model-training access.
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /admin/
 Disallow: /private/
 
 User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Claude search and user-requested fetch access.
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Opt out of Claude model-training crawling.
+User-agent: ClaudeBot
+Disallow: /
+
+# Perplexity search and user-requested fetch access.
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: Perplexity-User
 Allow: /
 Disallow: /admin/
 Disallow: /private/

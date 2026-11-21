@@ -12,6 +12,7 @@ const htmlFiles = [
   'public/about-hair2hair/index.html',
   'public/hair-replacement-hyderabad/index.html',
   'public/hair-replacement-khammam/index.html',
+  'public/areas/kukatpally/index.html',
   'public/hair-replacement-services/index.html',
   'public/hair-patch-telugu/index.html',
   'public/hair-patch-selection-guide/index.html',
@@ -47,11 +48,13 @@ for (const url of [
   'https://hair2hair.in/about-hair2hair/',
   'https://hair2hair.in/hair-replacement-hyderabad/',
   'https://hair2hair.in/hair-replacement-khammam/',
+  'https://hair2hair.in/areas/kukatpally/',
   'https://hair2hair.in/hair-replacement-services/',
   'https://hair2hair.in/hair-patch-telugu/',
   'https://hair2hair.in/hair-patch-selection-guide/',
   'https://hair2hair.in/hair-system-maintenance-guide/',
   'https://hair2hair.in/editorial-policy/',
+  'https://hair2hair.in/areas/kukatpally/',
 ]) {
   assert(sitemap.includes(`<loc>${url}</loc>`), `Missing sitemap URL: ${url}`);
 }
@@ -94,9 +97,12 @@ const reviewComponent = read('src/components/GoogleReviews.tsx');
 assert(!reviewComponent.includes('reviewCount') && !reviewComponent.includes('218'), 'Do not display a stale static Google review count');
 const hyderabadLocation = read('public/hair-replacement-hyderabad/index.html');
 const khammamLocation = read('public/hair-replacement-khammam/index.html');
+const kukatpallyInfo = read('public/areas/kukatpally/index.html');
 assert(hyderabadLocation.includes('Every day, 7:00 AM–7:00 PM'), 'Hyderabad location page must show verified 7 AM opening');
 assert(khammamLocation.includes('Contact the studio to confirm current opening hours'), 'Khammam location page must not invent opening hours');
 assert(!khammamLocation.includes('09:00-19:00') && !khammamLocation.includes('9:00 AM–7:00 PM'), 'Khammam location page must not retain unconfirmed 9 AM hours');
+assert(kukatpallyInfo.includes('planned expansion') && kukatpallyInfo.includes('does not currently operate a physical studio'), 'Kukatpally page must clearly state it is not an operating branch');
+assert(!kukatpallyInfo.includes('"@type": "HairSalon"'), 'Kukatpally area page must not create a fake studio entity');
 
 const homeComponent = read('src/pages/Home.tsx');
 assert(homeComponent.includes('href={b.mapsUrl} target="_blank"'), 'Homepage branch directions link must be valid JSX');
@@ -110,6 +116,7 @@ for (const unsupportedClaim of ['15+ years', 'over 15 years', '1000+', '35% a ye
 const llms = read('public/llms.txt');
 assert(llms.includes('Dilsukhnagar, Hyderabad') && llms.includes('Khammam'), 'llms.txt must list both current branches');
 assert(llms.includes('planned expansion') && llms.includes('Kukatpally'), 'llms.txt must distinguish planned Kukatpally expansion');
+assert(llms.includes('https://hair2hair.in/areas/kukatpally/'), 'llms.txt must link to Kukatpally area information');
 for (const url of [
   'https://hair2hair.in/hair-patch-selection-guide/',
   'https://hair2hair.in/hair-system-maintenance-guide/',
@@ -118,6 +125,10 @@ for (const url of [
 
 const robots = read('public/robots.txt');
 assert(/User-agent: OAI-SearchBot[\s\S]*?Allow: \/[\s\S]*?Sitemap:/m.test(robots), 'robots.txt must allow OAI-SearchBot and declare the sitemap');
+assert(robots.includes('User-agent: Claude-SearchBot\\nAllow: /'), 'robots.txt must allow Claude SearchBot');
+assert(robots.includes('User-agent: PerplexityBot\\nAllow: /'), 'robots.txt must allow PerplexityBot');
+assert(robots.includes('User-agent: ClaudeBot\\nDisallow: /'), 'robots.txt must opt out of Claude training crawl');
+assert(robots.includes('User-agent: GPTBot\\nDisallow: /'), 'robots.txt must retain the GPTBot training opt-out');
 assert(existsSync(join(root, 'public/llms.txt')), 'public/llms.txt must exist');
 
 for (const file of [

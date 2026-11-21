@@ -7,6 +7,7 @@ const explore = [
   { to: '/hair-patch-selection-guide/', label: 'Hair patch selection guide' },
   { to: '/hair-system-maintenance-guide/', label: 'Hair system care guide' },
   { to: '/editorial-policy/', label: 'Editorial policy & corrections' },
+  { to: '/areas/kukatpally/', label: 'Kukatpally area information' },
   { to: '/men', label: "Men's hair systems" },
   { to: '/women', label: "Women's patches & wigs" },
   { to: '/women#extensions', label: 'Hair extensions' },
@@ -76,7 +77,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[0.95rem]">
               {studio.map((l) => (
                 <li key={l.to}>
-                  {l.to === '/editorial-policy/' ? (
+                  {l.to === '/editorial-policy/' || l.to === '/areas/kukatpally/' ? (
                     <a href={l.to} className="hover:text-white">{l.label}</a>
                   ) : (
                     <Link to={l.to} className="hover:text-white">

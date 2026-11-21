@@ -551,6 +551,15 @@ export default function Home() {
                   </a>
                 </div>
               ))}
+              <div className="border-t border-brand-primary/20 pt-5">
+                <h3 className="text-xl text-brand-ink">Kukatpally enquiries</h3>
+                <p className="mt-1 text-brand-stone">
+                  Kukatpally is a planned expansion area, not a current H2H studio. Our listed physical studios are in Dilsukhnagar and Khammam.
+                </p>
+                <a href="/areas/kukatpally/" className="link-underline mt-2 inline-block font-semibold text-brand-primary">
+                  Read Kukatpally area information
+                </a>
+              </div>
               <p className="border-t border-brand-primary/20 pt-5 text-brand-stone">
                 Contact the studio to confirm service and appointment availability ·{' '}
                   <a href={SITE.phoneHref} className="font-semibold text-brand-ink">
